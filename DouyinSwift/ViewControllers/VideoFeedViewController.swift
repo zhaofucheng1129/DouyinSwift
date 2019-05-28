@@ -36,11 +36,10 @@ class VideoFeedViewController: UIViewController {
         addTableView()
         
         viewModel.requestFeedData()
-        viewModel.dataSourceDriver.debug().drive(onNext: { [weak self] _ in
+        viewModel.dataSourceDriver.drive(onNext: { [weak self] _ in
             guard let `self` = self else { return }
             self.tableView.reloadData()
             self.setUpCurrentCellObserver()
-        }, onCompleted: {
         }).disposed(by: bag)
     }
     
@@ -64,7 +63,6 @@ class VideoFeedViewController: UIViewController {
                 })
                 self.currentObserver?.disposed(by: self.bag)
             }
-            
             return
         }
         

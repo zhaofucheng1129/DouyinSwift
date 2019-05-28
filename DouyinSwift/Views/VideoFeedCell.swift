@@ -15,7 +15,8 @@ import RxCocoa
 class VideoFeedCell: UITableViewCell {
     private var playImage: UIImageView!
     private var playerView: ZPlayerView!
-    private var musicDiscImage: UIImageView!
+    private var musicDiscImage: ImageView!
+    private var musicDiscCover: ImageView!
     private var shareImage: UIImageView!
     private var shareCount: UILabel!
     private var commentImage: UIImageView!
@@ -26,7 +27,6 @@ class VideoFeedCell: UITableViewCell {
     
     private(set) var isReadyToPlay: Bool = false
     
-    private var viewModel: VideoFeedCellViewModel?
     private var bag:DisposeBag = DisposeBag()
     
     public var startPlayOnReady: (() -> Void)?
@@ -46,14 +46,26 @@ class VideoFeedCell: UITableViewCell {
     }
     
     public func bind(viewModel: VideoFeedCellViewModel) {
-        self.viewModel = viewModel
-        guard let data = self.viewModel else { return }
-        
-        self.playerView.viewModel = data
-        data.playUrl.bind(to: self.playerView.rx.playUrl).disposed(by: bag)
-        data.status.observeOn(MainScheduler.instance).subscribe(onNext: { [weak self] in
+        self.playerView.viewModel = viewModel
+        viewModel.playUrl.bind(to: self.playerView.rx.playUrl).disposed(by: bag)
+        viewModel.status.observeOn(MainScheduler.instance).subscribe(onNext: { [weak self] in
             self?.playImageAnimation(status: $0)
         }).disposed(by: bag)
+        viewModel.status.accept(.none)
+        viewModel.diggCount.drive(likeCount.rx.text).disposed(by: bag)
+        viewModel.commentCount.drive(commentCount.rx.text).disposed(by: bag)
+        viewModel.shareCount.drive(shareCount.rx.text).disposed(by: bag)
+        viewModel.musicThumb.bind { [weak self] in
+            guard let url = $0, let `self` = self else { return }
+            self.musicDiscCover.load.image(with: url, completionHandler: { (result) -> UIImage? in
+                switch result {
+                case .failure:
+                    return nil
+                case .success(let image):
+                    return image.roundedCorner(radius: image.imageSize.width / 2)
+                }
+            })
+        }.disposed(by: bag)
     }
     
     public func play() {
@@ -118,12 +130,21 @@ extension VideoFeedCell {
     }
     
     func addMusicDisc() {
-        musicDiscImage = UIImageView()
+        musicDiscImage = ImageView()
         musicDiscImage.image = UIImage(named: "music_cover")
         contentView.addSubview(musicDiscImage)
         musicDiscImage.translatesAutoresizingMaskIntoConstraints = false
         musicDiscImage.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -60).isActive = true
         musicDiscImage.rightAnchor.constraint(equalTo: safeAreaLayoutGuide.rightAnchor, constant: -10).isActive = true
+        musicDiscImage.widthAnchor.constraint(equalToConstant: 50).isActive = true
+        musicDiscImage.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        musicDiscCover = ImageView()
+        contentView.addSubview(musicDiscCover)
+        musicDiscCover.translatesAutoresizingMaskIntoConstraints = false
+        musicDiscCover.centerXAnchor.constraint(equalTo: musicDiscImage.centerXAnchor).isActive = true
+        musicDiscCover.centerYAnchor.constraint(equalTo: musicDiscImage.centerYAnchor).isActive = true
+        musicDiscCover.widthAnchor.constraint(equalToConstant: 25).isActive = true
+        musicDiscCover.heightAnchor.constraint(equalToConstant: 25).isActive = true
     }
     
     func addShareBtn() {
@@ -135,7 +156,7 @@ extension VideoFeedCell {
         contentView.addSubview(shareCount)
         shareImage.translatesAutoresizingMaskIntoConstraints = false
         shareCount.translatesAutoresizingMaskIntoConstraints = false
-        shareImage.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -10).isActive = true
+        shareImage.centerXAnchor.constraint(equalTo: musicDiscImage.centerXAnchor).isActive = true
         shareImage.bottomAnchor.constraint(equalTo: musicDiscImage.topAnchor, constant: -50).isActive = true
         shareCount.topAnchor.constraint(equalTo: shareImage.bottomAnchor).isActive = true
         shareCount.centerXAnchor.constraint(equalTo: shareImage.centerXAnchor).isActive = true
@@ -150,7 +171,7 @@ extension VideoFeedCell {
         contentView.addSubview(commentImage)
         commentCount.translatesAutoresizingMaskIntoConstraints = false
         commentImage.translatesAutoresizingMaskIntoConstraints = false
-        commentImage.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -10).isActive = true
+        commentImage.centerXAnchor.constraint(equalTo: musicDiscImage.centerXAnchor).isActive = true
         commentImage.bottomAnchor.constraint(equalTo: shareImage.topAnchor, constant: -25).isActive = true
         commentCount.topAnchor.constraint(equalTo: commentImage.bottomAnchor).isActive = true
         commentCount.centerXAnchor.constraint(equalTo: commentImage.centerXAnchor).isActive = true
@@ -165,7 +186,7 @@ extension VideoFeedCell {
         contentView.addSubview(likeCount)
         likeImage.translatesAutoresizingMaskIntoConstraints = false
         likeCount.translatesAutoresizingMaskIntoConstraints = false
-        likeImage.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -10).isActive = true
+        likeImage.centerXAnchor.constraint(equalTo: musicDiscImage.centerXAnchor).isActive = true
         likeImage.bottomAnchor.constraint(equalTo: commentImage.topAnchor, constant: -25).isActive = true
         likeCount.topAnchor.constraint(equalTo: likeImage.bottomAnchor).isActive = true
         likeCount.centerXAnchor.constraint(equalTo: likeImage.centerXAnchor).isActive = true
@@ -180,7 +201,7 @@ extension VideoFeedCell {
         contentView.addSubview(avatarBtn)
         avatarBtn.translatesAutoresizingMaskIntoConstraints = false
         avatarBtn.bottomAnchor.constraint(equalTo: likeImage.topAnchor, constant: -25).isActive = true
-        avatarBtn.rightAnchor.constraint(equalTo: likeImage.rightAnchor).isActive = true
+        avatarBtn.centerXAnchor.constraint(equalTo: musicDiscImage.centerXAnchor).isActive = true
         avatarBtn.widthAnchor.constraint(equalToConstant: 50).isActive = true
         avatarBtn.heightAnchor.constraint(equalToConstant: 50).isActive = true
     }

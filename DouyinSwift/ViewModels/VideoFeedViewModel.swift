@@ -27,12 +27,6 @@ class VideoFeedViewModel {
             var newArray = self.videoFeedDataSource.value
             newArray.append(contentsOf: awemes.map({ (aweme) -> VideoFeedCellViewModel in return VideoFeedCellViewModel(aweme: aweme) }))
             self.videoFeedDataSource.accept(newArray)
-        }, onError: { (error) in
-        
-        }, onCompleted: {
-            
-        }, onDisposed: {
-            
         })
     }
 }

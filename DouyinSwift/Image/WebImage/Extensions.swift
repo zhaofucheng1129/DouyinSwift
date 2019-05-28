@@ -15,7 +15,7 @@ extension Wrapper where Base: ImageView {
     @discardableResult
     public func image(with url: URL, placeholder: UIView? = nil, options: WebImageOptionsInfo? = nil,
                       progressBlock: DownloadProgressBlock? = nil,
-                      completionHandler: ((Result<Image, WebImageError>) -> Void)? = nil) -> DownloadTask? {
+                      completionHandler: ((Result<Image, WebImageError>) -> UIImage?)? = nil) -> DownloadTask? {
         var mutatingSelf = self
         
         //防止options为空 使用默认的空数组做后续操作
@@ -47,7 +47,7 @@ extension Wrapper where Base: ImageView {
                         reason = .notCurrentSourceTask(result: nil, error: error, source: url)
                     }
                     let error = WebImageError.imageSettingError(reason: reason)
-                    completionHandler?(.failure(error))
+                    _ = completionHandler?(.failure(error))
                     return
                 }
                 
@@ -56,11 +56,14 @@ extension Wrapper where Base: ImageView {
                 switch result {
                 case .success(let value):
                     mutatingSelf.placeholder = nil
-                    self.base.image = value
-                    completionHandler?(result)
+                    if let image = completionHandler?(result) {
+                        self.base.image = image
+                    } else {
+                        self.base.image = value
+                    }
                     return
                 case .failure:
-                    completionHandler?(result)
+                    _ = completionHandler?(result)
                 }
             }
         }
