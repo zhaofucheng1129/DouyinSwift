@@ -14,6 +14,7 @@ class VideoFeedViewController: UIViewController {
     
     fileprivate var currentSubject: BehaviorRelay<Int> = BehaviorRelay(value: 0)
     fileprivate var bag: DisposeBag = DisposeBag()
+    fileprivate var currentObserver: Disposable?
     
     var tableView: UITableView
     let viewModel: VideoFeedViewModel = VideoFeedViewModel()
@@ -33,30 +34,44 @@ class VideoFeedViewController: UIViewController {
         super.viewDidLoad()
         addBackgroundImage()
         addTableView()
-
-        self.currentSubject.asDriver().drive(
-            onNext: { [weak self](index) in
-                guard let `self` = self ,let cell = self.tableView.cellForRow(at: IndexPath(row: index, section: 0)) as? VideoFeedCell else { return }
-                if cell.isReadyToPlay {
-                    cell.play()
-                } else {
-                    ZPlayerManager.shared.pasueAll()
-                    cell.startPlayOnReady = { [weak cell] in
-                        guard let cell = cell, let indexPath = self.tableView.indexPath(for: cell) else { return }
-                        if self.currentSubject.value == indexPath.row {
-                            cell.play()
-                        }
-                    }
-                }
-        }).disposed(by: self.bag)
         
         viewModel.requestFeedData()
-        viewModel.dataSourceDriver.drive(onNext: { _ in
-            print("drive 刷新")
+        viewModel.dataSourceDriver.debug().drive(onNext: { [weak self] _ in
+            guard let `self` = self else { return }
             self.tableView.reloadData()
+            self.setUpCurrentCellObserver()
+        }, onCompleted: {
         }).disposed(by: bag)
     }
     
+    func setUpCurrentCellObserver() {
+        guard let _ = currentObserver else {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                self.currentObserver = self.currentSubject.asDriver().drive(
+                    onNext: { [weak self](index) in
+                        guard let `self` = self ,let cell = self.tableView.cellForRow(at: IndexPath(row: index, section: 0)) as? VideoFeedCell else { return }
+                        if cell.isReadyToPlay {
+                            cell.play()
+                        } else {
+                            ZPlayerManager.shared.pasueAll()
+                            cell.startPlayOnReady = { [weak cell] in
+                                guard let cell = cell, let indexPath = self.tableView.indexPath(for: cell) else { return }
+                                if self.currentSubject.value == indexPath.row {
+                                    cell.play()
+                                }
+                            }
+                        }
+                })
+                self.currentObserver?.disposed(by: self.bag)
+            }
+            
+            return
+        }
+        
+    }
+}
+
+extension VideoFeedViewController {
     func addBackgroundImage() {
         let backgroundImage = UIImageView()
         backgroundImage.image = UIImage(named: "img_video_loading_max375x685")
