@@ -24,7 +24,7 @@ class VideoFeedCell: UITableViewCell {
     private var likeImage: UIImageView!
     private var likeCount: UILabel!
     private var avatarBtn: UIButton!
-    
+    private var followBtn: VideoCellFollowBtn!
     private var musicIcon: UIImageView!
     private var musicName: UILabel!
     private var videoDesc: UILabel!
@@ -226,6 +226,14 @@ extension VideoFeedCell {
         avatarBtn.centerXAnchor.constraint(equalTo: musicDiscImage.centerXAnchor).isActive = true
         avatarBtn.widthAnchor.constraint(equalToConstant: 50).isActive = true
         avatarBtn.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        
+        followBtn = VideoCellFollowBtn()
+        contentView.addSubview(followBtn)
+        followBtn.translatesAutoresizingMaskIntoConstraints = false
+        followBtn.centerXAnchor.constraint(equalTo: avatarBtn.centerXAnchor).isActive = true
+        followBtn.centerYAnchor.constraint(equalTo: avatarBtn.bottomAnchor).isActive = true
+        followBtn.widthAnchor.constraint(equalToConstant: 24).isActive = true
+        followBtn.heightAnchor.constraint(equalToConstant: 24).isActive = true
     }
     
     func addMusicName() {
