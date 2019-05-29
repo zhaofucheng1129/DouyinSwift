@@ -19,6 +19,8 @@ enum ZPlayerStatus {
 class VideoFeedCellViewModel {
     
     let status: BehaviorRelay<ZPlayerStatus> = BehaviorRelay(value: .none)
+    let isLikedStatus: BehaviorRelay<Bool> = BehaviorRelay(value: false)
+    
     private let aweme: BehaviorRelay<Aweme>
     
     public var awemeObserver: Observable<Aweme> {

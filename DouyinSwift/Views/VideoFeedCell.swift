@@ -22,7 +22,7 @@ class VideoFeedCell: UITableViewCell {
     private var shareCount: UILabel!
     private var commentImage: UIImageView!
     private var commentCount: UILabel!
-    private var likeImage: UIImageView!
+    private var likeBtn: AnimationView!
     private var likeCount: UILabel!
     private var avatarBtn: UIButton!
     private var followBtn: AnimationView!
@@ -30,6 +30,8 @@ class VideoFeedCell: UITableViewCell {
     private var musicName: UILabel!
     private var videoDesc: UILabel!
     private var authorName: UILabel!
+    
+    private var viewModel:VideoFeedCellViewModel?
     
     private(set) var isReadyToPlay: Bool = false
     
@@ -53,6 +55,7 @@ class VideoFeedCell: UITableViewCell {
     }
     
     public func bind(viewModel: VideoFeedCellViewModel) {
+        self.viewModel = viewModel
         self.playerView.viewModel = viewModel
         viewModel.playUrl.bind(to: self.playerView.rx.playUrl).disposed(by: bag)
         viewModel.status.observeOn(MainScheduler.instance).subscribe(onNext: { [weak self] in
@@ -87,6 +90,14 @@ class VideoFeedCell: UITableViewCell {
         viewModel.musicName.drive(musicName.rx.text).disposed(by: bag)
         viewModel.videoDesc.drive(videoDesc.rx.text).disposed(by: bag)
         viewModel.authorName.drive(authorName.rx.text).disposed(by: bag)
+        viewModel.isLikedStatus.asDriver().drive(onNext: { [weak self] (isLike) in
+            guard let `self` = self else { return }
+            if isLike {
+                self.likeBtn.animation = Animation.named("icon_home_dislike_new", subdirectory: "LottieResources")
+            } else {
+                self.likeBtn.animation = Animation.named("icon_home_like_new", subdirectory: "LottieResources")
+            }
+        }).disposed(by: bag)
     }
     
     public func play() {
@@ -205,16 +216,29 @@ extension VideoFeedCell {
     func addLikeBtn() {
         likeCount = UILabel(text: "0", font: .systemFont(ofSize: 12))
         likeCount.textColor = UIColor.white
-        likeImage = UIImageView()
-        likeImage.image = UIImage(named: "icon_home_like_before40x40")
-        contentView.addSubview(likeImage)
+        likeBtn = AnimationView()
+        let imageProvider = BundleImageProvider(bundle: Bundle.main, searchPath: "LottieResources")
+        likeBtn.imageProvider = imageProvider
+        contentView.addSubview(likeBtn)
         contentView.addSubview(likeCount)
-        likeImage.translatesAutoresizingMaskIntoConstraints = false
+        likeBtn.translatesAutoresizingMaskIntoConstraints = false
         likeCount.translatesAutoresizingMaskIntoConstraints = false
-        likeImage.centerXAnchor.constraint(equalTo: musicDiscImage.centerXAnchor).isActive = true
-        likeImage.bottomAnchor.constraint(equalTo: commentImage.topAnchor, constant: -25).isActive = true
-        likeCount.topAnchor.constraint(equalTo: likeImage.bottomAnchor).isActive = true
-        likeCount.centerXAnchor.constraint(equalTo: likeImage.centerXAnchor).isActive = true
+        likeBtn.centerXAnchor.constraint(equalTo: musicDiscImage.centerXAnchor).isActive = true
+        likeBtn.bottomAnchor.constraint(equalTo: commentImage.topAnchor, constant: -25).isActive = true
+        likeBtn.widthAnchor.constraint(equalToConstant: 55).isActive = true
+        likeBtn.heightAnchor.constraint(equalToConstant: 55).isActive = true
+        likeCount.topAnchor.constraint(equalTo: likeBtn.bottomAnchor).isActive = true
+        likeCount.centerXAnchor.constraint(equalTo: likeBtn.centerXAnchor).isActive = true
+        
+        let tapGesture = UITapGestureRecognizer { [weak self] (gesture) in
+            guard let `self` = self else { return }
+            self.likeBtn.play(completion: { [weak self] (finished) in
+                guard let `self` = self, let viewModel = self.viewModel else { return }
+                viewModel.isLikedStatus.accept(!viewModel.isLikedStatus.value)
+            })
+        }
+        likeBtn.addGestureRecognizer(tapGesture)
+        
     }
     
     func addAvatarBtn() {
@@ -225,7 +249,7 @@ extension VideoFeedCell {
         avatarBtn.borderWidth = 1
         contentView.addSubview(avatarBtn)
         avatarBtn.translatesAutoresizingMaskIntoConstraints = false
-        avatarBtn.bottomAnchor.constraint(equalTo: likeImage.topAnchor, constant: -25).isActive = true
+        avatarBtn.bottomAnchor.constraint(equalTo: likeBtn.topAnchor, constant: -25).isActive = true
         avatarBtn.centerXAnchor.constraint(equalTo: musicDiscImage.centerXAnchor).isActive = true
         avatarBtn.widthAnchor.constraint(equalToConstant: 50).isActive = true
         avatarBtn.heightAnchor.constraint(equalToConstant: 50).isActive = true
@@ -235,7 +259,6 @@ extension VideoFeedCell {
         if followBtn != nil, followBtn.superview != nil { return }
         followBtn = AnimationView()
         followBtn.animation = Animation.named("home_follow_add", subdirectory: "LottieResources")
-        followBtn.contentMode = .scaleAspectFit
         contentView.addSubview(followBtn)
         followBtn.translatesAutoresizingMaskIntoConstraints = false
         followBtn.centerXAnchor.constraint(equalTo: avatarBtn.centerXAnchor).isActive = true
@@ -260,7 +283,7 @@ extension VideoFeedCell {
         musicIcon = UIImageView()
         musicIcon.image = UIImage(named: "icon_home_musicnote3")
         contentView.addSubview(musicIcon)
-        musicName = UILabel(text: "", font: .systemFont(ofSize: 14))
+        musicName = UILabel(text: "", font: .systemFont(ofSize: 15))
         musicName.textColor = UIColor.white
         contentView.addSubview(musicName)
         musicIcon.translatesAutoresizingMaskIntoConstraints = false
@@ -274,14 +297,14 @@ extension VideoFeedCell {
     }
     
     func addVideoDesc() {
-        videoDesc = UILabel(text: "", font: .systemFont(ofSize: 12))
+        videoDesc = UILabel(text: "", font: .systemFont(ofSize: 14))
         videoDesc.textColor = UIColor.white
         videoDesc.numberOfLines = 2
         contentView.addSubview(videoDesc)
         videoDesc.translatesAutoresizingMaskIntoConstraints = false
         videoDesc.leftAnchor.constraint(equalTo: musicIcon.leftAnchor).isActive = true
         videoDesc.bottomAnchor.constraint(equalTo: musicIcon.topAnchor, constant: -8).isActive = true
-        videoDesc.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 0.5).isActive = true
+        videoDesc.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 0.67).isActive = true
     }
     
     func addAuthorName() {
