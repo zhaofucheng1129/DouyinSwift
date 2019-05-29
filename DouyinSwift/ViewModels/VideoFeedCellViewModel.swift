@@ -67,7 +67,7 @@ class VideoFeedCellViewModel {
     
     public var musicName: Driver<String> {
         return awemeDriver.map { (aweme) -> String in
-            return aweme.music.title
+            return aweme.music.title.contains("原声") ? aweme.music.title : "\(aweme.music.title) - \(aweme.music.author)"
         }.asDriver()
     }
     
