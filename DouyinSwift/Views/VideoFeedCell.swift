@@ -16,8 +16,7 @@ import Lottie
 class VideoFeedCell: UITableViewCell {
     private var playImage: UIImageView!
     private var playerView: ZPlayerView!
-    private var musicDiscImage: ImageView!
-    private var musicDiscCover: ImageView!
+    private var musicDiscBtn: VideoFeedCellMusicBtn!
     private var shareBtn: VideoFeedCellBtn!
     private var commentBtn: VideoFeedCellBtn!
     private var likeBtn: AnimationView!
@@ -65,7 +64,7 @@ class VideoFeedCell: UITableViewCell {
         viewModel.shareCount.drive(shareBtn.label.rx.text).disposed(by: bag)
         viewModel.musicThumb.bind { [weak self] in
             guard let url = $0, let `self` = self else { return }
-            self.musicDiscCover.load.image(with: url, completionHandler: { (result) -> UIImage? in
+            self.musicDiscBtn.cover.load.image(with: url, completionHandler: { (result) -> UIImage? in
                 switch result {
                 case .failure:
                     return nil
@@ -164,21 +163,11 @@ extension VideoFeedCell {
     }
     
     func addMusicDisc() {
-        musicDiscImage = ImageView()
-        musicDiscImage.image = UIImage(named: "music_cover")
-        contentView.addSubview(musicDiscImage)
-        musicDiscImage.translatesAutoresizingMaskIntoConstraints = false
-        musicDiscImage.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -60).isActive = true
-        musicDiscImage.rightAnchor.constraint(equalTo: safeAreaLayoutGuide.rightAnchor, constant: -10).isActive = true
-        musicDiscImage.widthAnchor.constraint(equalToConstant: 50).isActive = true
-        musicDiscImage.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        musicDiscCover = ImageView()
-        contentView.addSubview(musicDiscCover)
-        musicDiscCover.translatesAutoresizingMaskIntoConstraints = false
-        musicDiscCover.centerXAnchor.constraint(equalTo: musicDiscImage.centerXAnchor).isActive = true
-        musicDiscCover.centerYAnchor.constraint(equalTo: musicDiscImage.centerYAnchor).isActive = true
-        musicDiscCover.widthAnchor.constraint(equalToConstant: 25).isActive = true
-        musicDiscCover.heightAnchor.constraint(equalToConstant: 25).isActive = true
+        musicDiscBtn = VideoFeedCellMusicBtn()
+        contentView.addSubview(musicDiscBtn)
+        musicDiscBtn.translatesAutoresizingMaskIntoConstraints = false
+        musicDiscBtn.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -60).isActive = true
+        musicDiscBtn.rightAnchor.constraint(equalTo: safeAreaLayoutGuide.rightAnchor, constant: -10).isActive = true
     }
     
     func addShareBtn() {
@@ -186,8 +175,8 @@ extension VideoFeedCell {
         shareBtn.imageView.image = UIImage(named: "icon_home_share40x40")
         contentView.addSubview(shareBtn)
         shareBtn.translatesAutoresizingMaskIntoConstraints = false
-        shareBtn.centerXAnchor.constraint(equalTo: musicDiscImage.centerXAnchor).isActive = true
-        shareBtn.bottomAnchor.constraint(equalTo: musicDiscImage.topAnchor, constant: -40).isActive = true
+        shareBtn.centerXAnchor.constraint(equalTo: musicDiscBtn.centerXAnchor).isActive = true
+        shareBtn.bottomAnchor.constraint(equalTo: musicDiscBtn.topAnchor, constant: -40).isActive = true
     }
     
     func addCommentBtn() {
@@ -195,7 +184,7 @@ extension VideoFeedCell {
         commentBtn.imageView.image = UIImage(named: "icon_home_comment40x40")
         contentView.addSubview(commentBtn)
         commentBtn.translatesAutoresizingMaskIntoConstraints = false
-        commentBtn.centerXAnchor.constraint(equalTo: musicDiscImage.centerXAnchor).isActive = true
+        commentBtn.centerXAnchor.constraint(equalTo: musicDiscBtn.centerXAnchor).isActive = true
         commentBtn.bottomAnchor.constraint(equalTo: shareBtn.topAnchor, constant: -10).isActive = true
     }
     
@@ -209,7 +198,7 @@ extension VideoFeedCell {
         contentView.addSubview(likeCount)
         likeBtn.translatesAutoresizingMaskIntoConstraints = false
         likeCount.translatesAutoresizingMaskIntoConstraints = false
-        likeBtn.centerXAnchor.constraint(equalTo: musicDiscImage.centerXAnchor).isActive = true
+        likeBtn.centerXAnchor.constraint(equalTo: musicDiscBtn.centerXAnchor).isActive = true
         likeBtn.bottomAnchor.constraint(equalTo: commentBtn.topAnchor, constant: -25).isActive = true
         likeBtn.widthAnchor.constraint(equalToConstant: 55).isActive = true
         likeBtn.heightAnchor.constraint(equalToConstant: 55).isActive = true
@@ -236,7 +225,7 @@ extension VideoFeedCell {
         contentView.addSubview(avatarBtn)
         avatarBtn.translatesAutoresizingMaskIntoConstraints = false
         avatarBtn.bottomAnchor.constraint(equalTo: likeBtn.topAnchor, constant: -25).isActive = true
-        avatarBtn.centerXAnchor.constraint(equalTo: musicDiscImage.centerXAnchor).isActive = true
+        avatarBtn.centerXAnchor.constraint(equalTo: musicDiscBtn.centerXAnchor).isActive = true
         avatarBtn.widthAnchor.constraint(equalToConstant: 50).isActive = true
         avatarBtn.heightAnchor.constraint(equalToConstant: 50).isActive = true
     }
