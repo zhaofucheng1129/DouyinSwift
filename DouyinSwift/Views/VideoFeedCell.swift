@@ -49,6 +49,7 @@ class VideoFeedCell: UITableViewCell {
         super.prepareForReuse()
         bag = DisposeBag()
         addFollowBtn()
+        musicDiscBtn.resetAnimation()
     }
     
     public func bind(viewModel: VideoFeedCellViewModel) {
@@ -112,12 +113,14 @@ class VideoFeedCell: UITableViewCell {
                 self.playImage.alpha = 1
                 self.playImage.transform = CGAffineTransform(scaleX: 1, y: 1)
             })
+            musicDiscBtn.pauseAnimation()
         case .playing:
             UIView.animate(withDuration: 0.15, animations: {
                 self.playImage.alpha = 0
             }, completion: { _ in
                 self.playImage.isHidden = false
             })
+            musicDiscBtn.resumeAnimtion()
         case .none:
             self.playImage.isHidden = true
         }
@@ -303,6 +306,7 @@ extension VideoFeedCell: ZPlayerViewDelegate {
         case .readyToPlay:
             isReadyToPlay = true
             startPlayOnReady?()
+            musicDiscBtn.setUpAnimation()
         default:
             break
         }
