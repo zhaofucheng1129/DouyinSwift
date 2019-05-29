@@ -48,6 +48,13 @@ class VideoFeedCellViewModel {
         }.asObservable()
     }
     
+    public var avatarThumb: Observable<URL?> {
+        return awemeDriver.map {
+            guard let str = $0.author.avatarThumb.urlList.first else { return nil }
+            return URL(string: str) ?? nil
+        }.asObservable()
+    }
+    
     public var playUrl: Observable<URL?> {
         return awemeObserver.map { (aweme) -> URL? in
             guard let urlStr = aweme.video.playAddr.urlList.first else { return nil }

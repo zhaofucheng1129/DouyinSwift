@@ -66,6 +66,17 @@ class VideoFeedCell: UITableViewCell {
                 }
             })
         }.disposed(by: bag)
+        viewModel.avatarThumb.bind { [weak self] in
+            guard let url = $0, let `self` = self else { return }
+            self.avatarBtn.load.image(with: url, for: .normal, completionHandler: { (result) -> UIImage? in
+                switch result {
+                case .failure:
+                    return nil
+                case .success(let image):
+                    return image.roundedCorner(radius: image.imageSize.width / 2)
+                }
+            })
+        }.disposed(by: bag)
     }
     
     public func play() {
