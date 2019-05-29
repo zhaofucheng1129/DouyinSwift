@@ -11,6 +11,7 @@ import UIKit
 import AVFoundation.AVPlayerItem
 import RxSwift
 import RxCocoa
+import Lottie
 
 class VideoFeedCell: UITableViewCell {
     private var playImage: UIImageView!
@@ -24,7 +25,7 @@ class VideoFeedCell: UITableViewCell {
     private var likeImage: UIImageView!
     private var likeCount: UILabel!
     private var avatarBtn: UIButton!
-    private var followBtn: VideoCellFollowBtn!
+    private var followBtn: AnimationView!
     private var musicIcon: UIImageView!
     private var musicName: UILabel!
     private var videoDesc: UILabel!
@@ -48,6 +49,7 @@ class VideoFeedCell: UITableViewCell {
     override func prepareForReuse() {
         super.prepareForReuse()
         bag = DisposeBag()
+        addFollowBtn()
     }
     
     public func bind(viewModel: VideoFeedCellViewModel) {
@@ -126,6 +128,7 @@ extension VideoFeedCell {
         addCommentBtn()
         addLikeBtn()
         addAvatarBtn()
+        addFollowBtn()
         addMusicName()
         addVideoDesc()
         addAuthorName()
@@ -226,14 +229,31 @@ extension VideoFeedCell {
         avatarBtn.centerXAnchor.constraint(equalTo: musicDiscImage.centerXAnchor).isActive = true
         avatarBtn.widthAnchor.constraint(equalToConstant: 50).isActive = true
         avatarBtn.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        
-        followBtn = VideoCellFollowBtn()
+    }
+    
+    func addFollowBtn() {
+        if followBtn != nil, followBtn.superview != nil { return }
+        followBtn = AnimationView()
+        followBtn.animation = Animation.named("home_follow_add", subdirectory: "LottieResources")
+        followBtn.contentMode = .scaleAspectFit
         contentView.addSubview(followBtn)
         followBtn.translatesAutoresizingMaskIntoConstraints = false
         followBtn.centerXAnchor.constraint(equalTo: avatarBtn.centerXAnchor).isActive = true
         followBtn.centerYAnchor.constraint(equalTo: avatarBtn.bottomAnchor).isActive = true
-        followBtn.widthAnchor.constraint(equalToConstant: 24).isActive = true
-        followBtn.heightAnchor.constraint(equalToConstant: 24).isActive = true
+        followBtn.widthAnchor.constraint(equalToConstant: 34).isActive = true
+        followBtn.heightAnchor.constraint(equalToConstant: 34).isActive = true
+        
+        let tapGesture = UITapGestureRecognizer { [weak self] (gesture) in
+            guard let `self` = self else { return }
+            self.followBtn.play(completion: { [weak self](finished) in
+                UIView.animate(withDuration: 0.3, delay: 0.1, animations: {
+                    self?.followBtn.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
+                }, completion: { _ in
+                    self?.followBtn.removeFromSuperview()
+                })
+            })
+        }
+        followBtn.addGestureRecognizer(tapGesture)
     }
     
     func addMusicName() {

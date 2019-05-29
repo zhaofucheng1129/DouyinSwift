@@ -9,4 +9,5 @@ target 'DouyinSwift' do
   pod 'RxSwift'
   pod 'RxCocoa'
   pod 'Moya/RxSwift', '~> 13.0'
+  pod 'lottie-ios'
 end
