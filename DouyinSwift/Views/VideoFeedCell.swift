@@ -18,10 +18,8 @@ class VideoFeedCell: UITableViewCell {
     private var playerView: ZPlayerView!
     private var musicDiscImage: ImageView!
     private var musicDiscCover: ImageView!
-    private var shareImage: UIImageView!
-    private var shareCount: UILabel!
-    private var commentImage: UIImageView!
-    private var commentCount: UILabel!
+    private var shareBtn: VideoFeedCellBtn!
+    private var commentBtn: VideoFeedCellBtn!
     private var likeBtn: AnimationView!
     private var likeCount: UILabel!
     private var avatarBtn: UIButton!
@@ -63,8 +61,8 @@ class VideoFeedCell: UITableViewCell {
         }).disposed(by: bag)
         viewModel.status.accept(.none)
         viewModel.diggCount.drive(likeCount.rx.text).disposed(by: bag)
-        viewModel.commentCount.drive(commentCount.rx.text).disposed(by: bag)
-        viewModel.shareCount.drive(shareCount.rx.text).disposed(by: bag)
+        viewModel.commentCount.drive(commentBtn.label.rx.text).disposed(by: bag)
+        viewModel.shareCount.drive(shareBtn.label.rx.text).disposed(by: bag)
         viewModel.musicThumb.bind { [weak self] in
             guard let url = $0, let `self` = self else { return }
             self.musicDiscCover.load.image(with: url, completionHandler: { (result) -> UIImage? in
@@ -184,33 +182,21 @@ extension VideoFeedCell {
     }
     
     func addShareBtn() {
-        shareCount = UILabel(text: "0", font: .systemFont(ofSize: 12))
-        shareCount.textColor = UIColor.white
-        shareImage = UIImageView()
-        shareImage.image = UIImage(named: "icon_home_share40x40")
-        contentView.addSubview(shareImage)
-        contentView.addSubview(shareCount)
-        shareImage.translatesAutoresizingMaskIntoConstraints = false
-        shareCount.translatesAutoresizingMaskIntoConstraints = false
-        shareImage.centerXAnchor.constraint(equalTo: musicDiscImage.centerXAnchor).isActive = true
-        shareImage.bottomAnchor.constraint(equalTo: musicDiscImage.topAnchor, constant: -50).isActive = true
-        shareCount.topAnchor.constraint(equalTo: shareImage.bottomAnchor).isActive = true
-        shareCount.centerXAnchor.constraint(equalTo: shareImage.centerXAnchor).isActive = true
+        shareBtn = VideoFeedCellBtn()
+        shareBtn.imageView.image = UIImage(named: "icon_home_share40x40")
+        contentView.addSubview(shareBtn)
+        shareBtn.translatesAutoresizingMaskIntoConstraints = false
+        shareBtn.centerXAnchor.constraint(equalTo: musicDiscImage.centerXAnchor).isActive = true
+        shareBtn.bottomAnchor.constraint(equalTo: musicDiscImage.topAnchor, constant: -40).isActive = true
     }
     
     func addCommentBtn() {
-        commentCount = UILabel(text: "0", font: .systemFont(ofSize: 12))
-        commentCount.textColor = UIColor.white
-        commentImage = UIImageView()
-        commentImage.image = UIImage(named: "icon_home_comment40x40")
-        contentView.addSubview(commentCount)
-        contentView.addSubview(commentImage)
-        commentCount.translatesAutoresizingMaskIntoConstraints = false
-        commentImage.translatesAutoresizingMaskIntoConstraints = false
-        commentImage.centerXAnchor.constraint(equalTo: musicDiscImage.centerXAnchor).isActive = true
-        commentImage.bottomAnchor.constraint(equalTo: shareImage.topAnchor, constant: -25).isActive = true
-        commentCount.topAnchor.constraint(equalTo: commentImage.bottomAnchor).isActive = true
-        commentCount.centerXAnchor.constraint(equalTo: commentImage.centerXAnchor).isActive = true
+        commentBtn = VideoFeedCellBtn()
+        commentBtn.imageView.image = UIImage(named: "icon_home_comment40x40")
+        contentView.addSubview(commentBtn)
+        commentBtn.translatesAutoresizingMaskIntoConstraints = false
+        commentBtn.centerXAnchor.constraint(equalTo: musicDiscImage.centerXAnchor).isActive = true
+        commentBtn.bottomAnchor.constraint(equalTo: shareBtn.topAnchor, constant: -10).isActive = true
     }
     
     func addLikeBtn() {
@@ -224,7 +210,7 @@ extension VideoFeedCell {
         likeBtn.translatesAutoresizingMaskIntoConstraints = false
         likeCount.translatesAutoresizingMaskIntoConstraints = false
         likeBtn.centerXAnchor.constraint(equalTo: musicDiscImage.centerXAnchor).isActive = true
-        likeBtn.bottomAnchor.constraint(equalTo: commentImage.topAnchor, constant: -25).isActive = true
+        likeBtn.bottomAnchor.constraint(equalTo: commentBtn.topAnchor, constant: -25).isActive = true
         likeBtn.widthAnchor.constraint(equalToConstant: 55).isActive = true
         likeBtn.heightAnchor.constraint(equalToConstant: 55).isActive = true
         likeCount.topAnchor.constraint(equalTo: likeBtn.bottomAnchor).isActive = true
