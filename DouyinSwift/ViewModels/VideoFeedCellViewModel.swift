@@ -63,6 +63,24 @@ class VideoFeedCellViewModel {
         }
     }
     
+    public var musicName: Driver<String> {
+        return awemeDriver.map { (aweme) -> String in
+            return aweme.music.title
+        }.asDriver()
+    }
+    
+    public var videoDesc: Driver<String?> {
+        return awemeDriver.map { (aweme) -> String? in
+            return aweme.desc
+        }.asDriver()
+    }
+    
+    public var authorName: Driver<String> {
+        return awemeDriver.map { (aweme) -> String in
+            return "@\(aweme.author.nickName)"
+        }.asDriver()
+    }
+    
     init(aweme: Aweme) {
         self.aweme = BehaviorRelay(value: aweme)
     }

@@ -25,6 +25,11 @@ class VideoFeedCell: UITableViewCell {
     private var likeCount: UILabel!
     private var avatarBtn: UIButton!
     
+    private var musicIcon: UIImageView!
+    private var musicName: UILabel!
+    private var videoDesc: UILabel!
+    private var authorName: UILabel!
+    
     private(set) var isReadyToPlay: Bool = false
     
     private var bag:DisposeBag = DisposeBag()
@@ -77,6 +82,9 @@ class VideoFeedCell: UITableViewCell {
                 }
             })
         }.disposed(by: bag)
+        viewModel.musicName.drive(musicName.rx.text).disposed(by: bag)
+        viewModel.videoDesc.drive(videoDesc.rx.text).disposed(by: bag)
+        viewModel.authorName.drive(authorName.rx.text).disposed(by: bag)
     }
     
     public func play() {
@@ -118,6 +126,9 @@ extension VideoFeedCell {
         addCommentBtn()
         addLikeBtn()
         addAvatarBtn()
+        addMusicName()
+        addVideoDesc()
+        addAuthorName()
     }
     
     func addPlayerView() {
@@ -215,6 +226,44 @@ extension VideoFeedCell {
         avatarBtn.centerXAnchor.constraint(equalTo: musicDiscImage.centerXAnchor).isActive = true
         avatarBtn.widthAnchor.constraint(equalToConstant: 50).isActive = true
         avatarBtn.heightAnchor.constraint(equalToConstant: 50).isActive = true
+    }
+    
+    func addMusicName() {
+        musicIcon = UIImageView()
+        musicIcon.image = UIImage(named: "icon_home_musicnote3")
+        contentView.addSubview(musicIcon)
+        musicName = UILabel(text: "", font: .systemFont(ofSize: 14))
+        musicName.textColor = UIColor.white
+        contentView.addSubview(musicName)
+        musicIcon.translatesAutoresizingMaskIntoConstraints = false
+        musicName.translatesAutoresizingMaskIntoConstraints = false
+        musicIcon.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 10).isActive = true
+        musicIcon.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -60).isActive = true
+        musicIcon.setContentHuggingPriority(.required, for: .vertical)
+        musicName.leftAnchor.constraint(equalTo: musicIcon.rightAnchor, constant: 5).isActive = true
+        musicName.centerYAnchor.constraint(equalTo: musicIcon.centerYAnchor).isActive = true
+        
+    }
+    
+    func addVideoDesc() {
+        videoDesc = UILabel(text: "", font: .systemFont(ofSize: 12))
+        videoDesc.textColor = UIColor.white
+        videoDesc.numberOfLines = 2
+        contentView.addSubview(videoDesc)
+        videoDesc.translatesAutoresizingMaskIntoConstraints = false
+        videoDesc.leftAnchor.constraint(equalTo: musicIcon.leftAnchor).isActive = true
+        videoDesc.bottomAnchor.constraint(equalTo: musicIcon.topAnchor, constant: -8).isActive = true
+        videoDesc.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 0.5).isActive = true
+    }
+    
+    func addAuthorName() {
+        authorName = UILabel(text: "", font: .boldSystemFont(ofSize: 16))
+        authorName.textColor = UIColor.white
+        contentView.addSubview(authorName)
+        authorName.translatesAutoresizingMaskIntoConstraints = false
+        authorName.leftAnchor.constraint(equalTo: musicIcon.leftAnchor).isActive = true
+        authorName.bottomAnchor.constraint(equalTo: videoDesc.topAnchor, constant: -8).isActive = true
+        authorName.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 0.5).isActive = true
     }
 }
 
