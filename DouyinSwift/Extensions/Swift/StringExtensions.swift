@@ -10,6 +10,29 @@ import UIKit
 import CommonCrypto
 
 public extension String {
+    
+    /// 计算单行文本行高、支持包含emoji表情符的计算。开头空格、自定义插入的文本图片不纳入计算范围
+    ///
+    /// - Parameter font: 字体
+    /// - Returns: 文字大小
+    func singleLineSize(font:UIFont) -> CGSize {
+        let cfFont = CTFontCreateWithName(font.fontName as CFString, font.pointSize, nil)
+        var leading = font.lineHeight - font.ascender + font.descender
+        var paragraphSettings = [
+            CTParagraphStyleSetting(spec: .lineSpacingAdjustment, valueSize: MemoryLayout<CGFloat>.size, value: &leading),
+        ]
+        let paragraphStyle = CTParagraphStyleCreate(&paragraphSettings, 1)
+        let ocString = self as NSString
+        let textRange = CFRange(location: 0, length: ocString.length)
+        let string = CFAttributedStringCreateMutable(kCFAllocatorDefault, ocString.length)
+        CFAttributedStringReplaceString(string, CFRangeMake(0, 0), ocString)
+        CFAttributedStringSetAttribute(string, textRange, kCTFontAttributeName, cfFont)
+        CFAttributedStringSetAttribute(string, textRange, kCTParagraphStyleAttributeName, paragraphStyle)
+        guard let lstring = string else { return CGSize.zero }
+        let framesetter = CTFramesetterCreateWithAttributedString(lstring)
+        return CTFramesetterSuggestFrameSizeWithConstraints(framesetter, CFRangeMake(0, 0), nil, CGSize(width: CGFloat.greatestFiniteMagnitude, height: CGFloat.greatestFiniteMagnitude), nil)
+    }
+    
     /// 生成UUID
     static func UUID() -> String {
         let uuid = CFUUIDCreate(nil)

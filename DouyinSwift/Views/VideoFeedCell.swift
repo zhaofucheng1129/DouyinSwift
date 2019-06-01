@@ -24,7 +24,7 @@ class VideoFeedCell: UITableViewCell {
     private var avatarBtn: UIButton!
     private var followBtn: AnimationView!
     private var musicIcon: UIImageView!
-    private var musicName: UILabel!
+    private var musicName: VideoFeedCellMusicAlbumNameBtn!
     private var videoDesc: UILabel!
     private var authorName: UILabel!
     
@@ -114,6 +114,7 @@ class VideoFeedCell: UITableViewCell {
                 self.playImage.transform = CGAffineTransform(scaleX: 1, y: 1)
             })
             musicDiscBtn.pauseAnimation()
+            musicName.pauseAnimation()
         case .playing:
             UIView.animate(withDuration: 0.15, animations: {
                 self.playImage.alpha = 0
@@ -121,6 +122,7 @@ class VideoFeedCell: UITableViewCell {
                 self.playImage.isHidden = false
             })
             musicDiscBtn.resumeAnimtion()
+            musicName.resumeAnimation()
         case .none:
             self.playImage.isHidden = true
         }
@@ -261,8 +263,7 @@ extension VideoFeedCell {
         musicIcon = UIImageView()
         musicIcon.image = UIImage(named: "icon_home_musicnote3")
         contentView.addSubview(musicIcon)
-        musicName = UILabel(text: "", font: .systemFont(ofSize: 15))
-        musicName.textColor = UIColor.white
+        musicName = VideoFeedCellMusicAlbumNameBtn()
         contentView.addSubview(musicName)
         musicIcon.translatesAutoresizingMaskIntoConstraints = false
         musicName.translatesAutoresizingMaskIntoConstraints = false
@@ -271,13 +272,15 @@ extension VideoFeedCell {
         musicIcon.setContentHuggingPriority(.required, for: .vertical)
         musicName.leftAnchor.constraint(equalTo: musicIcon.rightAnchor, constant: 5).isActive = true
         musicName.centerYAnchor.constraint(equalTo: musicIcon.centerYAnchor).isActive = true
+        musicName.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 0.6).isActive = true
+        musicName.heightAnchor.constraint(equalToConstant: 20).isActive = true
         
     }
     
     func addVideoDesc() {
         videoDesc = UILabel(text: "", font: .systemFont(ofSize: 14))
         videoDesc.textColor = UIColor.white
-        videoDesc.numberOfLines = 2
+        videoDesc.numberOfLines = 3
         contentView.addSubview(videoDesc)
         videoDesc.translatesAutoresizingMaskIntoConstraints = false
         videoDesc.leftAnchor.constraint(equalTo: musicIcon.leftAnchor).isActive = true
@@ -307,6 +310,7 @@ extension VideoFeedCell: ZPlayerViewDelegate {
             isReadyToPlay = true
             startPlayOnReady?()
             musicDiscBtn.setUpAnimation()
+            musicName.setUpAnimation()
         default:
             break
         }
