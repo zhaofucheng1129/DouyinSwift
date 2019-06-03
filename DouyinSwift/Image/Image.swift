@@ -52,7 +52,7 @@ extension Image: AnimationImage {
 
 public class Image: UIImage {
     private let animatedImageType: ImageFormat = .UnKnown
-    private var decoder: Decoder
+    private var decoder: Decoder = Decoder(scale: UIScreen.main.scale)
     private var _bytesPerFrame: Int = 0
     public var memorySize: Int64 {
         return Int64(_bytesPerFrame * decoder.frameCount)
@@ -83,15 +83,19 @@ public class Image: UIImage {
     }
 
     convenience override init?(data: Data) {
-        self.init(data: data, scale: 1)
+        self.init(data: data, scale: UIScreen.main.scale)
     }
     
-    override init?(data: Data, scale: CGFloat) {
+    override convenience init?(data: Data, scale: CGFloat) {
         guard let decoder = Decoder.decode(for: data, scale: scale),
             let image = decoder.frame(at: 0, decodeForDisplay: true) else { return nil }
+        self.init(cgImage: image, scale: scale, orientation: decoder.orientation)
         self.decoder = decoder
         self._bytesPerFrame = image.bytesPerRow * image.height
-        super.init(cgImage: image, scale: scale, orientation: decoder.orientation)
+    }
+    
+    public override init(cgImage: CGImage, scale: CGFloat, orientation: UIImage.Orientation) {
+        super.init(cgImage: cgImage, scale: scale, orientation: orientation)
     }
     
     required init?(coder aDecoder: NSCoder) {

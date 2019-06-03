@@ -1,0 +1,239 @@
+{
+    "status_code": 0,
+    "user": {
+        "cover_url": [
+            {
+                "uri": "2406a00005d38ce848bc6",
+                "url_list": [
+                    "https://p3-dy.byteimg.com/obj/2406a00005d38ce848bc6",
+                    "https://p9-dy.byteimg.com/obj/2406a00005d38ce848bc6",
+                    "https://p1-dy.byteimg.com/obj/2406a00005d38ce848bc6"
+                ]
+            },
+            {
+                "uri": "c8510002be9a3a61aad2",
+                "url_list": [
+                    "https://p9-dy.byteimg.com/obj/c8510002be9a3a61aad2",
+                    "https://p1-dy.byteimg.com/obj/c8510002be9a3a61aad2",
+                    "https://p3-dy.byteimg.com/obj/c8510002be9a3a61aad2"
+                ]
+            }
+        ],
+        "hide_following_follower_list": 0,
+        "verification_type": 2,
+        "shop_micro_app": "",
+        "activity": {
+            "use_music_count": 0,
+            "digg_count": 0
+        },
+        "followers_detail": [
+            {
+                "fans_count": 7089726,
+                "open_url": "snssdk1128://user/profile/56878490911?",
+                "apple_id": "1142110895",
+                "download_url": "https://d.douyin.com/Y4Fy/",
+                "package_name": "com.ss.android.ugc.aweme",
+                "app_name": "aweme",
+                "name": "抖音",
+                "icon": "http://p3.pstatp.com/origin/50ec00079b64de2050dc"
+            },
+            {
+                "open_url": "snssdk141://profile?uid=95571619240?",
+                "apple_id": "529092160",
+                "download_url": "https://d.toutiao.com/fUN5/",
+                "package_name": "com.ss.android.article.news",
+                "app_name": "news_article",
+                "name": "头条",
+                "icon": "http://p3.pstatp.com/origin/50ed00079a1b6b8d1fb1",
+                "fans_count": 69405
+            },
+            {
+                "apple_id": "1086047750",
+                "download_url": "http://d.huoshanzhibo.com/e7fw/",
+                "package_name": "com.ss.android.ugc.live",
+                "app_name": "live_stream",
+                "name": "火山",
+                "icon": "http://p3.pstatp.com/origin/551900041a7e00ec86ca",
+                "fans_count": 171,
+                "open_url": "snssdk1112://profile?id=56878490911"
+            }
+        ],
+        "user_story_count": 0,
+        "is_star": false,
+        "weibo_url": "",
+        "dongtai_count": 104,
+        "original_musician": {
+            "music_used_count": 3112,
+            "digg_count": 632938,
+            "music_count": 4
+        },
+        "custom_verify": "抖音音乐人",
+        "duet_setting": 0,
+        "favoriting_count": 163,
+        "commerce_user_level": 0,
+        "avatar_168x168": {
+            "uri": "2405300041b28c046fc8e",
+            "url_list": [
+                "http://p1-dy.byteimg.com/img/mosaic-legacy/2405300041b28c046fc8e~168x168.webp",
+                "http://p3-dy.byteimg.com/img/mosaic-legacy/2405300041b28c046fc8e~168x168.webp",
+                "http://p9-dy.byteimg.com/img/mosaic-legacy/2405300041b28c046fc8e~168x168.webp"
+            ]
+        },
+        "constellation": 9,
+        "enterprise_verify_reason": "",
+        "share_qrcode_uri": "c15000ec76374b25f00",
+        "life_story_block": {
+            "life_story_block": false
+        },
+        "location": "北京",
+        "sync_to_toutiao": 1,
+        "new_story_cover": null,
+        "gender": 1,
+        "country": "中国",
+        "province": "",
+        "is_gov_media_vip": false,
+        "share_info": {
+            "share_image_url": {
+                "url_list": null
+            },
+            "bool_persist": 1,
+            "share_url": "www.iesdouyin.com/share/user/56878490911?u_code=kl732j90",
+            "share_weibo_desc": "在抖音，记录美好生活！",
+            "share_desc": "在抖音，记录美好生活！",
+            "share_title": "快来加入抖音，让你发现最有趣的我！",
+            "share_qrcode_url": {
+                "uri": "c15000ec76374b25f00",
+                "url_list": [
+                    "https://p3-dy.byteimg.com/obj/c15000ec76374b25f00",
+                    "https://p9-dy.byteimg.com/obj/c15000ec76374b25f00",
+                    "https://p1-dy.byteimg.com/obj/c15000ec76374b25f00"
+                ]
+            }
+        },
+        "video_icon": {
+            "url_list": [],
+            "uri": ""
+        },
+        "unique_id_modify_time": 1558887168,
+        "birthday_hide_level": 0,
+        "weibo_schema": "",
+        "with_commerce_entry": true,
+        "apple_account": 0,
+        "item_list": null,
+        "total_favorited": 35779409,
+        "city": "北京",
+        "video_icon_virtual_URI": "",
+        "r_fans_group_info": {},
+        "is_blocked": false,
+        "platform_sync_info": null,
+        "avatar_medium": {
+            "uri": "2405300041b28c046fc8e",
+            "url_list": [
+                "https://p1-dy.byteimg.com/aweme/720x720/2405300041b28c046fc8e.jpeg",
+                "https://p3-dy.byteimg.com/aweme/720x720/2405300041b28c046fc8e.jpeg",
+                "https://p9-dy.byteimg.com/aweme/720x720/2405300041b28c046fc8e.jpeg"
+            ]
+        },
+        "with_luban_entry": false,
+        "avatar_thumb": {
+            "url_list": [
+                "https://p1-dy.byteimg.com/aweme/100x100/2405300041b28c046fc8e.jpeg",
+                "https://p3-dy.byteimg.com/aweme/100x100/2405300041b28c046fc8e.jpeg",
+                "https://p9-dy.byteimg.com/aweme/100x100/2405300041b28c046fc8e.jpeg"
+            ],
+            "uri": "2405300041b28c046fc8e"
+        },
+        "is_verified": true,
+        "aweme_count": 92,
+        "with_fusion_shop_entry": true,
+        "avatar_300x300": {
+            "uri": "2405300041b28c046fc8e",
+            "url_list": [
+                "http://p1-dy.byteimg.com/img/mosaic-legacy/2405300041b28c046fc8e~300x300.webp",
+                "http://p3-dy.byteimg.com/img/mosaic-legacy/2405300041b28c046fc8e~300x300.webp",
+                "http://p9-dy.byteimg.com/img/mosaic-legacy/2405300041b28c046fc8e~300x300.webp"
+            ]
+        },
+        "uid": "56878490911",
+        "star_use_new_download": false,
+        "geofencing": null,
+        "avatar_uri": "2405300041b28c046fc8e",
+        "download_prompt_ts": 0,
+        "react_setting": 0,
+        "nickname": "我叫Abbily",
+        "weibo_verify": "",
+        "live_commerce": false,
+        "with_commerce_enterprise_tab_entry": false,
+        "commerce_user_info": {
+            "star_atlas": 1
+        },
+        "signature": "👤Ta正在关注你哦\n\n网络歌手\\平面模特\\个人舞蹈练习生\n路人视角在喜欢列表",
+        "secret": 0,
+        "is_effect_artist": false,
+        "with_shop_entry": false,
+        "signature_language": "zh",
+        "bind_phone": "#",
+        "verify_info": "",
+        "school_poi_id": "B000A88E5U",
+        "reflow_page_gid": 0,
+        "relative_users": null,
+        "following_count": 107,
+        "mplatform_followers_count": 7159302,
+        "ins_id": "",
+        "comment_setting": 0,
+        "download_setting": 0,
+        "user_period": 0,
+        "wx_tag": 0,
+        "is_block": false,
+        "prevent_download": false,
+        "reflow_page_uid": 0,
+        "watch_status": false,
+        "user_mode": 0,
+        "cha_list": null,
+        "follower_count": 7089726,
+        "user_canceled": false,
+        "district": "朝阳",
+        "profile_tab_type": 3,
+        "story_open": false,
+        "iso_country_code": "CN",
+        "ad_cover_url": null,
+        "with_new_goods": false,
+        "twitter_id": "",
+        "has_unread_story": false,
+        "birthday": "1999-01-01",
+        "school_name": "清华大学",
+        "has_activity_medal": false,
+        "region": "CN",
+        "college_name": "政治学系",
+        "has_story": false,
+        "sec_uid": "MS4wLjABAAAAC-deOgCmNN2bIugq3od6LBI-Ws7Pn8EuLwWBjZg-ghg",
+        "unique_id": "abbily",
+        "youtube_channel_id": "",
+        "twitter_name": "",
+        "avatar_larger": {
+            "uri": "2405300041b28c046fc8e",
+            "url_list": [
+                "https://p1-dy.byteimg.com/aweme/1080x1080/2405300041b28c046fc8e.jpeg",
+                "https://p3-dy.byteimg.com/aweme/1080x1080/2405300041b28c046fc8e.jpeg",
+                "https://p9-dy.byteimg.com/aweme/1080x1080/2405300041b28c046fc8e.jpeg"
+            ]
+        },
+        "youtube_channel_title": "",
+        "follower_status": 0,
+        "recommend_reason_relation": "",
+        "type_label": null,
+        "room_id": 0,
+        "show_image_bubble": false,
+        "hide_location": false,
+        "follow_status": 1,
+        "special_lock": 0,
+        "account_region": "",
+        "short_id": "0"
+    },
+    "extra": {
+        "now": 1558887168000
+    },
+    "log_pb": {
+        "impr_id": "20190527001248010029057100413CB7"
+    }
+}

@@ -56,7 +56,7 @@ extension Wrapper where Base: UIButton {
                         if let image = completionHandler?(result) {
                             self.base.setImage(image.withRenderingMode(.alwaysOriginal), for: state)
                         } else {
-                            self.base.setImage(value.withRenderingMode(.alwaysOriginal), for: state)
+                            self.base.setImage((value as UIImage).withRenderingMode(.alwaysOriginal), for: state)
                         }
                         return
                     case .failure:

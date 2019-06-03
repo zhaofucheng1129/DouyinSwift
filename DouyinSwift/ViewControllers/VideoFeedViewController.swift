@@ -41,6 +41,11 @@ class VideoFeedViewController: UIViewController {
             self.tableView.reloadData()
             self.setUpCurrentCellObserver()
         }).disposed(by: bag)
+        
+        viewModel.loadUserPageEventDriver.drive(onNext: { [weak self] _ in
+            guard let `self` = self else { return }
+            self.navigationController?.pushViewController(UserPageViewController(), animated: true)
+        }).disposed(by: bag)
     }
     
     func setUpCurrentCellObserver() {
@@ -75,10 +80,10 @@ extension VideoFeedViewController {
         backgroundImage.image = UIImage(named: "img_video_loading_max375x685")
         view.addSubview(backgroundImage)
         backgroundImage.translatesAutoresizingMaskIntoConstraints = false
-        backgroundImage.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 0).isActive = true
-        backgroundImage.rightAnchor.constraint(equalTo: view.rightAnchor, constant: 0).isActive = true
-        backgroundImage.topAnchor.constraint(equalTo: view.topAnchor, constant: 0).isActive = true
-        backgroundImage.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0).isActive = true
+        backgroundImage.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+        backgroundImage.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+        backgroundImage.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        backgroundImage.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
     }
     
     func addTableView() {
@@ -89,13 +94,14 @@ extension VideoFeedViewController {
         tableView.separatorStyle = .none
         tableView.isPagingEnabled = true
         tableView.estimatedRowHeight = self.view.frame.height
+        tableView.showsVerticalScrollIndicator = false
         view.addSubview(tableView)
         
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.leftAnchor.constraint(equalToSystemSpacingAfter: view.leftAnchor, multiplier: 0).isActive = true
-        tableView.rightAnchor.constraint(equalToSystemSpacingAfter: view.rightAnchor, multiplier: 0).isActive = true
-        tableView.topAnchor.constraint(equalToSystemSpacingBelow: view.topAnchor, multiplier: 0).isActive = true
-        tableView.bottomAnchor.constraint(equalToSystemSpacingBelow: view.bottomAnchor, multiplier: 0).isActive = true
+        tableView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+        tableView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+        tableView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         
         if #available(iOS 11.0, *) {
             tableView.contentInsetAdjustmentBehavior = .never

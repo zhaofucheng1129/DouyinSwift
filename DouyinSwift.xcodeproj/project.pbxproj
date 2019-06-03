@@ -9,6 +9,15 @@
 /* Begin PBXBuildFile section */
 		1E7BF8606E699B224C37C7E3 /* Pods_DouyinSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02451709815A549D127F6F78 /* Pods_DouyinSwift.framework */; };
 		83024A71229E63370095FC86 /* UIbuttonExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83024A70229E63370095FC86 /* UIbuttonExtensions.swift */; };
+		8302C4A422A2BFDE0033C8E7 /* VideoFeedViewNavController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8302C4A322A2BFDE0033C8E7 /* VideoFeedViewNavController.swift */; };
+		8302C4A622A2C1900033C8E7 /* UserPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8302C4A522A2C1900033C8E7 /* UserPageViewController.swift */; };
+		8302C4A922A2F1630033C8E7 /* User.json in Resources */ = {isa = PBXBuildFile; fileRef = 8302C4A822A2F1630033C8E7 /* User.json */; };
+		8302C4AB22A36B670033C8E7 /* UserPageHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8302C4AA22A36B670033C8E7 /* UserPageHeaderView.swift */; };
+		8302C4AD22A3B89C0033C8E7 /* UserFollowRecommendBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8302C4AC22A3B89C0033C8E7 /* UserFollowRecommendBtn.swift */; };
+		8302C4AF22A3DF420033C8E7 /* UserFollowBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8302C4AE22A3DF420033C8E7 /* UserFollowBtn.swift */; };
+		8302C4B122A439790033C8E7 /* UserSendMessageBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8302C4B022A439790033C8E7 /* UserSendMessageBtn.swift */; };
+		8302C4B322A4CBAD0033C8E7 /* UserPageSegmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8302C4B222A4CBAD0033C8E7 /* UserPageSegmentView.swift */; };
+		8302C4B922A4E9BB0033C8E7 /* CollectionViewCellContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8302C4B822A4E9BB0033C8E7 /* CollectionViewCellContentView.swift */; };
 		83061424229E82540038E318 /* VideoCellFollowBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83061423229E82540038E318 /* VideoCellFollowBtn.swift */; };
 		830615C6229EDEDF0038E318 /* LottieResources in Resources */ = {isa = PBXBuildFile; fileRef = 830615C5229EDEDF0038E318 /* LottieResources */; };
 		830615D1229EFF550038E318 /* VideoFeedCellBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 830615D0229EFF540038E318 /* VideoFeedCellBtn.swift */; };
@@ -80,6 +89,15 @@
 		02451709815A549D127F6F78 /* Pods_DouyinSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DouyinSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B42CE95DA721F7877F55578 /* Pods-DouyinSwift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DouyinSwift.release.xcconfig"; path = "Pods/Target Support Files/Pods-DouyinSwift/Pods-DouyinSwift.release.xcconfig"; sourceTree = "<group>"; };
 		83024A70229E63370095FC86 /* UIbuttonExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIbuttonExtensions.swift; sourceTree = "<group>"; };
+		8302C4A322A2BFDE0033C8E7 /* VideoFeedViewNavController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoFeedViewNavController.swift; sourceTree = "<group>"; };
+		8302C4A522A2C1900033C8E7 /* UserPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPageViewController.swift; sourceTree = "<group>"; };
+		8302C4A822A2F1630033C8E7 /* User.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = User.json; sourceTree = "<group>"; };
+		8302C4AA22A36B670033C8E7 /* UserPageHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPageHeaderView.swift; sourceTree = "<group>"; };
+		8302C4AC22A3B89C0033C8E7 /* UserFollowRecommendBtn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFollowRecommendBtn.swift; sourceTree = "<group>"; };
+		8302C4AE22A3DF420033C8E7 /* UserFollowBtn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFollowBtn.swift; sourceTree = "<group>"; };
+		8302C4B022A439790033C8E7 /* UserSendMessageBtn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSendMessageBtn.swift; sourceTree = "<group>"; };
+		8302C4B222A4CBAD0033C8E7 /* UserPageSegmentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPageSegmentView.swift; sourceTree = "<group>"; };
+		8302C4B822A4E9BB0033C8E7 /* CollectionViewCellContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCellContentView.swift; sourceTree = "<group>"; };
 		83061423229E82540038E318 /* VideoCellFollowBtn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCellFollowBtn.swift; sourceTree = "<group>"; };
 		830615C5229EDEDF0038E318 /* LottieResources */ = {isa = PBXFileReference; lastKnownFileType = folder; path = LottieResources; sourceTree = "<group>"; };
 		830615D0229EFF540038E318 /* VideoFeedCellBtn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoFeedCellBtn.swift; sourceTree = "<group>"; };
@@ -209,6 +227,7 @@
 			isa = PBXGroup;
 			children = (
 				83859D33229C199B00EB1FE1 /* Feed1.json */,
+				8302C4A822A2F1630033C8E7 /* User.json */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -245,7 +264,9 @@
 		83B37A57229BED2400FABE03 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				8302C4A322A2BFDE0033C8E7 /* VideoFeedViewNavController.swift */,
 				83B37A58229BED2400FABE03 /* VideoFeedViewController.swift */,
+				8302C4A522A2C1900033C8E7 /* UserPageViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -259,6 +280,12 @@
 				830615D0229EFF540038E318 /* VideoFeedCellBtn.swift */,
 				830615D2229F0BF30038E318 /* VideoFeedCellMusicBtn.swift */,
 				830615D4229F49C20038E318 /* VideoFeedCellMusicAlbumNameBtn.swift */,
+				8302C4AA22A36B670033C8E7 /* UserPageHeaderView.swift */,
+				8302C4AC22A3B89C0033C8E7 /* UserFollowRecommendBtn.swift */,
+				8302C4AE22A3DF420033C8E7 /* UserFollowBtn.swift */,
+				8302C4B022A439790033C8E7 /* UserSendMessageBtn.swift */,
+				8302C4B222A4CBAD0033C8E7 /* UserPageSegmentView.swift */,
+				8302C4B822A4E9BB0033C8E7 /* CollectionViewCellContentView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -488,6 +515,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8342CB8E2296A9B1009685E2 /* LaunchScreen.storyboard in Resources */,
+				8302C4A922A2F1630033C8E7 /* User.json in Resources */,
 				8342CB8B2296A9B1009685E2 /* Assets.xcassets in Resources */,
 				83859D34229C199B00EB1FE1 /* Feed1.json in Resources */,
 				830615C6229EDEDF0038E318 /* LottieResources in Resources */,
@@ -543,6 +571,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8302C4A422A2BFDE0033C8E7 /* VideoFeedViewNavController.swift in Sources */,
 				83C6BBB5229AB9AF00E7D0D5 /* NSObjectExtensions.swift in Sources */,
 				83C6BB97229AB9AF00E7D0D5 /* ImageDecoder.swift in Sources */,
 				83C6BB9F229AB9AF00E7D0D5 /* CALayerExtensions.swift in Sources */,
@@ -558,6 +587,7 @@
 				83C6BBAB229AB9AF00E7D0D5 /* UIAlertControllerExtensions.swift in Sources */,
 				830615D1229EFF550038E318 /* VideoFeedCellBtn.swift in Sources */,
 				83C6BBA9229AB9AF00E7D0D5 /* UIApplicationExtensions.swift in Sources */,
+				8302C4B122A439790033C8E7 /* UserSendMessageBtn.swift in Sources */,
 				83C6BBB8229AB9AF00E7D0D5 /* StringExtensions.swift in Sources */,
 				83B37A64229BED2400FABE03 /* VideoFeedCell.swift in Sources */,
 				83C6BB94229AB9AF00E7D0D5 /* WebImageManager.swift in Sources */,
@@ -571,6 +601,7 @@
 				83C6BB93229AB9AF00E7D0D5 /* WebImageError.swift in Sources */,
 				83C6BB8F229AB9AF00E7D0D5 /* WebImageDownloader.swift in Sources */,
 				830615D3229F0BF30038E318 /* VideoFeedCellMusicBtn.swift in Sources */,
+				8302C4B922A4E9BB0033C8E7 /* CollectionViewCellContentView.swift in Sources */,
 				83C6BBB2229AB9AF00E7D0D5 /* URLExtensions.swift in Sources */,
 				83859D45229CF9C900EB1FE1 /* NetWork.swift in Sources */,
 				83C6BBB7229AB9AF00E7D0D5 /* DictionaryExtensions.swift in Sources */,
@@ -581,6 +612,7 @@
 				83C6BB90229AB9AF00E7D0D5 /* WebImageSessionDelegate.swift in Sources */,
 				83B37A67229BED2400FABE03 /* VideoFeedCellViewModel.swift in Sources */,
 				83859D39229C2B6C00EB1FE1 /* User.swift in Sources */,
+				8302C4AD22A3B89C0033C8E7 /* UserFollowRecommendBtn.swift in Sources */,
 				83C6BBAC229AB9AF00E7D0D5 /* UIFontExtensions.swift in Sources */,
 				83859D47229D031D00EB1FE1 /* VideoFeedViewModel.swift in Sources */,
 				83C6BBAA229AB9AF00E7D0D5 /* UIDeviceExtensions.swift in Sources */,
@@ -590,9 +622,13 @@
 				83C6BBA5229AB9AF00E7D0D5 /* UIViewExtensions.swift in Sources */,
 				83C6BBA7229AB9AF00E7D0D5 /* UIGestureRecognizerExtensions.swift in Sources */,
 				83C6BBB0229AB9AF00E7D0D5 /* TimeZoneExtensions.swift in Sources */,
+				8302C4A622A2C1900033C8E7 /* UserPageViewController.swift in Sources */,
 				83C6BB9A229AB9AF00E7D0D5 /* Wrapper.swift in Sources */,
 				83859D3F229C3BFD00EB1FE1 /* Video.swift in Sources */,
+				8302C4AB22A36B670033C8E7 /* UserPageHeaderView.swift in Sources */,
+				8302C4B322A4CBAD0033C8E7 /* UserPageSegmentView.swift in Sources */,
 				83C6BB9B229AB9AF00E7D0D5 /* Image.swift in Sources */,
+				8302C4AF22A3DF420033C8E7 /* UserFollowBtn.swift in Sources */,
 				83B37A63229BED2400FABE03 /* VideoFeedViewController.swift in Sources */,
 				83C6BB91229AB9AF00E7D0D5 /* ImageViewExtensions.swift in Sources */,
 				83C6BB98229AB9AF00E7D0D5 /* MemoryCache.swift in Sources */,

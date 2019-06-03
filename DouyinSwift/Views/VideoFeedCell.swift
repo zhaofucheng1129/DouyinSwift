@@ -96,6 +96,10 @@ class VideoFeedCell: UITableViewCell {
                 self.likeBtn.animation = Animation.named("icon_home_like_new", subdirectory: "LottieResources")
             }
         }).disposed(by: bag)
+        
+        avatarBtn.rx.tap.asObservable().subscribe(onNext: {  _ in
+            viewModel.loadUserPageEvent.accept(())
+        }).disposed(by: bag)
     }
     
     public func play() {

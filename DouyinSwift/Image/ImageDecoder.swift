@@ -102,7 +102,6 @@ class Decoder {
     }
     
     private func _updateSourceWebP() {
-        #if IMAGE_WEBP_ENABLED
         guard let data = data else { return }
         
         self.width = 0
@@ -188,9 +187,6 @@ class Decoder {
         self.needBlend = needBlend
         self.webpSource = demuxer
         self.frames = frames
-        #else
-        print("当前没有配置解码WebP")
-        #endif
     }
     
     private func _updateSourceImageIO() {

@@ -20,8 +20,21 @@ class VideoFeedCellViewModel {
     
     let status: BehaviorRelay<ZPlayerStatus> = BehaviorRelay(value: .none)
     let isLikedStatus: BehaviorRelay<Bool> = BehaviorRelay(value: false)
+    var bag: DisposeBag = DisposeBag()
     
     private let aweme: BehaviorRelay<Aweme>
+    
+    public var loadUserPageEvent: BehaviorRelay<Void>
+    
+    init(aweme: Aweme, loadUserPageEvent: BehaviorRelay<Void>) {
+        self.aweme = BehaviorRelay(value: aweme)
+        self.loadUserPageEvent = loadUserPageEvent
+    }
+}
+
+
+// MARK: - 界面数据绑定
+extension VideoFeedCellViewModel {
     
     public var awemeObserver: Observable<Aweme> {
         return aweme.share().asObservable()
@@ -47,14 +60,14 @@ class VideoFeedCellViewModel {
         return awemeDriver.map {
             guard let str = $0.music.coverThumb.urlList.first else { return nil }
             return URL(string: str) ?? nil
-        }.asObservable()
+            }.asObservable()
     }
     
     public var avatarThumb: Observable<URL?> {
         return awemeDriver.map {
             guard let str = $0.author.avatarThumb.urlList.first else { return nil }
             return URL(string: str) ?? nil
-        }.asObservable()
+            }.asObservable()
     }
     
     public var playUrl: Observable<URL?> {
@@ -68,26 +81,20 @@ class VideoFeedCellViewModel {
     public var musicName: Driver<String> {
         return awemeDriver.map { (aweme) -> String in
             return aweme.music.title.contains("原声") ? aweme.music.title : "\(aweme.music.title) - \(aweme.music.author)"
-        }.asDriver()
+            }.asDriver()
     }
     
     public var videoDesc: Driver<String?> {
         return awemeDriver.map { (aweme) -> String? in
             return aweme.desc
-        }.asDriver()
+            }.asDriver()
     }
     
     public var authorName: Driver<String> {
         return awemeDriver.map { (aweme) -> String in
             return "@\(aweme.author.nickName)"
-        }.asDriver()
+            }.asDriver()
     }
-    
-    init(aweme: Aweme) {
-        self.aweme = BehaviorRelay(value: aweme)
-    }
-    
-    
 }
 
 extension Int {
