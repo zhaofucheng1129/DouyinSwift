@@ -16,14 +16,19 @@ class UserPageViewController: UIViewController {
     var childVCs: [UIViewController] = []
     private var collectionView: UICollectionView!
     private var headerView: UserPageHeaderView?
+    private var navigationView: UIView!
+    
+    private var stopScrollOffset: CGFloat {
+        guard let headerView = headerView else { return 0}
+        return headerView.height - navigationView.height - headerView.segmentView.height
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor("1D1621")
         
+        
         let flowLayout = UICollectionViewFlowLayout()
-        flowLayout.minimumLineSpacing = 0
-        flowLayout.minimumInteritemSpacing = 0
         collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: flowLayout)
         view.addSubview(collectionView)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
@@ -42,6 +47,15 @@ class UserPageViewController: UIViewController {
             automaticallyAdjustsScrollViewInsets = false
         }
         
+        navigationView = UIView()
+        navigationView.backgroundColor = UIColor.lightGray
+        navigationView.isHidden = true
+        view.addSubview(navigationView)
+        navigationView.translatesAutoresizingMaskIntoConstraints = false
+        navigationView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+        navigationView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        navigationView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+        navigationView.heightAnchor.constraint(equalToConstant: 74).isActive = true
         
         let returnBtn = UIButton(type: .system)
         returnBtn.setImage(UIImage(named: "return_icon40x40")?.withRenderingMode(.alwaysOriginal), for: .normal)
@@ -73,7 +87,7 @@ class UserPageViewController: UIViewController {
 
 extension UserPageViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return CGSize(width: view.width, height: 975.0 / 750.0 * view.width)
+        return CGSize(width: view.width, height: 980.0 / 750.0 * view.width)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -96,7 +110,7 @@ extension UserPageViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        headerView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: UserPageHeaderView.self.description(), for: indexPath) as! UserPageHeaderView
+        headerView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: UserPageHeaderView.self.description(), for: indexPath) as? UserPageHeaderView
         return headerView!
     }
     
@@ -115,9 +129,13 @@ extension UserPageViewController: CollectionViewCellContentViewDataSource {
 extension UserPageViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if scrollView == collectionView {
-            print(scrollView.contentOffset.y)
-            print(headerView?.segmentView.frame)
-//            if scrollView.contentOffset.y view.safeAreaInsets.top
+            if scrollView.contentOffset.y >= stopScrollOffset {
+                scrollView.contentOffset.y = stopScrollOffset
+            }
+            
+            if scrollView.contentOffset.y < 0 {
+                headerView?.backgroundImageAnimation(offset: scrollView.contentOffset.y)
+            }
         }
     }
 }

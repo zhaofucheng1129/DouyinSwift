@@ -49,7 +49,7 @@ class UserPageHeaderView: UICollectionReusableView {
 
 // MARK: - UI 相关方法
 extension UserPageHeaderView {
-    func setUpUI() {
+    fileprivate func setUpUI() {
         addBackgroundImage()
         addBgContainerView()
         addAvatarBtn()
@@ -65,7 +65,7 @@ extension UserPageHeaderView {
         addSegmentView()
     }
     
-    func addBackgroundImage() {
+    private func addBackgroundImage() {
         headerImage = ImageView()
         headerImage.load.image(with: URL(string: "https://p3-dy.byteimg.com/obj/2406a00005d38ce848bc6")!)
         headerImage.contentMode = .scaleAspectFill
@@ -74,10 +74,10 @@ extension UserPageHeaderView {
         headerImage.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
         headerImage.topAnchor.constraint(equalTo: topAnchor).isActive = true
         headerImage.rightAnchor.constraint(equalTo: rightAnchor).isActive = true
-        headerImage.heightAnchor.constraint(equalTo: headerImage.widthAnchor, multiplier: 240.0 / 750.0).isActive = true
+        headerImage.heightAnchor.constraint(equalTo: headerImage.widthAnchor, multiplier: 280.0 / 750.0).isActive = true
     }
     
-    func addBgContainerView() {
+    private func addBgContainerView() {
         bgContainerView = UIView()
         bgContainerView.backgroundColor = UIColor("171823")
         addSubview(bgContainerView)
@@ -88,7 +88,7 @@ extension UserPageHeaderView {
         bgContainerView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
     }
     
-    func addAvatarBtn() {
+    private func addAvatarBtn() {
         avatarBtn = UIButton(type: .system)
         avatarBtn.load.image(with: URL(string: "http://p1-dy.byteimg.com/img/mosaic-legacy/2405300041b28c046fc8e~300x300.webp")!, for: .normal, placeholder: UIImage(named: "img_find_default"), completionHandler: { (result) -> UIImage? in
             switch result {
@@ -106,7 +106,7 @@ extension UserPageHeaderView {
         avatarBtn.heightAnchor.constraint(equalToConstant: 100).isActive = true
     }
     
-    func addBtnStack() {
+    private func addBtnStack() {
         btnStack = UIStackView()
         btnStack.axis = .horizontal
         btnStack.alignment = .fill
@@ -120,7 +120,7 @@ extension UserPageHeaderView {
         btnStack.leftAnchor.constraint(equalTo: avatarBtn.rightAnchor, constant: 20).isActive = true
     }
     
-    func addRecommendBtn() {
+    private func addRecommendBtn() {
         recommendBtn = UserFollowRecommendBtn()
         recommendBtn.widthAnchor.constraint(equalToConstant: 40).isActive = true
         recommendBtn.heightAnchor.constraint(equalToConstant: 40).isActive = true
@@ -128,7 +128,7 @@ extension UserPageHeaderView {
         btnStack.addArrangedSubview(recommendBtn)
     }
     
-    func addSendMessageBtn() {
+    private func addSendMessageBtn() {
         sendMsgBtn = UserSendMessageBtn()
         sendMsgBtn.cornerRadius = 2.5
         sendMsgBtn.widthAnchor.constraint(equalToConstant: 40).isActive = true
@@ -137,7 +137,7 @@ extension UserPageHeaderView {
         btnStack.addArrangedSubview(sendMsgBtn)
     }
     
-    func addFollowBtn() {
+    private func addFollowBtn() {
         followBtn = UserFollowBtn()
         followBtn.cornerRadius = 2.5
         followBtn.setContentHuggingPriority(.defaultLow, for: .horizontal)
@@ -151,7 +151,7 @@ extension UserPageHeaderView {
         }).disposed(by: bag)
     }
     
-    func addNickNameAndDesc() {
+    private func addNickNameAndDesc() {
         nickNameStack = UIStackView()
         nickNameStack.alignment = .fill
         nickNameStack.axis = .vertical
@@ -201,7 +201,7 @@ extension UserPageHeaderView {
         tagStack.addArrangedSubview(douyinTagStack)
     }
     
-    func addSplitLine() {
+    private func addSplitLine() {
         splitLine = UIView()
         splitLine.backgroundColor = UIColor(white: 1, alpha: 0.2)
         bgContainerView.addSubview(splitLine)
@@ -212,7 +212,7 @@ extension UserPageHeaderView {
         splitLine.heightAnchor.constraint(equalToConstant: 0.5).isActive = true
     }
     
-    func addUserDesc() {
+    private func addUserDesc() {
         let textAttr = NSMutableAttributedString(string: "👤Ta正在关注你哦\n网络歌手\\平面模特\\个人舞蹈练习生\n路人视角在喜欢列表")
         textAttr.addAttribute(.foregroundColor, value: UIColor(white: 1, alpha: 1), range: NSRange(location: 0, length: textAttr.length))
         textAttr.addAttribute(.font, value: UIFont.systemFont(ofSize: 14), range: NSRange(location: 0, length: textAttr.length))
@@ -230,7 +230,7 @@ extension UserPageHeaderView {
         userDesc.topAnchor.constraint(equalTo: splitLine.bottomAnchor, constant: 10).isActive = true
     }
     
-    func addUserInfoTag() {
+    private func addUserInfoTag() {
         userInfoTagStack = UIStackView()
         userInfoTagStack.axis = .horizontal
         userInfoTagStack.spacing = 5
@@ -245,7 +245,7 @@ extension UserPageHeaderView {
         
     }
     
-    func userInfoTagBtn(title: String, imageName: String? = nil) -> UIButton {
+    private func userInfoTagBtn(title: String, imageName: String? = nil) -> UIButton {
         let btn = UIButton(type: .system)
         if let imgName = imageName {
             btn.setImage(UIImage(named: imgName)?.withRenderingMode(.alwaysOriginal), for: .normal)
@@ -259,7 +259,7 @@ extension UserPageHeaderView {
         return btn
     }
     
-    func addStatisticInfo() {
+    private func addStatisticInfo() {
         statisticStack = UIStackView()
         statisticStack.axis = .horizontal
         statisticStack.spacing = 20
@@ -273,7 +273,7 @@ extension UserPageHeaderView {
         statisticStack.addArrangedSubview(statisticLab(count: "721.7w", name: "粉丝"))
     }
     
-    func statisticLab(count: String, name: String) -> UIStackView {
+    private func statisticLab(count: String, name: String) -> UIStackView {
         let stack = UIStackView()
         stack.axis = .horizontal
         stack.spacing = 2
@@ -289,7 +289,7 @@ extension UserPageHeaderView {
         return stack
     }
     
-    func addSegmentView() {
+    private func addSegmentView() {
         segmentView = UserPageSegmentView()
         bgContainerView.addSubview(segmentView)
         segmentView.translatesAutoresizingMaskIntoConstraints = false
@@ -306,5 +306,12 @@ extension UserPageHeaderView {
         bottomLine.bottomAnchor.constraint(equalTo: bgContainerView.bottomAnchor).isActive = true
         bottomLine.rightAnchor.constraint(equalTo: bgContainerView.rightAnchor).isActive =  true
         bottomLine.heightAnchor.constraint(equalToConstant: 0.5).isActive = true
+    }
+    
+    func backgroundImageAnimation(offset: CGFloat) {
+        let rotio = CGFloat(fabsf(Float(offset))) / width
+        let height = (rotio * width) / 2
+        headerImage.transform = CGAffineTransform(scaleX: rotio + 1, y: rotio + 1).concatenating(CGAffineTransform(translationX: 0, y: -height))
+        
     }
 }
