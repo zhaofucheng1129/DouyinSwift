@@ -18,7 +18,7 @@ class VideoFeedViewController: UIViewController {
     fileprivate var currentObserver: Disposable?
     
     var tableView: UITableView
-    let viewModel: VideoFeedViewModel = VideoFeedViewModel(style: .feed)
+    let viewModel: VideoListViewModel = VideoListViewModel(style: .feed)
     
     required init() {
         tableView = UITableView(frame: CGRect.zero, style: .plain)

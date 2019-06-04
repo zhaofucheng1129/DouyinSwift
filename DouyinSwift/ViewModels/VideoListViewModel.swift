@@ -12,7 +12,7 @@ import RxCocoa
 
 
 
-class VideoFeedViewModel {
+class VideoListViewModel {
     
     enum PageStyle {
         case feed
@@ -22,17 +22,17 @@ class VideoFeedViewModel {
     
     private var style:PageStyle
     
-    private var videoFeedDataSource: BehaviorRelay<[VideoFeedCellViewModel]> = BehaviorRelay(value: [])
+    private var videoFeedDataSource: BehaviorRelay<[VideoCellViewModel]> = BehaviorRelay(value: [])
     
     private var loadUserPageEvent: BehaviorRelay<Void> = BehaviorRelay(value: ())
     public var loadUserPageEventDriver: Driver<Void> {
         return loadUserPageEvent.asDriver().skip(1)
     }
     
-    public var dataSourceDriver: Driver<[VideoFeedCellViewModel]> {
+    public var dataSourceDriver: Driver<[VideoCellViewModel]> {
         return videoFeedDataSource.asDriver().skip(1)
     }
-    public var dataSource: [VideoFeedCellViewModel] {
+    public var dataSource: [VideoCellViewModel] {
         return videoFeedDataSource.value
     }
     
@@ -58,7 +58,7 @@ class VideoFeedViewModel {
         _ = feedObservable.subscribe(onNext: { [weak self] (awemes) in
             guard let `self` = self else { return }
             var newArray = self.videoFeedDataSource.value
-            newArray.append(contentsOf: awemes.map({ (aweme) -> VideoFeedCellViewModel in return VideoFeedCellViewModel(aweme: aweme, loadUserPageEvent: self.loadUserPageEvent) }))
+            newArray.append(contentsOf: awemes.map({ (aweme) -> VideoCellViewModel in return VideoCellViewModel(aweme: aweme, loadUserPageEvent: self.loadUserPageEvent) }))
             self.videoFeedDataSource.accept(newArray)
         })
     }

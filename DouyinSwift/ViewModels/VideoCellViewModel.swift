@@ -1,5 +1,5 @@
 //
-//  VideoFeedCellViewModel.swift
+//  VideoCellViewModel.swift
 //  DouyinSwift
 //
 //  Created by 赵福成 on 2019/5/27.
@@ -16,7 +16,7 @@ enum ZPlayerStatus {
     case playing
 }
 
-class VideoFeedCellViewModel {
+class VideoCellViewModel {
     
     let status: BehaviorRelay<ZPlayerStatus> = BehaviorRelay(value: .none)
     let isLikedStatus: BehaviorRelay<Bool> = BehaviorRelay(value: false)
@@ -34,7 +34,7 @@ class VideoFeedCellViewModel {
 
 
 // MARK: - 界面数据绑定
-extension VideoFeedCellViewModel {
+extension VideoCellViewModel {
     
     public var awemeObserver: Observable<Aweme> {
         return aweme.share().asObservable()

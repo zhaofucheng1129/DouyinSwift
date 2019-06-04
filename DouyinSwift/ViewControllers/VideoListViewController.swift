@@ -26,9 +26,9 @@ class VideoListViewController: UIViewController {
     private var didScroll:((UIScrollView) -> ())?
     private var collectionView: UICollectionView!
     
-    public private(set) var viewModel: VideoFeedViewModel
+    public private(set) var viewModel: VideoListViewModel
     
-    init(viewModel: VideoFeedViewModel) {
+    init(viewModel: VideoListViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }

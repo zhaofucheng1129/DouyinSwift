@@ -113,14 +113,14 @@ class UserPageViewController: UIViewController {
         let music = MusicListViewController()
         childVCs.append(music)
         
-        let postVideoViewModel = VideoFeedViewModel(style: .post)
+        let postVideoViewModel = VideoListViewModel(style: .post)
         let postVideo = VideoListViewController(viewModel: postVideoViewModel)
         childVCs.append(postVideo)
         
         let timeLineVC = TimeLineViewController()
         childVCs.append(timeLineVC)
         
-        let favoriteViewModel = VideoFeedViewModel(style: .favorite)
+        let favoriteViewModel = VideoListViewModel(style: .favorite)
         let favoriteVC = VideoListViewController(viewModel: favoriteViewModel)
         childVCs.append(favoriteVC)
         

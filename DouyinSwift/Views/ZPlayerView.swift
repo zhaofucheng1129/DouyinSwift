@@ -27,7 +27,7 @@ class ZPlayerView: UIView {
             prepareToPlay()
         }
     }
-    var viewModel: VideoFeedCellViewModel?
+    var viewModel: VideoCellViewModel?
     
     var playerItem: AVPlayerItem!
     var player: AVPlayer!

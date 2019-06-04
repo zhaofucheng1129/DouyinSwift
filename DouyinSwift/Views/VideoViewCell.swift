@@ -31,7 +31,7 @@ class VideoViewCell: UICollectionViewCell {
         bag = DisposeBag()
     }
     
-    public func bind(viewModel: VideoFeedCellViewModel) {
+    public func bind(viewModel: VideoCellViewModel) {
         viewModel.dynamicCover.drive(onNext: { [weak self] url in
             guard let `self` = self, let url = url else { return }
             self.coverImage.load.image(with: url)

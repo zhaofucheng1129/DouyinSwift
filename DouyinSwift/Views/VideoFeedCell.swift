@@ -30,7 +30,7 @@ class VideoFeedCell: UITableViewCell {
     private var authorName: UILabel!
     private var volumeProgressView: UIProgressView!
     
-    private var viewModel:VideoFeedCellViewModel?
+    private var viewModel:VideoCellViewModel?
     
     private(set) var isReadyToPlay: Bool = false
     
@@ -54,7 +54,7 @@ class VideoFeedCell: UITableViewCell {
         musicDiscBtn.resetAnimation()
     }
     
-    public func bind(viewModel: VideoFeedCellViewModel) {
+    public func bind(viewModel: VideoCellViewModel) {
         self.viewModel = viewModel
         self.playerView.viewModel = viewModel
         viewModel.playUrl.bind(to: self.playerView.rx.playUrl).disposed(by: bag)
