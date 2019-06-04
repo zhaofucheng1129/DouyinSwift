@@ -37,6 +37,9 @@
 		83859D41229C460000EB1FE1 /* Statistics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83859D40229C460000EB1FE1 /* Statistics.swift */; };
 		83859D45229CF9C900EB1FE1 /* NetWork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83859D44229CF9C900EB1FE1 /* NetWork.swift */; };
 		83859D47229D031D00EB1FE1 /* VideoFeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83859D46229D031D00EB1FE1 /* VideoFeedViewModel.swift */; };
+		8398566722A6753600D704F0 /* VideoListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8398566622A6753600D704F0 /* VideoListViewController.swift */; };
+		8398566922A67AA700D704F0 /* VideoViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8398566822A67AA700D704F0 /* VideoViewCell.swift */; };
+		8398566B22A67B8D00D704F0 /* UserVideoList.json in Resources */ = {isa = PBXBuildFile; fileRef = 8398566A22A67B8D00D704F0 /* UserVideoList.json */; };
 		83B37A62229BED2400FABE03 /* ZPlayerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B37A56229BED2400FABE03 /* ZPlayerManager.swift */; };
 		83B37A63229BED2400FABE03 /* VideoFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B37A58229BED2400FABE03 /* VideoFeedViewController.swift */; };
 		83B37A64229BED2400FABE03 /* VideoFeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B37A5A229BED2400FABE03 /* VideoFeedCell.swift */; };
@@ -122,6 +125,9 @@
 		83859D40229C460000EB1FE1 /* Statistics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Statistics.swift; sourceTree = "<group>"; };
 		83859D44229CF9C900EB1FE1 /* NetWork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetWork.swift; sourceTree = "<group>"; };
 		83859D46229D031D00EB1FE1 /* VideoFeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoFeedViewModel.swift; sourceTree = "<group>"; };
+		8398566622A6753600D704F0 /* VideoListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoListViewController.swift; sourceTree = "<group>"; };
+		8398566822A67AA700D704F0 /* VideoViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoViewCell.swift; sourceTree = "<group>"; };
+		8398566A22A67B8D00D704F0 /* UserVideoList.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = UserVideoList.json; sourceTree = "<group>"; };
 		83B37A56229BED2400FABE03 /* ZPlayerManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZPlayerManager.swift; sourceTree = "<group>"; };
 		83B37A58229BED2400FABE03 /* VideoFeedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoFeedViewController.swift; sourceTree = "<group>"; };
 		83B37A5A229BED2400FABE03 /* VideoFeedCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoFeedCell.swift; sourceTree = "<group>"; };
@@ -235,6 +241,7 @@
 				83859D33229C199B00EB1FE1 /* Feed1.json */,
 				8302C4A822A2F1630033C8E7 /* User.json */,
 				836F4AD022A5389500D3B6D9 /* UserMusicList.json */,
+				8398566A22A67B8D00D704F0 /* UserVideoList.json */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -275,6 +282,7 @@
 				83B37A58229BED2400FABE03 /* VideoFeedViewController.swift */,
 				8302C4A522A2C1900033C8E7 /* UserPageViewController.swift */,
 				836F4ACE22A5366200D3B6D9 /* MusicListViewController.swift */,
+				8398566622A6753600D704F0 /* VideoListViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -295,6 +303,7 @@
 				8302C4B222A4CBAD0033C8E7 /* UserPageSegmentView.swift */,
 				8302C4B822A4E9BB0033C8E7 /* CollectionViewCellContentView.swift */,
 				836F4AD222A5396100D3B6D9 /* MusicViewCell.swift */,
+				8398566822A67AA700D704F0 /* VideoViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -525,6 +534,7 @@
 			files = (
 				8342CB8E2296A9B1009685E2 /* LaunchScreen.storyboard in Resources */,
 				8302C4A922A2F1630033C8E7 /* User.json in Resources */,
+				8398566B22A67B8D00D704F0 /* UserVideoList.json in Resources */,
 				836F4AD122A5389500D3B6D9 /* UserMusicList.json in Resources */,
 				8342CB8B2296A9B1009685E2 /* Assets.xcassets in Resources */,
 				83859D34229C199B00EB1FE1 /* Feed1.json in Resources */,
@@ -594,11 +604,13 @@
 				83C6BB9D229AB9AF00E7D0D5 /* ImageView.swift in Sources */,
 				83C6BBA0229AB9AF00E7D0D5 /* UIBezierPathExtensions.swift in Sources */,
 				83C6BBA4229AB9AF00E7D0D5 /* UIImageExtensions.swift in Sources */,
+				8398566922A67AA700D704F0 /* VideoViewCell.swift in Sources */,
 				83C6BBAE229AB9AF00E7D0D5 /* DispatchExtensions.swift in Sources */,
 				83C6BBAB229AB9AF00E7D0D5 /* UIAlertControllerExtensions.swift in Sources */,
 				830615D1229EFF550038E318 /* VideoFeedCellBtn.swift in Sources */,
 				83C6BBA9229AB9AF00E7D0D5 /* UIApplicationExtensions.swift in Sources */,
 				8302C4B122A439790033C8E7 /* UserSendMessageBtn.swift in Sources */,
+				8398566722A6753600D704F0 /* VideoListViewController.swift in Sources */,
 				83C6BBB8229AB9AF00E7D0D5 /* StringExtensions.swift in Sources */,
 				83B37A64229BED2400FABE03 /* VideoFeedCell.swift in Sources */,
 				83C6BB94229AB9AF00E7D0D5 /* WebImageManager.swift in Sources */,

@@ -29,7 +29,7 @@ extension Wrapper where Base: ImageView {
         let issuedIdentifier = Identifier.next()
         mutatingSelf.taskIdentifier = issuedIdentifier
         
-        
+        print("开始下载 ID=\(issuedIdentifier) 下载地址:\(url)")
         let task = WebImageManager.shared.retrieveImage(with: url, options: options, progressBlock: { (receivedSize, totalSize) in
             guard issuedIdentifier == self.taskIdentifier else { return }
             if let progressBlock = progressBlock {
@@ -55,6 +55,7 @@ extension Wrapper where Base: ImageView {
                 
                 switch result {
                 case .success(let value):
+                    print("成功下载 ID=\(issuedIdentifier) 下载地址:\(url)")
                     mutatingSelf.placeholder = nil
                     if let image = completionHandler?(result) {
                         self.base.image = image
@@ -64,6 +65,7 @@ extension Wrapper where Base: ImageView {
                     return
                 case .failure:
                     _ = completionHandler?(result)
+                    print("失败下载 ID=\(issuedIdentifier) 下载地址:\(url)")
                 }
             }
         }

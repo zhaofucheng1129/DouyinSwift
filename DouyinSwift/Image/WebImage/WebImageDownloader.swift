@@ -174,14 +174,18 @@ open class WebImageDownloader {
                     if let image = Image(data: data) {
                         self.delegate?.imageDownloader(self, didDownload: image, for: url, with: response)
                         let imageResult = ImageDownloadResult(image: image, url: url, originalData: data)
-                        DispatchQueue.main.safeAsync {
-                            callback.onCompleted?.call(.success(imageResult))
+                        callbacks.forEach{ callback in
+                            DispatchQueue.main.safeAsync {
+                                callback.onCompleted?.call(.success(imageResult))
+                            }
                         }
                     } else {
                         let error = WebImageError.imageDecodeError(reason: .unknownImageData(raw: data))
                         self.delegate?.imageDownloader(self, didFinishDownloadingImageForURL: url, with: response, error: error)
-                        DispatchQueue.main.safeAsync {
-                            callback.onCompleted?.call(.failure(error))
+                        callbacks.forEach{ callback in
+                            DispatchQueue.main.safeAsync {
+                                callback.onCompleted?.call(.failure(error))
+                            }
                         }
                     }
                 case .failure(let error):

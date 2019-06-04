@@ -94,15 +94,25 @@ class UserPageViewController: UIViewController {
         titleLabel.centerXAnchor.constraint(equalTo: navigationView.centerXAnchor).isActive = true
         titleLabel.centerYAnchor.constraint(equalTo: returnBtn.centerYAnchor).isActive = true
         
-        (0..<4).forEach { _ in
+        let music = MusicListViewController()
+        addChild(music)
+        childVCs.append(music)
+        
+        let video = VideoListViewController()
+        addChild(video)
+        childVCs.append(video)
+        
+        (0..<2).forEach { _ in
             let vc = MusicListViewController()
             addChild(vc)
             childVCs.append(vc)
-            
+        }
+        childVCs.forEach { (vc) in
             vc.scrollViewDidScroll(callBack: { [weak self] (scrollview) in
                 self?.containScrollViewDidScroll(scrollview)
             })
         }
+        
         contentView = CollectionViewCellContentView()
         contentView.hostScrollView = collectionView
     }

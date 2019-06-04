@@ -32,6 +32,12 @@ class MusicListViewController: UIViewController {
         tableView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
         tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         tableView.separatorStyle = .none
+        
+        if #available(iOS 11.0, *) {
+            tableView.contentInsetAdjustmentBehavior = .never
+        } else {
+            automaticallyAdjustsScrollViewInsets = false
+        }
     }
 }
 
@@ -65,6 +71,4 @@ extension MusicListViewController: ContainScrollView {
     func scrollViewDidScroll(callBack: @escaping (UIScrollView) -> ()) {
         didScroll = callBack
     }
-    
-    
 }
