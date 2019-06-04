@@ -158,12 +158,17 @@ extension UserPageViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         headerView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: UserPageHeaderView.self.description(), for: indexPath) as? UserPageHeaderView
+        headerView?.segmentView.delegate = self
         return headerView!
     }
     
 }
 
-extension UserPageViewController: CollectionViewCellContentViewDataSource {  
+extension UserPageViewController: CollectionViewCellContentViewDataSource {
+    func collectionViewScroll(progress: CGFloat, sourceIndex: Int, targetIndex: Int) {
+        headerView?.segmentView.setTitle(progress: progress, sourceIndex: sourceIndex, targetIndex: targetIndex)
+    }
+    
     
     func numberOfViewController() -> Int {
         return childVCs.count
@@ -231,5 +236,11 @@ extension UserPageViewController: UIScrollViewDelegate {
             navigationView.isHidden = false
             navigationView.alpha = scrollView.contentOffset.y / stopScrollOffset
         }
+    }
+}
+
+extension UserPageViewController: UserPageSegmentViewDelegate {
+    func pageSegment(selectedIndex index: Int) {
+        contentView.switchPage(index: index)
     }
 }

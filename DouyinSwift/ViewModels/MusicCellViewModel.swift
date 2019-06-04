@@ -15,8 +15,6 @@ class MusicCellViewModel {
     
     private let music: BehaviorRelay<Music>
     
-    
-    
     init(music: Music) {
         self.music = BehaviorRelay(value: music)
     }
