@@ -94,27 +94,10 @@ class UserPageViewController: UIViewController {
         titleLabel.centerXAnchor.constraint(equalTo: navigationView.centerXAnchor).isActive = true
         titleLabel.centerYAnchor.constraint(equalTo: returnBtn.centerYAnchor).isActive = true
         
-        let music = MusicListViewController()
-        addChild(music)
-        childVCs.append(music)
-        
-        let video = VideoListViewController()
-        addChild(video)
-        childVCs.append(video)
-        
-        (0..<2).forEach { _ in
-            let vc = MusicListViewController()
-            addChild(vc)
-            childVCs.append(vc)
-        }
-        childVCs.forEach { (vc) in
-            vc.scrollViewDidScroll(callBack: { [weak self] (scrollview) in
-                self?.containScrollViewDidScroll(scrollview)
-            })
-        }
-        
         contentView = CollectionViewCellContentView()
         contentView.hostScrollView = collectionView
+        
+        initSubViewController()
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -124,6 +107,29 @@ class UserPageViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+    
+    func initSubViewController() {
+        let music = MusicListViewController()
+        childVCs.append(music)
+        
+        let postVideoViewModel = VideoFeedViewModel(style: .post)
+        let postVideo = VideoListViewController(viewModel: postVideoViewModel)
+        childVCs.append(postVideo)
+        
+        let timeLineVC = TimeLineViewController()
+        childVCs.append(timeLineVC)
+        
+        let favoriteViewModel = VideoFeedViewModel(style: .favorite)
+        let favoriteVC = VideoListViewController(viewModel: favoriteViewModel)
+        childVCs.append(favoriteVC)
+        
+        childVCs.forEach { (vc) in
+            addChild(vc)
+            vc.scrollViewDidScroll(callBack: { [weak self] (scrollview) in
+                self?.containScrollViewDidScroll(scrollview)
+            })
+        }
     }
 }
 

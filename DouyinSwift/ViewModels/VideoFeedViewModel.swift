@@ -10,7 +10,17 @@ import Foundation
 import RxSwift
 import RxCocoa
 
+
+
 class VideoFeedViewModel {
+    
+    enum PageStyle {
+        case feed
+        case post
+        case favorite
+    }
+    
+    private var style:PageStyle
     
     private var videoFeedDataSource: BehaviorRelay<[VideoFeedCellViewModel]> = BehaviorRelay(value: [])
     
@@ -26,8 +36,25 @@ class VideoFeedViewModel {
         return videoFeedDataSource.value
     }
     
-    public func requestFeedData(page: Int = 1) {
-        let feedObservable = DouyinApiProvider.rx.request(.feed(page: page)).map([Aweme].self, atKeyPath: "aweme_list", using: JSONDecoder(), failsOnEmptyData: false).asObservable()
+    init(style: PageStyle) {
+        self.style = style
+    }
+    
+    public func requestData(page: Int = 1) {
+        var token: DouyinApiManager = .feed(page: page)
+        var keyPath: String = ""
+        switch style {
+        case .feed:
+            token = .feed(page: page)
+            keyPath = "aweme_list"
+        case .post:
+            token = .post(page: page)
+            keyPath = "aweme_list"
+        case .favorite:
+            token = .favorite(page: page)
+            keyPath = "aweme_list"
+        }
+        let feedObservable = DouyinApiProvider.rx.request(token).map([Aweme].self, atKeyPath: keyPath, using: JSONDecoder(), failsOnEmptyData: false).asObservable()
         _ = feedObservable.subscribe(onNext: { [weak self] (awemes) in
             guard let `self` = self else { return }
             var newArray = self.videoFeedDataSource.value

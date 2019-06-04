@@ -13,6 +13,9 @@ let DouyinApiProvider = MoyaProvider<DouyinApiManager>(stubClosure: MoyaProvider
 
 enum DouyinApiManager {
     case feed(page: Int)
+    case post(page: Int)
+    case music(page: Int)
+    case favorite(page: Int)
 }
 
 extension DouyinApiManager: TargetType {
@@ -24,6 +27,12 @@ extension DouyinApiManager: TargetType {
         switch self {
         case .feed:
             return "/aweme/v1/feed/"
+        case .post:
+            return "/aweme/v1/aweme/post/"
+        case .music:
+            return "/aweme/v1/original/music/list/"
+        case .favorite:
+            return "/aweme/v1/aweme/favorite/"
         }
     }
     
@@ -35,13 +44,19 @@ extension DouyinApiManager: TargetType {
         switch self {
         case .feed(let page):
             return stubbedResponse("Feed\(page)")
+        case .post:
+            return stubbedResponse("UserVideoList")
+        case .music:
+            return stubbedResponse("UserMusicList")
+        case .favorite:
+            return stubbedResponse("UserFavoriteList")
         }
     }
     
     var task: Task {
         switch self {
-        case .feed:
-            return .requestPlain
+        case .feed, .post, .music, .favorite:
+            return .requestPlain            
         }
     }
     

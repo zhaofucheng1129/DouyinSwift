@@ -23,6 +23,8 @@
 		830615D1229EFF550038E318 /* VideoFeedCellBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 830615D0229EFF540038E318 /* VideoFeedCellBtn.swift */; };
 		830615D3229F0BF30038E318 /* VideoFeedCellMusicBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 830615D2229F0BF30038E318 /* VideoFeedCellMusicBtn.swift */; };
 		830615D5229F49C20038E318 /* VideoFeedCellMusicAlbumNameBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 830615D4229F49C20038E318 /* VideoFeedCellMusicAlbumNameBtn.swift */; };
+		833C79EA22A6CE180030C71B /* UserFavoriteList.json in Resources */ = {isa = PBXBuildFile; fileRef = 833C79E922A6CE180030C71B /* UserFavoriteList.json */; };
+		833C79EC22A6E39A0030C71B /* TimeLineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833C79EB22A6E39A0030C71B /* TimeLineViewController.swift */; };
 		8342CB8B2296A9B1009685E2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8342CB8A2296A9B1009685E2 /* Assets.xcassets */; };
 		8342CB8E2296A9B1009685E2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8342CB8C2296A9B1009685E2 /* LaunchScreen.storyboard */; };
 		836F4ACF22A5366200D3B6D9 /* MusicListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836F4ACE22A5366200D3B6D9 /* MusicListViewController.swift */; };
@@ -109,6 +111,8 @@
 		830615D0229EFF540038E318 /* VideoFeedCellBtn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoFeedCellBtn.swift; sourceTree = "<group>"; };
 		830615D2229F0BF30038E318 /* VideoFeedCellMusicBtn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoFeedCellMusicBtn.swift; sourceTree = "<group>"; };
 		830615D4229F49C20038E318 /* VideoFeedCellMusicAlbumNameBtn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoFeedCellMusicAlbumNameBtn.swift; sourceTree = "<group>"; };
+		833C79E922A6CE180030C71B /* UserFavoriteList.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = UserFavoriteList.json; sourceTree = "<group>"; };
+		833C79EB22A6E39A0030C71B /* TimeLineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeLineViewController.swift; sourceTree = "<group>"; };
 		8342CB802296A9B0009685E2 /* DouyinSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DouyinSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8342CB8A2296A9B1009685E2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8342CB8D2296A9B1009685E2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -242,6 +246,7 @@
 				8302C4A822A2F1630033C8E7 /* User.json */,
 				836F4AD022A5389500D3B6D9 /* UserMusicList.json */,
 				8398566A22A67B8D00D704F0 /* UserVideoList.json */,
+				833C79E922A6CE180030C71B /* UserFavoriteList.json */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -283,6 +288,7 @@
 				8302C4A522A2C1900033C8E7 /* UserPageViewController.swift */,
 				836F4ACE22A5366200D3B6D9 /* MusicListViewController.swift */,
 				8398566622A6753600D704F0 /* VideoListViewController.swift */,
+				833C79EB22A6E39A0030C71B /* TimeLineViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -532,6 +538,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				833C79EA22A6CE180030C71B /* UserFavoriteList.json in Resources */,
 				8342CB8E2296A9B1009685E2 /* LaunchScreen.storyboard in Resources */,
 				8302C4A922A2F1630033C8E7 /* User.json in Resources */,
 				8398566B22A67B8D00D704F0 /* UserVideoList.json in Resources */,
@@ -620,6 +627,7 @@
 				83B37A65229BED2400FABE03 /* ZPlayerView.swift in Sources */,
 				83B37A62229BED2400FABE03 /* ZPlayerManager.swift in Sources */,
 				83024A71229E63370095FC86 /* UIbuttonExtensions.swift in Sources */,
+				833C79EC22A6E39A0030C71B /* TimeLineViewController.swift in Sources */,
 				83C6BBA1229AB9AF00E7D0D5 /* UITableViewExtensions.swift in Sources */,
 				83C6BB93229AB9AF00E7D0D5 /* WebImageError.swift in Sources */,
 				83C6BB8F229AB9AF00E7D0D5 /* WebImageDownloader.swift in Sources */,

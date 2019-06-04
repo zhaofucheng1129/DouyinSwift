@@ -95,6 +95,28 @@ extension VideoFeedCellViewModel {
             return "@\(aweme.author.nickName)"
             }.asDriver()
     }
+    
+    public var dynamicCover: Driver<URL?> {
+        return awemeDriver.map { (aweme) -> URL? in
+            guard let urlStr = aweme.video.dynamicCover.urlList.first else { return nil }
+            let url = URL(string: urlStr)
+            return url
+        }
+    }
+    
+    public var isTop: Driver<Bool> {
+        return awemeDriver.map { (aweme) -> Bool in
+            return aweme.isTop == 1 ? true : false
+        }
+    }
+    
+    public var topIcon: Driver<URL?> {
+        return awemeDriver.map { (aweme) -> URL? in
+            guard let urlStr = aweme.labelTop?.urlList.first else { return nil }
+            let url = URL(string: urlStr)
+            return url
+        }
+    }
 }
 
 extension Int {

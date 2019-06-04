@@ -19,7 +19,7 @@ struct Aweme: Codable {
     var authorUserId: Int
     var rate: Int
     var isTop: Int
-    var labelTop: Resource
+    var labelTop: Resource?
     var isAds: Bool
     var duration: Int
     

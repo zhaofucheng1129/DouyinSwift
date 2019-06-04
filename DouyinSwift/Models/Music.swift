@@ -19,7 +19,7 @@ struct Music: Codable {
     var coverMedium: Resource
     var coverThumb: Resource
     var playUrl: Resource
-    var ownerId: String
+    var ownerId: String?
     var ownerNickname: String
     var isOriginal: Bool
     

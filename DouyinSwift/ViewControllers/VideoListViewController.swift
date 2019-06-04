@@ -7,10 +7,11 @@
 //
 
 import UIKit
-
-
+import RxSwift
+import RxCocoa
 
 class VideoListViewController: UIViewController {
+    fileprivate var bag: DisposeBag = DisposeBag()
     private let LINE_SPACE: CGFloat = 2
     private let ITEM_SPACE: CGFloat = 1
     private var itemWidth: CGFloat {
@@ -24,6 +25,17 @@ class VideoListViewController: UIViewController {
     private let VideoListCellId = "VideoListCellId"
     private var didScroll:((UIScrollView) -> ())?
     private var collectionView: UICollectionView!
+    
+    public private(set) var viewModel: VideoFeedViewModel
+    
+    init(viewModel: VideoFeedViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,20 +62,39 @@ class VideoListViewController: UIViewController {
         } else {
             automaticallyAdjustsScrollViewInsets = false
         }
+        
+        viewModel.requestData()
+        viewModel.dataSourceDriver.drive(onNext: { [weak self] _ in
+            guard let `self` = self else { return }
+            self.collectionView.reloadData()
+        }).disposed(by: bag)
     }
 }
 
 extension VideoListViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+    }
     
+    func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
+        return false
+    }
 }
 
 extension VideoListViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 50
+        return viewModel.dataSource.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        return collectionView.dequeueReusableCell(withReuseIdentifier: VideoListCellId, for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: VideoListCellId, for: indexPath) as! VideoViewCell
+        let cellViewModel = viewModel.dataSource[indexPath.row]
+        cell.bind(viewModel: cellViewModel)
+        return cell
     }
 }
 

@@ -18,7 +18,7 @@ class VideoFeedViewController: UIViewController {
     fileprivate var currentObserver: Disposable?
     
     var tableView: UITableView
-    let viewModel: VideoFeedViewModel = VideoFeedViewModel()
+    let viewModel: VideoFeedViewModel = VideoFeedViewModel(style: .feed)
     
     required init() {
         tableView = UITableView(frame: CGRect.zero, style: .plain)
@@ -36,7 +36,7 @@ class VideoFeedViewController: UIViewController {
         addBackgroundImage()
         addTableView()
         
-        viewModel.requestFeedData()
+        viewModel.requestData()
         viewModel.dataSourceDriver.drive(onNext: { [weak self] _ in
             guard let `self` = self else { return }
             self.tableView.reloadData()
