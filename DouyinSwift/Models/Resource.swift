@@ -11,8 +11,8 @@ import Foundation
 struct Resource: Codable {
     var uri: String
     var urlList: [String]
-    var width: Int
-    var height: Int
+    var width: Int?
+    var height: Int?
     
     enum CodingKeys: String, CodingKey {
         case uri

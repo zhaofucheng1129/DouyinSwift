@@ -22,6 +22,8 @@ struct Music: Codable {
     var ownerId: String?
     var ownerNickname: String
     var isOriginal: Bool
+    var userCount: Int
+    var duration: Int
     
     enum CodingKeys: String, CodingKey {
         case id
@@ -37,5 +39,7 @@ struct Music: Codable {
         case ownerId = "owner_id"
         case ownerNickname = "owner_nickname"
         case isOriginal = "is_original"
+        case userCount = "user_count"
+        case duration
     }
 }

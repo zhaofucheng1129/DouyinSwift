@@ -10,8 +10,6 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-
-
 class VideoListViewModel {
     
     enum PageStyle {
@@ -22,7 +20,7 @@ class VideoListViewModel {
     
     private var style:PageStyle
     
-    private var videoFeedDataSource: BehaviorRelay<[VideoCellViewModel]> = BehaviorRelay(value: [])
+    private var videoDataSource: BehaviorRelay<[VideoCellViewModel]> = BehaviorRelay(value: [])
     
     private var loadUserPageEvent: BehaviorRelay<Void> = BehaviorRelay(value: ())
     public var loadUserPageEventDriver: Driver<Void> {
@@ -30,10 +28,10 @@ class VideoListViewModel {
     }
     
     public var dataSourceDriver: Driver<[VideoCellViewModel]> {
-        return videoFeedDataSource.asDriver().skip(1)
+        return videoDataSource.asDriver().skip(1)
     }
     public var dataSource: [VideoCellViewModel] {
-        return videoFeedDataSource.value
+        return videoDataSource.value
     }
     
     init(style: PageStyle) {
@@ -54,12 +52,12 @@ class VideoListViewModel {
             token = .favorite(page: page)
             keyPath = "aweme_list"
         }
-        let feedObservable = DouyinApiProvider.rx.request(token).map([Aweme].self, atKeyPath: keyPath, using: JSONDecoder(), failsOnEmptyData: false).asObservable()
-        _ = feedObservable.subscribe(onNext: { [weak self] (awemes) in
+        let observable = DouyinApiProvider.rx.request(token).map([Aweme].self, atKeyPath: keyPath, using: JSONDecoder(), failsOnEmptyData: false).asObservable()
+        _ = observable.subscribe(onNext: { [weak self] (awemes) in
             guard let `self` = self else { return }
-            var newArray = self.videoFeedDataSource.value
+            var newArray = self.videoDataSource.value
             newArray.append(contentsOf: awemes.map({ (aweme) -> VideoCellViewModel in return VideoCellViewModel(aweme: aweme, loadUserPageEvent: self.loadUserPageEvent) }))
-            self.videoFeedDataSource.accept(newArray)
+            self.videoDataSource.accept(newArray)
         })
     }
 }

@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import RxCocoa
+import RxSwift
 
 private let CellId: String = "MusicListCellId"
 
@@ -14,6 +16,9 @@ class MusicListViewController: UIViewController {
 
     private var tableView: UITableView = UITableView(frame: CGRect.zero, style: .plain)
     fileprivate var didScroll: ((UIScrollView) -> ())?
+    private var bag: DisposeBag = DisposeBag()
+    
+    private let viewModel = MusicListViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,6 +43,12 @@ class MusicListViewController: UIViewController {
         } else {
             automaticallyAdjustsScrollViewInsets = false
         }
+        
+        viewModel.requestData()
+        viewModel.dataSourceDriver.drive(onNext: { [weak self] _ in
+            guard let `self` = self else { return }
+            self.tableView.reloadData()
+        }).disposed(by: bag)
     }
 }
 
@@ -49,11 +60,14 @@ extension MusicListViewController: UITableViewDelegate {
 
 extension MusicListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return viewModel.dataSource.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return tableView.dequeueReusableCell(withIdentifier: CellId, for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: CellId, for: indexPath) as! MusicViewCell
+        let cellViewModel = viewModel.dataSource[indexPath.row]
+        cell.bind(viewModel: cellViewModel)
+        return cell
     }
 }
 

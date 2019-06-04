@@ -7,8 +7,11 @@
 //
 
 import UIKit
+import RxCocoa
+import RxSwift
 
 class MusicViewCell: UITableViewCell {
+    private var bag: DisposeBag = DisposeBag()
     private var playBtn: UIButton!
     private var musicName: UILabel!
     private var countLabel: UILabel!
@@ -27,25 +30,29 @@ class MusicViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
+        bag = DisposeBag()
     }
     
-    func setUpUI() {
-        playBtn = UIButton(type: .custom)
-        playBtn.load.backgroundImage(with: URL(string: "https://p9-dy.byteimg.com/aweme/200x200/aweme-original-music/1600335745527811.jpeg")!, for: .normal) { (result) -> UIImage? in
-            switch result {
-            case .success(let image):
-                return image.roundedCorner(radius: 2.5)
-            case .failure(let error):
-                print(error)
-                return nil
+    func bind(viewModel: MusicCellViewModel) {
+        viewModel.musicCover.drive(onNext: { [weak self] url in
+            guard let `self` = self, let url = url else { return }
+            self.playBtn.load.backgroundImage(with: url, for: .normal) { (result) -> UIImage? in
+                switch result {
+                case .success(let image):
+                    return image.roundedCorner(radius: 2.5)
+                case .failure(let error):
+                    print(error)
+                    return nil
+                }
             }
-        }
+        }).disposed(by: bag)
+        viewModel.musicName.drive(musicName.rx.text).disposed(by: bag)
+        viewModel.userCount.drive(countLabel.rx.text).disposed(by: bag)
+        viewModel.duration.drive(timeLabel.rx.text).disposed(by: bag)
+    }
+    
+    private func setUpUI() {
+        playBtn = UIButton(type: .custom)
         playBtn.setImage(UIImage(named: "icon_playmusic30x30"), for: .normal)
         contentView.addSubview(playBtn)
         playBtn.translatesAutoresizingMaskIntoConstraints = false
@@ -60,21 +67,21 @@ class MusicViewCell: UITableViewCell {
         icon.topAnchor.constraint(equalTo: playBtn.topAnchor, constant: 4).isActive = true
         icon.leftAnchor.constraint(equalTo: playBtn.rightAnchor, constant: 10).isActive = true
         
-        musicName = UILabel(text: "喜欢上你（纯音乐）", font: .boldSystemFont(ofSize: 16))
+        musicName = UILabel(text: "", font: .boldSystemFont(ofSize: 16))
         musicName.textColor = UIColor.white
         musicName.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(musicName)
         musicName.centerYAnchor.constraint(equalTo: icon.centerYAnchor).isActive = true
         musicName.leftAnchor.constraint(equalTo: icon.rightAnchor, constant: 4).isActive = true
         
-        countLabel = UILabel(text: "1585 个视频使用", font: .systemFont(ofSize: 12))
+        countLabel = UILabel(text: "0 个视频使用", font: .systemFont(ofSize: 12))
         countLabel.textColor = UIColor(white: 1, alpha: 0.7)
         contentView.addSubview(countLabel)
         countLabel.translatesAutoresizingMaskIntoConstraints = false
         countLabel.leftAnchor.constraint(equalTo: icon.leftAnchor).isActive = true
         countLabel.topAnchor.constraint(equalTo: musicName.bottomAnchor, constant: 5).isActive = true
         
-        timeLabel = UILabel(text: "03:11", font: .systemFont(ofSize: 12))
+        timeLabel = UILabel(text: "00:00", font: .systemFont(ofSize: 12))
         timeLabel.textColor = UIColor(white: 1, alpha: 0.7)
         contentView.addSubview(timeLabel)
         timeLabel.translatesAutoresizingMaskIntoConstraints = false
