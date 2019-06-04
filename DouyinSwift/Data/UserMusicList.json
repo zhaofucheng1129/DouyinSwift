@@ -1,0 +1,556 @@
+{
+    "log_pb": {
+        "impr_id": "20190527002157010024114018295A80"
+    },
+    "extra": {
+        "logid": "20190527002157010024114018295A80",
+        "now": 1558887717375,
+        "fatal_item_ids": []
+    },
+    "has_more": 0,
+    "status_code": 0,
+    "status_msg": "",
+    "cursor": 10,
+    "music": [
+        {
+            "lyric_url": null,
+            "extra": "{\"has_edited\":0}",
+            "is_del_video": false,
+            "binded_challenge_id": 0,
+            "redirect": false,
+            "collect_stat": 0,
+            "preview_end_time": 0,
+            "title": "喜欢上你（纯音乐）",
+            "effects_data": {
+                "url_list": [
+                    "http://p9-dy.byteimg.com/obj/836a0020657cd17f7a1c"
+                ],
+                "url_key": null,
+                "uri": "http://p9-dy.byteimg.com/obj/836a0020657cd17f7a1c",
+                "data_size": null
+            },
+            "id_str": "6554975247333296910",
+            "avatar_thumb": {
+                "url_list": [
+                    "https://p3-dy.byteimg.com/aweme/100x100/2405300041b28c046fc8e.jpeg",
+                    "https://p9-dy.byteimg.com/aweme/100x100/2405300041b28c046fc8e.jpeg",
+                    "https://p1-dy.byteimg.com/aweme/100x100/2405300041b28c046fc8e.jpeg"
+                ],
+                "url_key": null,
+                "uri": "2405300041b28c046fc8e",
+                "data_size": null
+            },
+            "schema_url": "",
+            "prevent_item_download_status": 0,
+            "is_video_self_see": false,
+            "start_time": 0,
+            "external_song_info": [],
+            "owner_handle": "",
+            "bodydance_challenge_id": null,
+            "cover_thumb": {
+                "url_list": [
+                    "https://p9-dy.byteimg.com/aweme/100x100/aweme-original-music/1600335745527811.jpeg"
+                ],
+                "url_key": null,
+                "uri": "https://p9-dy.byteimg.com/aweme/200x200/aweme-original-music/1600335745527811.jpeg",
+                "data_size": null
+            },
+            "sec_uid": "MS4wLjABAAAAC-deOgCmNN2bIugq3od6LBI-Ws7Pn8EuLwWBjZg-ghg",
+            "use_count_desc": null,
+            "end_time": 0,
+            "cover_medium": {
+                "url_list": [
+                    "https://p9-dy.byteimg.com/aweme/200x200/aweme-original-music/1600335745527811.jpeg"
+                ],
+                "url_key": null,
+                "uri": "https://p9-dy.byteimg.com/aweme/200x200/aweme-original-music/1600335745527811.jpeg",
+                "data_size": null
+            },
+            "prevent_download": false,
+            "owner_nickname": "",
+            "avatar_large": {
+                "url_list": [
+                    "https://p3-dy.byteimg.com/aweme/1080x1080/2405300041b28c046fc8e.jpeg",
+                    "https://p9-dy.byteimg.com/aweme/1080x1080/2405300041b28c046fc8e.jpeg",
+                    "https://p1-dy.byteimg.com/aweme/1080x1080/2405300041b28c046fc8e.jpeg"
+                ],
+                "url_key": null,
+                "uri": "2405300041b28c046fc8e",
+                "data_size": null
+            },
+            "is_original": true,
+            "offline_desc": "",
+            "source_platform": 25,
+            "audio_track": {
+                "url_list": [
+                    "http://p9-dy.byteimg.com/obj/83670027b6175eec90ba"
+                ],
+                "url_key": null,
+                "uri": "http://p9-dy.byteimg.com/obj/83670027b6175eec90ba",
+                "data_size": null
+            },
+            "bodydance_url": null,
+            "preview_start_time": 0,
+            "duration": 191,
+            "id": 6554975247333297000,
+            "album": "",
+            "user_count": 1596,
+            "author": "Abbily",
+            "play_url": {
+                "url_list": [
+                    "http://p3-dy.byteimg.com/obj/839300005b6b6e8a7180"
+                ],
+                "url_key": null,
+                "uri": "http://p3-dy.byteimg.com/obj/839300005b6b6e8a7180",
+                "data_size": null
+            },
+            "mid": "6554975247333296910",
+            "strong_beat_url": {
+                "url_list": [
+                    "http://p9-dy.byteimg.com/obj/ies-music/strong_beat/1617267801920520"
+                ],
+                "url_key": null,
+                "uri": "http://p9-dy.byteimg.com/obj/ies-music/strong_beat/1617267801920520",
+                "data_size": null
+            },
+            "avatar_medium": {
+                "url_list": [
+                    "https://p3-dy.byteimg.com/aweme/720x720/2405300041b28c046fc8e.jpeg",
+                    "https://p9-dy.byteimg.com/aweme/720x720/2405300041b28c046fc8e.jpeg",
+                    "https://p1-dy.byteimg.com/aweme/720x720/2405300041b28c046fc8e.jpeg"
+                ],
+                "url_key": null,
+                "uri": "2405300041b28c046fc8e",
+                "data_size": null
+            },
+            "is_restricted": false,
+            "share_info": null,
+            "owner_id": "56878490911",
+            "status": 1,
+            "lyric_type": null,
+            "cover_large": {
+                "url_list": [
+                    "https://p9-dy.byteimg.com/aweme/720x720/aweme-original-music/1600335745527811.jpeg"
+                ],
+                "url_key": null,
+                "uri": "https://p9-dy.byteimg.com/aweme/200x200/aweme-original-music/1600335745527811.jpeg",
+                "data_size": null
+            },
+            "cover_hd": {
+                "url_list": [
+                    "https://p9-dy.byteimg.com/aweme/1080x1080/aweme-original-music/1600335745527811.jpeg"
+                ],
+                "url_key": null,
+                "uri": "https://p9-dy.byteimg.com/aweme/200x200/aweme-original-music/1600335745527811.jpeg",
+                "data_size": null
+            },
+            "author_deleted": false,
+            "position": null
+        },
+        {
+            "lyric_url": null,
+            "extra": "{\"has_edited\":0}",
+            "is_del_video": false,
+            "binded_challenge_id": 0,
+            "redirect": false,
+            "collect_stat": 0,
+            "preview_end_time": 0,
+            "title": "喜欢上你",
+            "effects_data": {
+                "url_list": [
+                    "http://p3-dy.byteimg.com/obj/836b00207ef81ef7dc8c"
+                ],
+                "url_key": null,
+                "uri": "http://p3-dy.byteimg.com/obj/836b00207ef81ef7dc8c",
+                "data_size": null
+            },
+            "id_str": "6554975059448957703",
+            "avatar_thumb": {
+                "url_list": [
+                    "https://p3-dy.byteimg.com/aweme/100x100/2405300041b28c046fc8e.jpeg",
+                    "https://p9-dy.byteimg.com/aweme/100x100/2405300041b28c046fc8e.jpeg",
+                    "https://p1-dy.byteimg.com/aweme/100x100/2405300041b28c046fc8e.jpeg"
+                ],
+                "url_key": null,
+                "uri": "2405300041b28c046fc8e",
+                "data_size": null
+            },
+            "schema_url": "",
+            "prevent_item_download_status": 0,
+            "is_video_self_see": false,
+            "start_time": 0,
+            "external_song_info": [],
+            "owner_handle": "",
+            "bodydance_challenge_id": null,
+            "cover_thumb": {
+                "url_list": [
+                    "https://p3-dy.byteimg.com/aweme/100x100/aweme-original-music/1600335622551566.jpeg"
+                ],
+                "url_key": null,
+                "uri": "https://p3-dy.byteimg.com/aweme/200x200/aweme-original-music/1600335622551566.jpeg",
+                "data_size": null
+            },
+            "sec_uid": "MS4wLjABAAAAC-deOgCmNN2bIugq3od6LBI-Ws7Pn8EuLwWBjZg-ghg",
+            "use_count_desc": null,
+            "end_time": 0,
+            "cover_medium": {
+                "url_list": [
+                    "https://p3-dy.byteimg.com/aweme/200x200/aweme-original-music/1600335622551566.jpeg"
+                ],
+                "url_key": null,
+                "uri": "https://p3-dy.byteimg.com/aweme/200x200/aweme-original-music/1600335622551566.jpeg",
+                "data_size": null
+            },
+            "prevent_download": false,
+            "owner_nickname": "",
+            "avatar_large": {
+                "url_list": [
+                    "https://p3-dy.byteimg.com/aweme/1080x1080/2405300041b28c046fc8e.jpeg",
+                    "https://p9-dy.byteimg.com/aweme/1080x1080/2405300041b28c046fc8e.jpeg",
+                    "https://p1-dy.byteimg.com/aweme/1080x1080/2405300041b28c046fc8e.jpeg"
+                ],
+                "url_key": null,
+                "uri": "2405300041b28c046fc8e",
+                "data_size": null
+            },
+            "is_original": true,
+            "offline_desc": "",
+            "source_platform": 25,
+            "audio_track": {
+                "url_list": [
+                    "http://p9-dy.byteimg.com/obj/83680020edb7d783e2d7"
+                ],
+                "url_key": null,
+                "uri": "http://p9-dy.byteimg.com/obj/83680020edb7d783e2d7",
+                "data_size": null
+            },
+            "bodydance_url": null,
+            "preview_start_time": 0,
+            "duration": 192,
+            "id": 6554975059448958000,
+            "album": "",
+            "user_count": 367,
+            "author": "Abbily",
+            "play_url": {
+                "url_list": [
+                    "http://p3-dy.byteimg.com/obj/8393000086992450e873"
+                ],
+                "url_key": null,
+                "uri": "http://p3-dy.byteimg.com/obj/8393000086992450e873",
+                "data_size": null
+            },
+            "mid": "6554975059448957703",
+            "strong_beat_url": {
+                "url_list": [
+                    "http://p3-dy.byteimg.com/obj/ies-music/strong_beat/1617207183655959"
+                ],
+                "url_key": null,
+                "uri": "http://p3-dy.byteimg.com/obj/ies-music/strong_beat/1617207183655959",
+                "data_size": null
+            },
+            "avatar_medium": {
+                "url_list": [
+                    "https://p3-dy.byteimg.com/aweme/720x720/2405300041b28c046fc8e.jpeg",
+                    "https://p9-dy.byteimg.com/aweme/720x720/2405300041b28c046fc8e.jpeg",
+                    "https://p1-dy.byteimg.com/aweme/720x720/2405300041b28c046fc8e.jpeg"
+                ],
+                "url_key": null,
+                "uri": "2405300041b28c046fc8e",
+                "data_size": null
+            },
+            "is_restricted": false,
+            "share_info": null,
+            "owner_id": "56878490911",
+            "status": 1,
+            "lyric_type": null,
+            "cover_large": {
+                "url_list": [
+                    "https://p3-dy.byteimg.com/aweme/720x720/aweme-original-music/1600335622551566.jpeg"
+                ],
+                "url_key": null,
+                "uri": "https://p3-dy.byteimg.com/aweme/200x200/aweme-original-music/1600335622551566.jpeg",
+                "data_size": null
+            },
+            "cover_hd": {
+                "url_list": [
+                    "https://p3-dy.byteimg.com/aweme/1080x1080/aweme-original-music/1600335622551566.jpeg"
+                ],
+                "url_key": null,
+                "uri": "https://p3-dy.byteimg.com/aweme/200x200/aweme-original-music/1600335622551566.jpeg",
+                "data_size": null
+            },
+            "author_deleted": false,
+            "position": null
+        },
+        {
+            "lyric_url": null,
+            "extra": "{\"has_edited\":0}",
+            "is_del_video": false,
+            "binded_challenge_id": 0,
+            "redirect": false,
+            "collect_stat": 0,
+            "preview_end_time": 0,
+            "title": "恋爱难题（伴奏）",
+            "effects_data": {
+                "url_list": [
+                    "http://p3-dy.byteimg.com/obj/ies-music/1632614531557383"
+                ],
+                "url_key": null,
+                "uri": "http://p3-dy.byteimg.com/obj/ies-music/1632614531557383",
+                "data_size": null
+            },
+            "id_str": "6687174948827433740",
+            "avatar_thumb": {
+                "url_list": [
+                    "https://p3-dy.byteimg.com/aweme/100x100/2405300041b28c046fc8e.jpeg",
+                    "https://p9-dy.byteimg.com/aweme/100x100/2405300041b28c046fc8e.jpeg",
+                    "https://p1-dy.byteimg.com/aweme/100x100/2405300041b28c046fc8e.jpeg"
+                ],
+                "url_key": null,
+                "uri": "2405300041b28c046fc8e",
+                "data_size": null
+            },
+            "schema_url": "",
+            "prevent_item_download_status": 0,
+            "is_video_self_see": false,
+            "start_time": 0,
+            "external_song_info": [],
+            "owner_handle": "",
+            "bodydance_challenge_id": null,
+            "cover_thumb": {
+                "url_list": [
+                    "https://p1-dy.byteimg.com/aweme/100x100/ies-music/storm_cover_93e7bc1397760a220ad0fab0dd856c34.jpeg"
+                ],
+                "url_key": null,
+                "uri": "https://p1-dy.byteimg.com/aweme/200x200/ies-music/storm_cover_93e7bc1397760a220ad0fab0dd856c34.jpeg",
+                "data_size": null
+            },
+            "sec_uid": "MS4wLjABAAAAC-deOgCmNN2bIugq3od6LBI-Ws7Pn8EuLwWBjZg-ghg",
+            "use_count_desc": null,
+            "end_time": 0,
+            "cover_medium": {
+                "url_list": [
+                    "https://p1-dy.byteimg.com/aweme/200x200/ies-music/storm_cover_93e7bc1397760a220ad0fab0dd856c34.jpeg"
+                ],
+                "url_key": null,
+                "uri": "https://p1-dy.byteimg.com/aweme/200x200/ies-music/storm_cover_93e7bc1397760a220ad0fab0dd856c34.jpeg",
+                "data_size": null
+            },
+            "prevent_download": false,
+            "owner_nickname": "",
+            "avatar_large": {
+                "url_list": [
+                    "https://p3-dy.byteimg.com/aweme/1080x1080/2405300041b28c046fc8e.jpeg",
+                    "https://p9-dy.byteimg.com/aweme/1080x1080/2405300041b28c046fc8e.jpeg",
+                    "https://p1-dy.byteimg.com/aweme/1080x1080/2405300041b28c046fc8e.jpeg"
+                ],
+                "url_key": null,
+                "uri": "2405300041b28c046fc8e",
+                "data_size": null
+            },
+            "is_original": true,
+            "offline_desc": "",
+            "source_platform": 25,
+            "audio_track": {
+                "url_list": [
+                    "http://p3-dy.byteimg.com/obj/ies-music/1632614487955470"
+                ],
+                "url_key": null,
+                "uri": "http://p3-dy.byteimg.com/obj/ies-music/1632614487955470",
+                "data_size": null
+            },
+            "bodydance_url": null,
+            "preview_start_time": 0,
+            "duration": 195,
+            "id": 6687174948827434000,
+            "album": "",
+            "user_count": 11,
+            "author": "Abbily",
+            "play_url": {
+                "url_list": [
+                    "http://p3-dy.byteimg.com/obj/ies-music/1632614487217156.mp3"
+                ],
+                "url_key": null,
+                "uri": "http://p3-dy.byteimg.com/obj/ies-music/1632614487217156.mp3",
+                "data_size": null
+            },
+            "mid": "6687174948827433740",
+            "strong_beat_url": {
+                "url_list": [
+                    "http://p9-dy.byteimg.com/obj/ies-music/strong_beat/1633334763505675"
+                ],
+                "url_key": null,
+                "uri": "http://p9-dy.byteimg.com/obj/ies-music/strong_beat/1633334763505675",
+                "data_size": null
+            },
+            "avatar_medium": {
+                "url_list": [
+                    "https://p3-dy.byteimg.com/aweme/720x720/2405300041b28c046fc8e.jpeg",
+                    "https://p9-dy.byteimg.com/aweme/720x720/2405300041b28c046fc8e.jpeg",
+                    "https://p1-dy.byteimg.com/aweme/720x720/2405300041b28c046fc8e.jpeg"
+                ],
+                "url_key": null,
+                "uri": "2405300041b28c046fc8e",
+                "data_size": null
+            },
+            "is_restricted": false,
+            "share_info": null,
+            "owner_id": "56878490911",
+            "status": 1,
+            "lyric_type": null,
+            "cover_large": {
+                "url_list": [
+                    "https://p1-dy.byteimg.com/aweme/720x720/ies-music/storm_cover_93e7bc1397760a220ad0fab0dd856c34.jpeg"
+                ],
+                "url_key": null,
+                "uri": "https://p1-dy.byteimg.com/aweme/200x200/ies-music/storm_cover_93e7bc1397760a220ad0fab0dd856c34.jpeg",
+                "data_size": null
+            },
+            "cover_hd": {
+                "url_list": [
+                    "https://p1-dy.byteimg.com/aweme/1080x1080/ies-music/storm_cover_93e7bc1397760a220ad0fab0dd856c34.jpeg"
+                ],
+                "url_key": null,
+                "uri": "https://p1-dy.byteimg.com/aweme/200x200/ies-music/storm_cover_93e7bc1397760a220ad0fab0dd856c34.jpeg",
+                "data_size": null
+            },
+            "author_deleted": false,
+            "position": null
+        },
+        {
+            "lyric_url": null,
+            "extra": "{\"has_edited\":0}",
+            "is_del_video": false,
+            "binded_challenge_id": 0,
+            "redirect": false,
+            "collect_stat": 0,
+            "preview_end_time": 0,
+            "title": "恋爱难题",
+            "effects_data": {
+                "url_list": [
+                    "http://p9-dy.byteimg.com/obj/ies-music/1632614698074125"
+                ],
+                "url_key": null,
+                "uri": "http://p9-dy.byteimg.com/obj/ies-music/1632614698074125",
+                "data_size": null
+            },
+            "id_str": "6687174755855895299",
+            "avatar_thumb": {
+                "url_list": [
+                    "https://p3-dy.byteimg.com/aweme/100x100/2405300041b28c046fc8e.jpeg",
+                    "https://p9-dy.byteimg.com/aweme/100x100/2405300041b28c046fc8e.jpeg",
+                    "https://p1-dy.byteimg.com/aweme/100x100/2405300041b28c046fc8e.jpeg"
+                ],
+                "url_key": null,
+                "uri": "2405300041b28c046fc8e",
+                "data_size": null
+            },
+            "schema_url": "",
+            "prevent_item_download_status": 0,
+            "is_video_self_see": false,
+            "start_time": 0,
+            "external_song_info": [],
+            "owner_handle": "",
+            "bodydance_challenge_id": null,
+            "cover_thumb": {
+                "url_list": [
+                    "https://p1-dy.byteimg.com/aweme/100x100/ies-music/storm_cover_c00f2f6214ba49f51438f9a9b62e71b1.jpeg"
+                ],
+                "url_key": null,
+                "uri": "https://p1-dy.byteimg.com/aweme/200x200/ies-music/storm_cover_c00f2f6214ba49f51438f9a9b62e71b1.jpeg",
+                "data_size": null
+            },
+            "sec_uid": "MS4wLjABAAAAC-deOgCmNN2bIugq3od6LBI-Ws7Pn8EuLwWBjZg-ghg",
+            "use_count_desc": null,
+            "end_time": 0,
+            "cover_medium": {
+                "url_list": [
+                    "https://p1-dy.byteimg.com/aweme/200x200/ies-music/storm_cover_c00f2f6214ba49f51438f9a9b62e71b1.jpeg"
+                ],
+                "url_key": null,
+                "uri": "https://p1-dy.byteimg.com/aweme/200x200/ies-music/storm_cover_c00f2f6214ba49f51438f9a9b62e71b1.jpeg",
+                "data_size": null
+            },
+            "prevent_download": false,
+            "owner_nickname": "",
+            "avatar_large": {
+                "url_list": [
+                    "https://p3-dy.byteimg.com/aweme/1080x1080/2405300041b28c046fc8e.jpeg",
+                    "https://p9-dy.byteimg.com/aweme/1080x1080/2405300041b28c046fc8e.jpeg",
+                    "https://p1-dy.byteimg.com/aweme/1080x1080/2405300041b28c046fc8e.jpeg"
+                ],
+                "url_key": null,
+                "uri": "2405300041b28c046fc8e",
+                "data_size": null
+            },
+            "is_original": true,
+            "offline_desc": "",
+            "source_platform": 25,
+            "audio_track": {
+                "url_list": [
+                    "http://p9-dy.byteimg.com/obj/ies-music/1632614654391303"
+                ],
+                "url_key": null,
+                "uri": "http://p9-dy.byteimg.com/obj/ies-music/1632614654391303",
+                "data_size": null
+            },
+            "bodydance_url": null,
+            "preview_start_time": 0,
+            "duration": 195,
+            "id": 6687174755855896000,
+            "album": "",
+            "user_count": 10,
+            "author": "Abbily",
+            "play_url": {
+                "url_list": [
+                    "http://p1-dy.byteimg.com/obj/ies-music/1632614653446158.mp3"
+                ],
+                "url_key": null,
+                "uri": "http://p1-dy.byteimg.com/obj/ies-music/1632614653446158.mp3",
+                "data_size": null
+            },
+            "mid": "6687174755855895299",
+            "strong_beat_url": {
+                "url_list": [
+                    "http://p3-dy.byteimg.com/obj/ies-music/strong_beat/1633350327833607"
+                ],
+                "url_key": null,
+                "uri": "http://p3-dy.byteimg.com/obj/ies-music/strong_beat/1633350327833607",
+                "data_size": null
+            },
+            "avatar_medium": {
+                "url_list": [
+                    "https://p3-dy.byteimg.com/aweme/720x720/2405300041b28c046fc8e.jpeg",
+                    "https://p9-dy.byteimg.com/aweme/720x720/2405300041b28c046fc8e.jpeg",
+                    "https://p1-dy.byteimg.com/aweme/720x720/2405300041b28c046fc8e.jpeg"
+                ],
+                "url_key": null,
+                "uri": "2405300041b28c046fc8e",
+                "data_size": null
+            },
+            "is_restricted": false,
+            "share_info": null,
+            "owner_id": "56878490911",
+            "status": 1,
+            "lyric_type": null,
+            "cover_large": {
+                "url_list": [
+                    "https://p1-dy.byteimg.com/aweme/720x720/ies-music/storm_cover_c00f2f6214ba49f51438f9a9b62e71b1.jpeg"
+                ],
+                "url_key": null,
+                "uri": "https://p1-dy.byteimg.com/aweme/200x200/ies-music/storm_cover_c00f2f6214ba49f51438f9a9b62e71b1.jpeg",
+                "data_size": null
+            },
+            "cover_hd": {
+                "url_list": [
+                    "https://p1-dy.byteimg.com/aweme/1080x1080/ies-music/storm_cover_c00f2f6214ba49f51438f9a9b62e71b1.jpeg"
+                ],
+                "url_key": null,
+                "uri": "https://p1-dy.byteimg.com/aweme/200x200/ies-music/storm_cover_c00f2f6214ba49f51438f9a9b62e71b1.jpeg",
+                "data_size": null
+            },
+            "author_deleted": false,
+            "position": null
+        }
+    ]
+}

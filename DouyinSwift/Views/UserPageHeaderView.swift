@@ -10,6 +10,8 @@ import UIKit
 import RxSwift
 import RxCocoa
 
+var segmentViewHeight: CGFloat { return 40 }
+
 class UserPageHeaderView: UICollectionReusableView {
     
     private var bag: DisposeBag = DisposeBag()
@@ -296,7 +298,7 @@ extension UserPageHeaderView {
         segmentView.leftAnchor.constraint(equalTo: statisticStack.leftAnchor).isActive = true
         segmentView.rightAnchor.constraint(equalTo: bgContainerView.rightAnchor, constant: -16).isActive = true
         segmentView.bottomAnchor.constraint(equalTo: bgContainerView.bottomAnchor).isActive = true
-        segmentView.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        segmentView.heightAnchor.constraint(equalToConstant: segmentViewHeight).isActive = true
         
         let bottomLine = UIView()
         bottomLine.backgroundColor = UIColor(white: 1, alpha: 0.2)

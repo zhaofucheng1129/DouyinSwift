@@ -25,6 +25,9 @@
 		830615D5229F49C20038E318 /* VideoFeedCellMusicAlbumNameBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 830615D4229F49C20038E318 /* VideoFeedCellMusicAlbumNameBtn.swift */; };
 		8342CB8B2296A9B1009685E2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8342CB8A2296A9B1009685E2 /* Assets.xcassets */; };
 		8342CB8E2296A9B1009685E2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8342CB8C2296A9B1009685E2 /* LaunchScreen.storyboard */; };
+		836F4ACF22A5366200D3B6D9 /* MusicListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836F4ACE22A5366200D3B6D9 /* MusicListViewController.swift */; };
+		836F4AD122A5389500D3B6D9 /* UserMusicList.json in Resources */ = {isa = PBXBuildFile; fileRef = 836F4AD022A5389500D3B6D9 /* UserMusicList.json */; };
+		836F4AD322A5396100D3B6D9 /* MusicViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836F4AD222A5396100D3B6D9 /* MusicViewCell.swift */; };
 		83859D34229C199B00EB1FE1 /* Feed1.json in Resources */ = {isa = PBXBuildFile; fileRef = 83859D33229C199B00EB1FE1 /* Feed1.json */; };
 		83859D37229C1C4500EB1FE1 /* Aweme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83859D36229C1C4500EB1FE1 /* Aweme.swift */; };
 		83859D39229C2B6C00EB1FE1 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83859D38229C2B6C00EB1FE1 /* User.swift */; };
@@ -107,6 +110,9 @@
 		8342CB8A2296A9B1009685E2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8342CB8D2296A9B1009685E2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8342CB8F2296A9B1009685E2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		836F4ACE22A5366200D3B6D9 /* MusicListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicListViewController.swift; sourceTree = "<group>"; };
+		836F4AD022A5389500D3B6D9 /* UserMusicList.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = UserMusicList.json; sourceTree = "<group>"; };
+		836F4AD222A5396100D3B6D9 /* MusicViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicViewCell.swift; sourceTree = "<group>"; };
 		83859D33229C199B00EB1FE1 /* Feed1.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Feed1.json; sourceTree = "<group>"; };
 		83859D36229C1C4500EB1FE1 /* Aweme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Aweme.swift; sourceTree = "<group>"; };
 		83859D38229C2B6C00EB1FE1 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -228,6 +234,7 @@
 			children = (
 				83859D33229C199B00EB1FE1 /* Feed1.json */,
 				8302C4A822A2F1630033C8E7 /* User.json */,
+				836F4AD022A5389500D3B6D9 /* UserMusicList.json */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -267,6 +274,7 @@
 				8302C4A322A2BFDE0033C8E7 /* VideoFeedViewNavController.swift */,
 				83B37A58229BED2400FABE03 /* VideoFeedViewController.swift */,
 				8302C4A522A2C1900033C8E7 /* UserPageViewController.swift */,
+				836F4ACE22A5366200D3B6D9 /* MusicListViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -286,6 +294,7 @@
 				8302C4B022A439790033C8E7 /* UserSendMessageBtn.swift */,
 				8302C4B222A4CBAD0033C8E7 /* UserPageSegmentView.swift */,
 				8302C4B822A4E9BB0033C8E7 /* CollectionViewCellContentView.swift */,
+				836F4AD222A5396100D3B6D9 /* MusicViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -516,6 +525,7 @@
 			files = (
 				8342CB8E2296A9B1009685E2 /* LaunchScreen.storyboard in Resources */,
 				8302C4A922A2F1630033C8E7 /* User.json in Resources */,
+				836F4AD122A5389500D3B6D9 /* UserMusicList.json in Resources */,
 				8342CB8B2296A9B1009685E2 /* Assets.xcassets in Resources */,
 				83859D34229C199B00EB1FE1 /* Feed1.json in Resources */,
 				830615C6229EDEDF0038E318 /* LottieResources in Resources */,
@@ -577,6 +587,7 @@
 				83C6BB9F229AB9AF00E7D0D5 /* CALayerExtensions.swift in Sources */,
 				83859D3B229C32C500EB1FE1 /* Resource.swift in Sources */,
 				83C6BBB3229AB9AF00E7D0D5 /* BundleExtensions.swift in Sources */,
+				836F4ACF22A5366200D3B6D9 /* MusicListViewController.swift in Sources */,
 				83C6BBA8229AB9AF00E7D0D5 /* UILabelExtensions.swift in Sources */,
 				83C6BBA3229AB9AF00E7D0D5 /* UITextFieldExtensions.swift in Sources */,
 				83061424229E82540038E318 /* VideoCellFollowBtn.swift in Sources */,
@@ -625,6 +636,7 @@
 				8302C4A622A2C1900033C8E7 /* UserPageViewController.swift in Sources */,
 				83C6BB9A229AB9AF00E7D0D5 /* Wrapper.swift in Sources */,
 				83859D3F229C3BFD00EB1FE1 /* Video.swift in Sources */,
+				836F4AD322A5396100D3B6D9 /* MusicViewCell.swift in Sources */,
 				8302C4AB22A36B670033C8E7 /* UserPageHeaderView.swift in Sources */,
 				8302C4B322A4CBAD0033C8E7 /* UserPageSegmentView.swift in Sources */,
 				83C6BB9B229AB9AF00E7D0D5 /* Image.swift in Sources */,

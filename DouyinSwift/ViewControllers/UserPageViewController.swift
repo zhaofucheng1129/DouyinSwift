@@ -10,17 +10,36 @@ import UIKit
 import RxSwift
 import RxCocoa
 
+open class UserPageHostScrollView: UICollectionView, UIGestureRecognizerDelegate {
+    
+    public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        return true
+    }
+}
+
 class UserPageViewController: UIViewController {
+    private var isHostScrollViewEnable = true
+    private var isContainScrollViewEnable = false
 
     let bag: DisposeBag = DisposeBag()
-    var childVCs: [UIViewController] = []
-    private var collectionView: UICollectionView!
+    var childVCs: [ContainScrollView] = []
+    private var collectionView: UserPageHostScrollView!
+    private var contentView: CollectionViewCellContentView!
     private var headerView: UserPageHeaderView?
     private var navigationView: UIView!
+    private var navigationViewHeight: CGFloat {
+        if #available(iOS 11.0, *) {
+            return UIApplication.shared.statusBarFrame.height + 54
+        } else {
+            return 74
+        }
+    }
     
+    private var headerViewHeight: CGFloat {
+        return 980.0 / 750.0 * view.width
+    }
     private var stopScrollOffset: CGFloat {
-        guard let headerView = headerView else { return 0}
-        return headerView.height - navigationView.height - headerView.segmentView.height
+        return headerViewHeight - navigationViewHeight - segmentViewHeight
     }
     
     override func viewDidLoad() {
@@ -29,7 +48,7 @@ class UserPageViewController: UIViewController {
         
         
         let flowLayout = UICollectionViewFlowLayout()
-        collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: flowLayout)
+        collectionView = UserPageHostScrollView(frame: CGRect.zero, collectionViewLayout: flowLayout)
         view.addSubview(collectionView)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
@@ -40,22 +59,13 @@ class UserPageViewController: UIViewController {
         collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "CellId")
         collectionView.dataSource = self
         collectionView.delegate = self
+        collectionView.showsVerticalScrollIndicator = false
         
         if #available(iOS 11.0, *) {
             collectionView.contentInsetAdjustmentBehavior = .never
         } else {
             automaticallyAdjustsScrollViewInsets = false
         }
-        
-        navigationView = UIView()
-        navigationView.backgroundColor = UIColor.lightGray
-        navigationView.isHidden = true
-        view.addSubview(navigationView)
-        navigationView.translatesAutoresizingMaskIntoConstraints = false
-        navigationView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
-        navigationView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-        navigationView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
-        navigationView.heightAnchor.constraint(equalToConstant: 74).isActive = true
         
         let returnBtn = UIButton(type: .system)
         returnBtn.setImage(UIImage(named: "return_icon40x40")?.withRenderingMode(.alwaysOriginal), for: .normal)
@@ -67,12 +77,34 @@ class UserPageViewController: UIViewController {
             self.navigationController?.popViewController(animated: true)
         }).disposed(by: bag)
         
+        navigationView = UIView()
+        navigationView.backgroundColor = UIColor("171823")
+        navigationView.isHidden = true
+        view.insertSubview(navigationView, belowSubview: returnBtn)
+        navigationView.translatesAutoresizingMaskIntoConstraints = false
+        navigationView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+        navigationView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        navigationView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+        navigationView.heightAnchor.constraint(equalToConstant: navigationViewHeight).isActive = true
+        
+        let titleLabel = UILabel(text: "我叫Abbily", font: .systemFont(ofSize: 18))
+        titleLabel.textColor = UIColor.white
+        navigationView.addSubview(titleLabel)
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        titleLabel.centerXAnchor.constraint(equalTo: navigationView.centerXAnchor).isActive = true
+        titleLabel.centerYAnchor.constraint(equalTo: returnBtn.centerYAnchor).isActive = true
+        
         (0..<4).forEach { _ in
-            let vc = UIViewController()
-            vc.view.backgroundColor = UIColor(red: Int(arc4random_uniform(255)), green: Int(arc4random_uniform(255)), blue: Int(arc4random_uniform(255)))
+            let vc = MusicListViewController()
             addChild(vc)
             childVCs.append(vc)
+            
+            vc.scrollViewDidScroll(callBack: { [weak self] (scrollview) in
+                self?.containScrollViewDidScroll(scrollview)
+            })
         }
+        contentView = CollectionViewCellContentView()
+        contentView.hostScrollView = collectionView
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -87,11 +119,11 @@ class UserPageViewController: UIViewController {
 
 extension UserPageViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return CGSize(width: view.width, height: 980.0 / 750.0 * view.width)
+        return CGSize(width: view.width, height: headerViewHeight)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return view.size
+        return CGSize(width: view.width, height: view.height - navigationViewHeight - segmentViewHeight - view.safeAreaInsets.bottom)
     }
 }
 
@@ -102,7 +134,6 @@ extension UserPageViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell =  collectionView.dequeueReusableCell(withReuseIdentifier: "CellId", for: indexPath)
-        let contentView = CollectionViewCellContentView()
         contentView.delegate = self
         cell.contentView.addSubview(contentView)
         contentView.frame = cell.contentView.bounds
@@ -116,26 +147,73 @@ extension UserPageViewController: UICollectionViewDataSource {
     
 }
 
-extension UserPageViewController: CollectionViewCellContentViewDataSource {
+extension UserPageViewController: CollectionViewCellContentViewDataSource {  
+    
     func numberOfViewController() -> Int {
         return childVCs.count
     }
     
     func viewController(itemAt indexPath: IndexPath) -> UIViewController {
-        return childVCs[indexPath.row]
+        return childVCs[indexPath.item]
+    }
+}
+
+extension UserPageViewController {
+    func containScrollViewDidScroll(_ scrollView: UIScrollView) {
+        
+        let offsetY = scrollView.contentOffset.y
+        
+        // 向上滑动时
+        if offsetY > 0 {
+            if isContainScrollViewEnable {
+                scrollView.showsVerticalScrollIndicator = true
+                
+                if collectionView.contentOffset.y == 0 {
+                    self.isHostScrollViewEnable = true
+                    self.isContainScrollViewEnable = false
+                    
+                    scrollView.contentOffset = .zero
+                    scrollView.showsVerticalScrollIndicator = false
+                }else {
+                    self.collectionView.contentOffset = CGPoint(x: 0, y: stopScrollOffset)
+                }
+                
+            } else {
+                scrollView.contentOffset = CGPoint.zero
+                scrollView.showsVerticalScrollIndicator = false
+            }
+        } else { //向下滑动时
+            isContainScrollViewEnable = false
+            isHostScrollViewEnable = true
+            scrollView.contentOffset = CGPoint.zero
+            scrollView.showsVerticalScrollIndicator = false
+        }
     }
 }
 
 extension UserPageViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if scrollView == collectionView {
-            if scrollView.contentOffset.y >= stopScrollOffset {
+        let offsetY = scrollView.contentOffset.y
+        
+        // 判断是否可以继续向上滑动
+        if offsetY >= stopScrollOffset {
+            scrollView.contentOffset.y = stopScrollOffset
+            if isHostScrollViewEnable {
+                isHostScrollViewEnable = false
+                isContainScrollViewEnable = true
+            }
+        } else {
+            if isContainScrollViewEnable {
                 scrollView.contentOffset.y = stopScrollOffset
             }
-            
-            if scrollView.contentOffset.y < 0 {
-                headerView?.backgroundImageAnimation(offset: scrollView.contentOffset.y)
-            }
+        }
+        // 导航栏相关逻辑
+        if scrollView.contentOffset.y < 0 {
+            headerView?.backgroundImageAnimation(offset: scrollView.contentOffset.y)
+            navigationView.isHidden = true
+        } else {
+            navigationView.isHidden = false
+            navigationView.alpha = scrollView.contentOffset.y / stopScrollOffset
         }
     }
 }
