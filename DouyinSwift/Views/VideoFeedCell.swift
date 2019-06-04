@@ -12,6 +12,7 @@ import AVFoundation.AVPlayerItem
 import RxSwift
 import RxCocoa
 import Lottie
+import MediaPlayer
 
 class VideoFeedCell: UITableViewCell {
     private var playImage: UIImageView!
@@ -27,6 +28,7 @@ class VideoFeedCell: UITableViewCell {
     private var musicName: VideoFeedCellMusicAlbumNameBtn!
     private var videoDesc: UILabel!
     private var authorName: UILabel!
+    private var volumeProgressView: UIProgressView!
     
     private var viewModel:VideoFeedCellViewModel?
     
@@ -100,6 +102,21 @@ class VideoFeedCell: UITableViewCell {
         avatarBtn.rx.tap.asObservable().subscribe(onNext: {  _ in
             viewModel.loadUserPageEvent.accept(())
         }).disposed(by: bag)
+        
+        AVAudioSession.sharedInstance().rx.observe(Float.self, "outputVolume").skip(1).subscribe(onNext: { [weak self] (volume) in
+            guard let `self` = self else { return }
+            self.volumeProgressView.setProgress(volume ?? 0, animated: true)
+            UIView.animate(withDuration: 0.25, animations: {
+                self.volumeProgressView.alpha = 1
+            }) {
+                if $0 {
+                    UIView.animate(withDuration: 0.25, delay: 0.5, animations: {
+                        self.volumeProgressView.alpha = 0
+                    })
+                }
+            }
+            
+        }).disposed(by: bag)
     }
     
     public func play() {
@@ -149,6 +166,7 @@ extension VideoFeedCell {
         addMusicName()
         addVideoDesc()
         addAuthorName()
+        addVolumeProgressView()
     }
     
     func addPlayerView() {
@@ -300,6 +318,38 @@ extension VideoFeedCell {
         authorName.leftAnchor.constraint(equalTo: musicIcon.leftAnchor).isActive = true
         authorName.bottomAnchor.constraint(equalTo: videoDesc.topAnchor, constant: -8).isActive = true
         authorName.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 0.5).isActive = true
+    }
+    
+    func addVolumeProgressView() {
+        let volumeView = MPVolumeView(frame: CGRect(x: -2000, y: -2000, width: 1, height: 1))
+        contentView.addSubview(volumeView)
+//        volumeView.subviews.forEach { (view) in
+//            if (NSStringFromClass(view.classForCoder) == "MPVolumeSlider") {
+//                volumeSlider = view as? UISlider
+//                volumeSlider.sendActions(for: .touchUpInside)
+//            }
+//        }
+//
+//        volumeSlider.minimumTrackTintColor = UIColor.orange
+//        volumeSlider.maximumTrackTintColor = UIColor.clear
+//        volumeSlider.thumbTintColor = UIColor.clear
+//        volumeSlider.isUserInteractionEnabled = false
+//        contentView.addSubview(volumeSlider)
+//        volumeSlider.translatesAutoresizingMaskIntoConstraints = false
+//        volumeSlider.leftAnchor.constraint(equalTo: contentView.leftAnchor).isActive = true
+//        volumeSlider.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor).isActive = true
+//        volumeSlider.rightAnchor.constraint(equalTo: contentView.rightAnchor).isActive = true
+        
+        volumeProgressView = UIProgressView(progressViewStyle: .default)
+        volumeProgressView.trackTintColor = UIColor.clear
+        volumeProgressView.progressTintColor = UIColor.orange
+        volumeProgressView.alpha = 0
+        contentView.addSubview(volumeProgressView)
+        volumeProgressView.translatesAutoresizingMaskIntoConstraints = false
+        volumeProgressView.leftAnchor.constraint(equalTo: contentView.leftAnchor).isActive = true
+        volumeProgressView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor).isActive = true
+        volumeProgressView.rightAnchor.constraint(equalTo: contentView.rightAnchor).isActive = true
+        volumeProgressView.heightAnchor.constraint(equalToConstant: 0.5).isActive = true
     }
 }
 

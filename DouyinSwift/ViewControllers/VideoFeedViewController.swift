@@ -9,6 +9,7 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import MediaPlayer
 
 class VideoFeedViewController: UIViewController {
     
@@ -45,7 +46,7 @@ class VideoFeedViewController: UIViewController {
         viewModel.loadUserPageEventDriver.drive(onNext: { [weak self] _ in
             guard let `self` = self else { return }
             self.navigationController?.pushViewController(UserPageViewController(), animated: true)
-        }).disposed(by: bag)
+        }).disposed(by: bag)        
     }
     
     func setUpCurrentCellObserver() {
