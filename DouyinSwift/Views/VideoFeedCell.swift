@@ -26,8 +26,8 @@ class VideoFeedCell: UITableViewCell {
     private var followBtn: AnimationView!
     private var musicIcon: UIImageView!
     private var musicName: VideoFeedCellMusicAlbumNameBtn!
-    private var videoDesc: UILabel!
-    private var authorName: UILabel!
+    private var videoDesc: ZLabel!
+    private var authorName: ZLabel!
     private var volumeProgressView: UIProgressView!
     
     private var viewModel:VideoCellViewModel?
@@ -300,8 +300,10 @@ extension VideoFeedCell {
     }
     
     func addVideoDesc() {
-        videoDesc = UILabel(text: "", font: .systemFont(ofSize: 14))
-        videoDesc.textColor = UIColor.white
+        videoDesc = ZLabel(frame: CGRect.zero)
+        videoDesc.delegate = self
+        videoDesc.font = .systemFont(ofSize: 14)
+        videoDesc.textColor = UIColor(white: 1, alpha: 0.9)
         videoDesc.numberOfLines = 3
         contentView.addSubview(videoDesc)
         videoDesc.translatesAutoresizingMaskIntoConstraints = false
@@ -311,7 +313,11 @@ extension VideoFeedCell {
     }
     
     func addAuthorName() {
-        authorName = UILabel(text: "", font: .boldSystemFont(ofSize: 16))
+        authorName = ZLabel(frame: CGRect.zero)
+        authorName.delegate = self
+        authorName.isAllSelected = true
+        authorName.font = .boldSystemFont(ofSize: 16)
+        authorName.linkTextFont = .boldSystemFont(ofSize: 16)
         authorName.textColor = UIColor.white
         contentView.addSubview(authorName)
         authorName.translatesAutoresizingMaskIntoConstraints = false
@@ -350,6 +356,12 @@ extension VideoFeedCell {
         volumeProgressView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor).isActive = true
         volumeProgressView.rightAnchor.constraint(equalTo: contentView.rightAnchor).isActive = true
         volumeProgressView.heightAnchor.constraint(equalToConstant: 0.5).isActive = true
+    }
+}
+
+extension VideoFeedCell: ZLabelDelegate {
+    func labelDidSelectedLinkText(label: ZLabel, text: String) {
+        UIAlertController(title: "点击了文本", message: text, style: .alert, defaultButtonTitle: "退下").show()
     }
 }
 

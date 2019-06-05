@@ -13,7 +13,7 @@ struct Music: Codable {
     var idStr: String
     var title: String
     var author: String
-    var album: String
+    var album: String?
     var coverHd: Resource
     var coverLarge: Resource
     var coverMedium: Resource

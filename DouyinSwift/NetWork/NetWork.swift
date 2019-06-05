@@ -16,6 +16,7 @@ enum DouyinApiManager {
     case post(page: Int)
     case music(page: Int)
     case favorite(page: Int)
+    case timeline(page: Int)
 }
 
 extension DouyinApiManager: TargetType {
@@ -33,6 +34,8 @@ extension DouyinApiManager: TargetType {
             return "/aweme/v1/original/music/list/"
         case .favorite:
             return "/aweme/v1/aweme/favorite/"
+        case .timeline:
+            return "/aweme/v1/forward/list/"
         }
     }
     
@@ -50,12 +53,14 @@ extension DouyinApiManager: TargetType {
             return stubbedResponse("UserMusicList")
         case .favorite:
             return stubbedResponse("UserFavoriteList")
+        case .timeline:
+            return stubbedResponse("UserTimeline")
         }
     }
     
     var task: Task {
         switch self {
-        case .feed, .post, .music, .favorite:
+        case .feed, .post, .music, .favorite, .timeline:
             return .requestPlain            
         }
     }

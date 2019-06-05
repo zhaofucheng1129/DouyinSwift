@@ -13,7 +13,7 @@ struct Aweme: Codable {
     var desc:String?
     var createTime:Int
     var author: Author
-    var music: Music
+    var music: Music?
     var video: Video
     var statistics: Statistics
     var authorUserId: Int
@@ -21,7 +21,7 @@ struct Aweme: Codable {
     var isTop: Int
     var labelTop: Resource?
     var isAds: Bool
-    var duration: Int
+    var duration: Int?
     
     enum CodingKeys: String, CodingKey {
         case awemeId = "aweme_id"

@@ -28,6 +28,11 @@
 		833C79EE22A6EB0F0030C71B /* MusicListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833C79ED22A6EB0F0030C71B /* MusicListViewModel.swift */; };
 		833C79F022A6EB700030C71B /* VideoCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833C79EF22A6EB700030C71B /* VideoCellViewModel.swift */; };
 		833C79F222A6EC0A0030C71B /* MusicCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833C79F122A6EC0A0030C71B /* MusicCellViewModel.swift */; };
+		833C79F422A7158F0030C71B /* UserTimeline.json in Resources */ = {isa = PBXBuildFile; fileRef = 833C79F322A7158F0030C71B /* UserTimeline.json */; };
+		833C79F622A716480030C71B /* TimeLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833C79F522A716480030C71B /* TimeLine.swift */; };
+		833C79F822A716A70030C71B /* TimeLineListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833C79F722A716A70030C71B /* TimeLineListViewModel.swift */; };
+		833C79FA22A716DC0030C71B /* TimeLineCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833C79F922A716DC0030C71B /* TimeLineCellViewModel.swift */; };
+		833C79FC22A764230030C71B /* ZLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833C79FB22A764230030C71B /* ZLabel.swift */; };
 		8342CB8B2296A9B1009685E2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8342CB8A2296A9B1009685E2 /* Assets.xcassets */; };
 		8342CB8E2296A9B1009685E2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8342CB8C2296A9B1009685E2 /* LaunchScreen.storyboard */; };
 		836F4ACF22A5366200D3B6D9 /* MusicListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836F4ACE22A5366200D3B6D9 /* MusicListViewController.swift */; };
@@ -118,6 +123,11 @@
 		833C79ED22A6EB0F0030C71B /* MusicListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicListViewModel.swift; sourceTree = "<group>"; };
 		833C79EF22A6EB700030C71B /* VideoCellViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoCellViewModel.swift; sourceTree = "<group>"; };
 		833C79F122A6EC0A0030C71B /* MusicCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicCellViewModel.swift; sourceTree = "<group>"; };
+		833C79F322A7158F0030C71B /* UserTimeline.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = UserTimeline.json; sourceTree = "<group>"; };
+		833C79F522A716480030C71B /* TimeLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeLine.swift; sourceTree = "<group>"; };
+		833C79F722A716A70030C71B /* TimeLineListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeLineListViewModel.swift; sourceTree = "<group>"; };
+		833C79F922A716DC0030C71B /* TimeLineCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeLineCellViewModel.swift; sourceTree = "<group>"; };
+		833C79FB22A764230030C71B /* ZLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZLabel.swift; sourceTree = "<group>"; };
 		8342CB802296A9B0009685E2 /* DouyinSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DouyinSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8342CB8A2296A9B1009685E2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8342CB8D2296A9B1009685E2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -251,6 +261,7 @@
 				836F4AD022A5389500D3B6D9 /* UserMusicList.json */,
 				8398566A22A67B8D00D704F0 /* UserVideoList.json */,
 				833C79E922A6CE180030C71B /* UserFavoriteList.json */,
+				833C79F322A7158F0030C71B /* UserTimeline.json */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -258,6 +269,7 @@
 		83859D35229C1A3400EB1FE1 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				833C79F522A716480030C71B /* TimeLine.swift */,
 				83859D36229C1C4500EB1FE1 /* Aweme.swift */,
 				83859D38229C2B6C00EB1FE1 /* User.swift */,
 				83859D3A229C32C500EB1FE1 /* Resource.swift */,
@@ -302,6 +314,7 @@
 			children = (
 				83B37A5A229BED2400FABE03 /* VideoFeedCell.swift */,
 				83B37A5B229BED2400FABE03 /* ZPlayerView.swift */,
+				833C79FB22A764230030C71B /* ZLabel.swift */,
 				83061423229E82540038E318 /* VideoCellFollowBtn.swift */,
 				830615D0229EFF540038E318 /* VideoFeedCellBtn.swift */,
 				830615D2229F0BF30038E318 /* VideoFeedCellMusicBtn.swift */,
@@ -341,6 +354,8 @@
 				833C79EF22A6EB700030C71B /* VideoCellViewModel.swift */,
 				833C79ED22A6EB0F0030C71B /* MusicListViewModel.swift */,
 				833C79F122A6EC0A0030C71B /* MusicCellViewModel.swift */,
+				833C79F722A716A70030C71B /* TimeLineListViewModel.swift */,
+				833C79F922A716DC0030C71B /* TimeLineCellViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -547,6 +562,7 @@
 				833C79EA22A6CE180030C71B /* UserFavoriteList.json in Resources */,
 				8342CB8E2296A9B1009685E2 /* LaunchScreen.storyboard in Resources */,
 				8302C4A922A2F1630033C8E7 /* User.json in Resources */,
+				833C79F422A7158F0030C71B /* UserTimeline.json in Resources */,
 				8398566B22A67B8D00D704F0 /* UserVideoList.json in Resources */,
 				836F4AD122A5389500D3B6D9 /* UserMusicList.json in Resources */,
 				8342CB8B2296A9B1009685E2 /* Assets.xcassets in Resources */,
@@ -617,6 +633,7 @@
 				83C6BB9D229AB9AF00E7D0D5 /* ImageView.swift in Sources */,
 				83C6BBA0229AB9AF00E7D0D5 /* UIBezierPathExtensions.swift in Sources */,
 				83C6BBA4229AB9AF00E7D0D5 /* UIImageExtensions.swift in Sources */,
+				833C79FA22A716DC0030C71B /* TimeLineCellViewModel.swift in Sources */,
 				8398566922A67AA700D704F0 /* VideoViewCell.swift in Sources */,
 				83C6BBAE229AB9AF00E7D0D5 /* DispatchExtensions.swift in Sources */,
 				83C6BBAB229AB9AF00E7D0D5 /* UIAlertControllerExtensions.swift in Sources */,
@@ -636,6 +653,7 @@
 				83024A71229E63370095FC86 /* UIbuttonExtensions.swift in Sources */,
 				833C79EE22A6EB0F0030C71B /* MusicListViewModel.swift in Sources */,
 				833C79EC22A6E39A0030C71B /* TimeLineViewController.swift in Sources */,
+				833C79FC22A764230030C71B /* ZLabel.swift in Sources */,
 				83C6BBA1229AB9AF00E7D0D5 /* UITableViewExtensions.swift in Sources */,
 				83C6BB93229AB9AF00E7D0D5 /* WebImageError.swift in Sources */,
 				83C6BB8F229AB9AF00E7D0D5 /* WebImageDownloader.swift in Sources */,
@@ -674,8 +692,10 @@
 				83C6BB98229AB9AF00E7D0D5 /* MemoryCache.swift in Sources */,
 				83C6BBB4229AB9AF00E7D0D5 /* DateExtensions.swift in Sources */,
 				83C6BBAD229AB9AF00E7D0D5 /* UIColorExtensions.swift in Sources */,
+				833C79F622A716480030C71B /* TimeLine.swift in Sources */,
 				83C6BB96229AB9AF00E7D0D5 /* WebImageSessionDataTask.swift in Sources */,
 				83C6BB9E229AB9AF00E7D0D5 /* CGRectExtensions.swift in Sources */,
+				833C79F822A716A70030C71B /* TimeLineListViewModel.swift in Sources */,
 				83C6BB95229AB9AF00E7D0D5 /* WebImageParsedOptionsInfo.swift in Sources */,
 				83C6BB99229AB9AF00E7D0D5 /* ImageFrame.swift in Sources */,
 				83C6BBA2229AB9AF00E7D0D5 /* UIScrollViewExtensions.swift in Sources */,

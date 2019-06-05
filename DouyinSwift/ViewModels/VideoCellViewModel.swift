@@ -58,7 +58,7 @@ extension VideoCellViewModel {
     
     public var musicThumb: Observable<URL?> {
         return awemeDriver.map {
-            guard let str = $0.music.coverThumb.urlList.first else { return nil }
+            guard let str = $0.music?.coverThumb.urlList.first else { return nil }
             return URL(string: str) ?? nil
             }.asObservable()
     }
@@ -80,7 +80,8 @@ extension VideoCellViewModel {
     
     public var musicName: Driver<String> {
         return awemeDriver.map { (aweme) -> String in
-            return aweme.music.title.contains("原声") ? aweme.music.title : "\(aweme.music.title) - \(aweme.music.author)"
+            guard let title = aweme.music?.title else { return ""}
+            return title.contains("原声") ? title : "\(title) - \(aweme.music?.author ?? "")"
             }.asDriver()
     }
     

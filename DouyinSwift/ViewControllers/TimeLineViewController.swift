@@ -7,12 +7,17 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 class TimeLineViewController: UIViewController {
     private let TimeLineCellId: String = "TimeLineCellId"
     
     private var tableView: UITableView = UITableView(frame: CGRect.zero, style: .plain)
     fileprivate var didScroll: ((UIScrollView) -> ())?
+    private var bag: DisposeBag = DisposeBag()
+    
+    private let viewModel = TimeLineListViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,18 +37,28 @@ class TimeLineViewController: UIViewController {
         tableView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
         tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         tableView.separatorStyle = .none
+        
+        viewModel.requestData()
+        viewModel.dataSourceDriver.drive(onNext: { [weak self] (_) in
+            guard let `self` = self else { return }
+            self.tableView.reloadData()
+        }).disposed(by: bag)
     }
 }
 
 extension TimeLineViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 85
+//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        return 85
+//    }
+    
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 700
     }
 }
 
 extension TimeLineViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return viewModel.dataSource.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

@@ -19,11 +19,11 @@ struct Author: Codable {
     var birthday: String
     var isVerified: Bool
     var followStatus: Int
-    var awemeCount: Int
-    var followingCount: Int
-    var followerCount: Int
-    var favoritingCount: Int
-    var totalFavorited: Int
+    var awemeCount: Int?
+    var followingCount: Int?
+    var followerCount: Int?
+    var favoritingCount: Int?
+    var totalFavorited: Int?
     var constellation: Int
     
     enum CodingKeys: String, CodingKey {

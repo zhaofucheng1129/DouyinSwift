@@ -11,15 +11,15 @@ import Foundation
 struct Video: Codable {
     var playAddr: Resource
     var cover: Resource
-    var height: Int
-    var width: Int
+    var height: Int?
+    var width: Int?
     var dynamicCover: Resource
     var originCover: Resource
     var ratio: String
     var downloadAddr: Resource
     var hasWatermark: Bool
     var playAddrLowbr: Resource
-    var duration: Int
+    var duration: Int?
     
     enum CodingKeys: String, CodingKey {
         case playAddr = "play_addr"
