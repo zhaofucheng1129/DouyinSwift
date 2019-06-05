@@ -10,9 +10,9 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-open class UserPageHostScrollView: UICollectionView, UIGestureRecognizerDelegate {
+open class UserPageHostScrollView: UICollectionView {
     
-    public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+    public override func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
         return true
     }
 }
@@ -107,6 +107,8 @@ class UserPageViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
+        self.navigationController?.interactivePopGestureRecognizer?.delegate = self
+        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = true
     }
     
     func initSubViewController() {
@@ -243,4 +245,9 @@ extension UserPageViewController: UserPageSegmentViewDelegate {
     func pageSegment(selectedIndex index: Int) {
         contentView.switchPage(index: index)
     }
+}
+
+
+extension UserPageViewController: UIGestureRecognizerDelegate {
+    
 }

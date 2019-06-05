@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		1E7BF8606E699B224C37C7E3 /* Pods_DouyinSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02451709815A549D127F6F78 /* Pods_DouyinSwift.framework */; };
 		83024A71229E63370095FC86 /* UIbuttonExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83024A70229E63370095FC86 /* UIbuttonExtensions.swift */; };
-		8302C4A422A2BFDE0033C8E7 /* VideoFeedViewNavController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8302C4A322A2BFDE0033C8E7 /* VideoFeedViewNavController.swift */; };
 		8302C4A622A2C1900033C8E7 /* UserPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8302C4A522A2C1900033C8E7 /* UserPageViewController.swift */; };
 		8302C4A922A2F1630033C8E7 /* User.json in Resources */ = {isa = PBXBuildFile; fileRef = 8302C4A822A2F1630033C8E7 /* User.json */; };
 		8302C4AB22A36B670033C8E7 /* UserPageHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8302C4AA22A36B670033C8E7 /* UserPageHeaderView.swift */; };
@@ -52,6 +51,7 @@
 		8398566B22A67B8D00D704F0 /* UserVideoList.json in Resources */ = {isa = PBXBuildFile; fileRef = 8398566A22A67B8D00D704F0 /* UserVideoList.json */; };
 		83A5F06322A790C3002D024C /* TimeLineViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A5F06222A790C3002D024C /* TimeLineViewCell.swift */; };
 		83A5F06522A7BB87002D024C /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A5F06422A7BB87002D024C /* TabBarViewController.swift */; };
+		83A5F06722A7D660002D024C /* NavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A5F06622A7D660002D024C /* NavigationViewController.swift */; };
 		83B37A62229BED2400FABE03 /* ZPlayerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B37A56229BED2400FABE03 /* ZPlayerManager.swift */; };
 		83B37A63229BED2400FABE03 /* VideoFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B37A58229BED2400FABE03 /* VideoFeedViewController.swift */; };
 		83B37A64229BED2400FABE03 /* VideoFeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B37A5A229BED2400FABE03 /* VideoFeedCell.swift */; };
@@ -106,7 +106,6 @@
 		02451709815A549D127F6F78 /* Pods_DouyinSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DouyinSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B42CE95DA721F7877F55578 /* Pods-DouyinSwift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DouyinSwift.release.xcconfig"; path = "Pods/Target Support Files/Pods-DouyinSwift/Pods-DouyinSwift.release.xcconfig"; sourceTree = "<group>"; };
 		83024A70229E63370095FC86 /* UIbuttonExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIbuttonExtensions.swift; sourceTree = "<group>"; };
-		8302C4A322A2BFDE0033C8E7 /* VideoFeedViewNavController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoFeedViewNavController.swift; sourceTree = "<group>"; };
 		8302C4A522A2C1900033C8E7 /* UserPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPageViewController.swift; sourceTree = "<group>"; };
 		8302C4A822A2F1630033C8E7 /* User.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = User.json; sourceTree = "<group>"; };
 		8302C4AA22A36B670033C8E7 /* UserPageHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPageHeaderView.swift; sourceTree = "<group>"; };
@@ -151,6 +150,7 @@
 		8398566A22A67B8D00D704F0 /* UserVideoList.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = UserVideoList.json; sourceTree = "<group>"; };
 		83A5F06222A790C3002D024C /* TimeLineViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeLineViewCell.swift; sourceTree = "<group>"; };
 		83A5F06422A7BB87002D024C /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		83A5F06622A7D660002D024C /* NavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationViewController.swift; sourceTree = "<group>"; };
 		83B37A56229BED2400FABE03 /* ZPlayerManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZPlayerManager.swift; sourceTree = "<group>"; };
 		83B37A58229BED2400FABE03 /* VideoFeedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoFeedViewController.swift; sourceTree = "<group>"; };
 		83B37A5A229BED2400FABE03 /* VideoFeedCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoFeedCell.swift; sourceTree = "<group>"; };
@@ -304,7 +304,7 @@
 			isa = PBXGroup;
 			children = (
 				83A5F06422A7BB87002D024C /* TabBarViewController.swift */,
-				8302C4A322A2BFDE0033C8E7 /* VideoFeedViewNavController.swift */,
+				83A5F06622A7D660002D024C /* NavigationViewController.swift */,
 				83B37A58229BED2400FABE03 /* VideoFeedViewController.swift */,
 				8302C4A522A2C1900033C8E7 /* UserPageViewController.swift */,
 				836F4ACE22A5366200D3B6D9 /* MusicListViewController.swift */,
@@ -626,7 +626,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8302C4A422A2BFDE0033C8E7 /* VideoFeedViewNavController.swift in Sources */,
 				83C6BBB5229AB9AF00E7D0D5 /* NSObjectExtensions.swift in Sources */,
 				83C6BB97229AB9AF00E7D0D5 /* ImageDecoder.swift in Sources */,
 				83C6BB9F229AB9AF00E7D0D5 /* CALayerExtensions.swift in Sources */,
@@ -708,6 +707,7 @@
 				83C6BB99229AB9AF00E7D0D5 /* ImageFrame.swift in Sources */,
 				83C6BBA2229AB9AF00E7D0D5 /* UIScrollViewExtensions.swift in Sources */,
 				83B37A66229BED2400FABE03 /* AppDelegate.swift in Sources */,
+				83A5F06722A7D660002D024C /* NavigationViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -50,6 +50,11 @@ class VideoFeedViewController: UIViewController {
         }).disposed(by: bag)        
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+    
     func setUpCurrentCellObserver() {
         guard let _ = currentObserver else {
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
