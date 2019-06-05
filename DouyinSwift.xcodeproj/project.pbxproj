@@ -50,6 +50,8 @@
 		8398566722A6753600D704F0 /* VideoListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8398566622A6753600D704F0 /* VideoListViewController.swift */; };
 		8398566922A67AA700D704F0 /* VideoViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8398566822A67AA700D704F0 /* VideoViewCell.swift */; };
 		8398566B22A67B8D00D704F0 /* UserVideoList.json in Resources */ = {isa = PBXBuildFile; fileRef = 8398566A22A67B8D00D704F0 /* UserVideoList.json */; };
+		83A5F06322A790C3002D024C /* TimeLineViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A5F06222A790C3002D024C /* TimeLineViewCell.swift */; };
+		83A5F06522A7BB87002D024C /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A5F06422A7BB87002D024C /* TabBarViewController.swift */; };
 		83B37A62229BED2400FABE03 /* ZPlayerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B37A56229BED2400FABE03 /* ZPlayerManager.swift */; };
 		83B37A63229BED2400FABE03 /* VideoFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B37A58229BED2400FABE03 /* VideoFeedViewController.swift */; };
 		83B37A64229BED2400FABE03 /* VideoFeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B37A5A229BED2400FABE03 /* VideoFeedCell.swift */; };
@@ -147,6 +149,8 @@
 		8398566622A6753600D704F0 /* VideoListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoListViewController.swift; sourceTree = "<group>"; };
 		8398566822A67AA700D704F0 /* VideoViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoViewCell.swift; sourceTree = "<group>"; };
 		8398566A22A67B8D00D704F0 /* UserVideoList.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = UserVideoList.json; sourceTree = "<group>"; };
+		83A5F06222A790C3002D024C /* TimeLineViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeLineViewCell.swift; sourceTree = "<group>"; };
+		83A5F06422A7BB87002D024C /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		83B37A56229BED2400FABE03 /* ZPlayerManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZPlayerManager.swift; sourceTree = "<group>"; };
 		83B37A58229BED2400FABE03 /* VideoFeedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoFeedViewController.swift; sourceTree = "<group>"; };
 		83B37A5A229BED2400FABE03 /* VideoFeedCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoFeedCell.swift; sourceTree = "<group>"; };
@@ -299,6 +303,7 @@
 		83B37A57229BED2400FABE03 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				83A5F06422A7BB87002D024C /* TabBarViewController.swift */,
 				8302C4A322A2BFDE0033C8E7 /* VideoFeedViewNavController.swift */,
 				83B37A58229BED2400FABE03 /* VideoFeedViewController.swift */,
 				8302C4A522A2C1900033C8E7 /* UserPageViewController.swift */,
@@ -327,6 +332,7 @@
 				8302C4B822A4E9BB0033C8E7 /* CollectionViewCellContentView.swift */,
 				836F4AD222A5396100D3B6D9 /* MusicViewCell.swift */,
 				8398566822A67AA700D704F0 /* VideoViewCell.swift */,
+				83A5F06222A790C3002D024C /* TimeLineViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -641,6 +647,7 @@
 				83C6BBA9229AB9AF00E7D0D5 /* UIApplicationExtensions.swift in Sources */,
 				8302C4B122A439790033C8E7 /* UserSendMessageBtn.swift in Sources */,
 				8398566722A6753600D704F0 /* VideoListViewController.swift in Sources */,
+				83A5F06322A790C3002D024C /* TimeLineViewCell.swift in Sources */,
 				83C6BBB8229AB9AF00E7D0D5 /* StringExtensions.swift in Sources */,
 				833C79F022A6EB700030C71B /* VideoCellViewModel.swift in Sources */,
 				83B37A64229BED2400FABE03 /* VideoFeedCell.swift in Sources */,
@@ -691,6 +698,7 @@
 				83C6BB91229AB9AF00E7D0D5 /* ImageViewExtensions.swift in Sources */,
 				83C6BB98229AB9AF00E7D0D5 /* MemoryCache.swift in Sources */,
 				83C6BBB4229AB9AF00E7D0D5 /* DateExtensions.swift in Sources */,
+				83A5F06522A7BB87002D024C /* TabBarViewController.swift in Sources */,
 				83C6BBAD229AB9AF00E7D0D5 /* UIColorExtensions.swift in Sources */,
 				833C79F622A716480030C71B /* TimeLine.swift in Sources */,
 				83C6BB96229AB9AF00E7D0D5 /* WebImageSessionDataTask.swift in Sources */,

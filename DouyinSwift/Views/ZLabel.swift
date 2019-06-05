@@ -93,7 +93,7 @@ class ZLabel: UILabel {
         return attrStringM
     }
     
-    private let patterns = ["#.*?\\s", "@([^\\s|\\/|:|@]+)"]
+    private let patterns = ["#([^\\s|\\/|:]+)", "@([^\\s|\\/|:|@]+)"]
     private func regexLinkRanges(_ attrString: NSMutableAttributedString) {
         if isAllSelected {
             return

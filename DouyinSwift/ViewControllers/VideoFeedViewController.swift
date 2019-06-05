@@ -45,6 +45,7 @@ class VideoFeedViewController: UIViewController {
         
         viewModel.loadUserPageEventDriver.drive(onNext: { [weak self] _ in
             guard let `self` = self else { return }
+            ZPlayerManager.shared.pasueAll()
             self.navigationController?.pushViewController(UserPageViewController(), animated: true)
         }).disposed(by: bag)        
     }

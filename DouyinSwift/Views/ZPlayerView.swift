@@ -21,28 +21,37 @@ protocol ZPlayerViewDelegate: AnyObject {
 }
 
 class ZPlayerView: UIView {
+    var viewModel: VideoCellViewModel?
+    
+    private var playerItem: AVPlayerItem!
+    private var player: AVPlayer!
+    
+    var videoGravity: AVLayerVideoGravity {
+        set {
+            playerLayer.videoGravity = newValue
+        }
+        get {
+            return playerLayer.videoGravity
+        }
+    }
     
     var assetUrl: URL? {
         didSet {
             prepareToPlay()
         }
     }
-    var viewModel: VideoCellViewModel?
     
-    var playerItem: AVPlayerItem!
-    var player: AVPlayer!
     var shouldAutorepeat: Bool = true
-    
     weak var delegate: ZPlayerViewDelegate?
     
-    var timeObserverToken: Any?
-    var playToEndObserverToken: NSObjectProtocol?
+    private var timeObserverToken: Any?
+    private var playToEndObserverToken: NSObjectProtocol?
     
     override class var layerClass: AnyClass {
         return AVPlayerLayer.self
     }
 
-    var playerLayer: AVPlayerLayer {
+    private var playerLayer: AVPlayerLayer {
         return layer as! AVPlayerLayer
     }
     

@@ -28,7 +28,7 @@ class TimeLineViewController: UIViewController {
         tableView.showsVerticalScrollIndicator = false
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: TimeLineCellId)
+        tableView.register(TimeLineViewCell.self, forCellReuseIdentifier: TimeLineCellId)
         tableView.estimatedRowHeight = 95
         view.addSubview(tableView)
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -62,7 +62,10 @@ extension TimeLineViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return tableView.dequeueReusableCell(withIdentifier: TimeLineCellId, for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: TimeLineCellId, for: indexPath) as! TimeLineViewCell
+        let cellViewModel = viewModel.dataSource[indexPath.row]
+        cell.bind(viewModel: cellViewModel)
+        return cell
     }
 }
 

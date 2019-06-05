@@ -11,7 +11,7 @@ import Foundation
 struct Aweme: Codable {
     var awemeId: String
     var desc:String?
-    var createTime:Int
+    var createTime:Date
     var author: Author
     var music: Music?
     var video: Video
