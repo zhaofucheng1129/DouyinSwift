@@ -31,6 +31,7 @@ class NavigationViewController: UINavigationController {
         let pan = UIPanGestureRecognizer()
         interactivePopView.addGestureRecognizer(pan)
         pan.addTarget(target, action: action)
+        pan.delegate = self
     }
     
     override func pushViewController(_ viewController: UIViewController, animated: Bool) {
@@ -39,7 +40,25 @@ class NavigationViewController: UINavigationController {
         
         super.pushViewController(viewController, animated: animated)
     }
+}
 
+extension NavigationViewController: UIGestureRecognizerDelegate {
+    func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+        if viewControllers.count <= 1 {
+            return false
+        }
+        
+        if (self.value(forKey: "_isTransitioning") as? Bool ?? false) {
+            return false
+        }
+        
+        let translation = gestureRecognizer.location(in: gestureRecognizer.view)
+        if translation.x <= 0 {
+            return false
+        }
+        
+        return true
+    }
 }
 
 // MARK: - 解决全屏滑动时的手势冲突

@@ -13,7 +13,11 @@ import RxCocoa
 open class UserPageHostScrollView: UICollectionView {
     
     public override func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
-        return true
+        guard let view = otherGestureRecognizer.view else { return false }
+        if view is UIScrollView {
+            return true
+        }
+        return false
     }
 }
 
@@ -38,6 +42,7 @@ class UserPageViewController: UIViewController {
     private var headerViewHeight: CGFloat {
         return 980.0 / 750.0 * view.width
     }
+    
     private var stopScrollOffset: CGFloat {
         return headerViewHeight - navigationViewHeight - segmentViewHeight
     }
@@ -107,8 +112,8 @@ class UserPageViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
-        self.navigationController?.interactivePopGestureRecognizer?.delegate = self
-        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = true
+//        self.navigationController?.interactivePopGestureRecognizer?.delegate = self
+//        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = true
     }
     
     func initSubViewController() {
@@ -245,9 +250,4 @@ extension UserPageViewController: UserPageSegmentViewDelegate {
     func pageSegment(selectedIndex index: Int) {
         contentView.switchPage(index: index)
     }
-}
-
-
-extension UserPageViewController: UIGestureRecognizerDelegate {
-    
 }
