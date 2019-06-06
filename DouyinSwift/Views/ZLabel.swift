@@ -18,7 +18,7 @@ class ZLabel: UILabel {
     private lazy var container: NSTextContainer = NSTextContainer()
     private lazy var linkRanges = [NSRange]()
     private var selectedRange: NSRange?
-    public var delegate: ZLabelDelegate?
+    public weak var delegate: ZLabelDelegate?
     public var isAllSelected: Bool = false
     
     public var linkTextColor: UIColor = UIColor.white {

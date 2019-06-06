@@ -65,8 +65,8 @@ class VideoFeedViewController: UIViewController {
                             cell.play()
                         } else {
                             ZPlayerManager.shared.pasueAll()
-                            cell.startPlayOnReady = { [weak cell] in
-                                guard let cell = cell, let indexPath = self.tableView.indexPath(for: cell) else { return }
+                            cell.startPlayOnReady = { [weak cell, weak self] in
+                                guard let `self` = self, let cell = cell, let indexPath = self.tableView.indexPath(for: cell) else { return }
                                 if self.currentSubject.value == indexPath.row {
                                     cell.play()
                                 }

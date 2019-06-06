@@ -22,9 +22,16 @@ class VideoListViewModel {
     
     private var videoDataSource: BehaviorRelay<[VideoCellViewModel]> = BehaviorRelay(value: [])
     
+    //首页头像点击进入用户界面事件
     private var loadUserPageEvent: BehaviorRelay<Void> = BehaviorRelay(value: ())
     public var loadUserPageEventDriver: Driver<Void> {
         return loadUserPageEvent.asDriver().skip(1)
+    }
+    
+    //用户界面点击视频进入列表事件
+    private var loadVideoListPageEvent: PublishRelay<(UICollectionView, IndexPath)> = PublishRelay()
+    public var loadVideoListPageEventRelay: PublishRelay<(UICollectionView, IndexPath)> {
+        return loadVideoListPageEvent
     }
     
     public var dataSourceDriver: Driver<[VideoCellViewModel]> {

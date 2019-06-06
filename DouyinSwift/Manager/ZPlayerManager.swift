@@ -11,8 +11,7 @@ import AVFoundation
 
 class ZPlayerManager {
     static let shared: ZPlayerManager = ZPlayerManager()
-    
-    private var players: [AVPlayer] = []
+    private var playerDic: [Int:[AVPlayer]] = [:]
     private init() { }
     
     class func configAudioSession() {
@@ -26,29 +25,44 @@ class ZPlayerManager {
         }
     }
     
-    public func play(player: AVPlayer) {
+    public func play<T>(owner:T ,player: AVPlayer) where T: Hashable {
+        pause(owner: owner)
+        var players = playerDic[owner.hashValue] ?? [AVPlayer]()
         players.forEach { $0.pause() }
         if !players.contains(player) {
             players.append(player)
         }
+        playerDic[owner.hashValue] = players
         player.play()
+        
+        print(playerDic)
     }
     
     public func pause(player: AVPlayer) {
         player.pause()
     }
     
-    public func pasueAll() {
+    public func pause<T>(owner: T) where T: Hashable {
+        guard let players = playerDic[owner.hashValue] else { return }
         players.forEach { $0.pause() }
     }
     
-    public func remove(player: AVPlayer) {
-        if players.contains(player) {
-            players.removeAll { $0 == player }
+    public func pasueAll() {
+        playerDic.values.forEach { (players) in
+            players.forEach { $0.pause() }
         }
     }
     
+    public func remove<T>(owner: T, player: AVPlayer) where T: Hashable {
+        guard let players = playerDic[owner.hashValue] else { return }
+        playerDic[owner.hashValue] = players.filter { $0 != player }
+    }
+    
+    public func remove<T>(owner: T) where T: Hashable {
+        playerDic.removeValue(forKey: owner.hashValue)
+    }
+    
     public func removeAll() {
-        players.removeAll()
+        playerDic.removeAll()
     }
 }

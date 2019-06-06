@@ -99,7 +99,7 @@ class VideoFeedCell: UITableViewCell {
             }
         }).disposed(by: bag)
         
-        avatarBtn.rx.tap.asObservable().subscribe(onNext: {  _ in
+        avatarBtn.rx.tap.asControlEvent().subscribe(onNext: {  _ in
             viewModel.loadUserPageEvent.accept(())
         }).disposed(by: bag)
         

@@ -78,7 +78,7 @@ class ZPlayerView: UIView {
 //        let asset = AVAsset(url: assetUrl)
         playerItem = AVPlayerItem(url: assetUrl)
         if let player = player {
-            ZPlayerManager.shared.remove(player: player)
+            ZPlayerManager.shared.remove(owner: self, player: player)
         }
         player = AVPlayer(playerItem: playerItem)
         playerLayer.player = player
@@ -138,14 +138,16 @@ class ZPlayerView: UIView {
     }
     
     public func play() {
-        ZPlayerManager.shared.play(player: player)
+        ZPlayerManager.shared.play(owner: self, player: player)
     }
     
     public func pause() {
-        ZPlayerManager.shared.pause(player: player)
+        ZPlayerManager.shared.pasueAll()
     }
     
     deinit {
+        ZPlayerManager.shared.pause(player: player)
+        ZPlayerManager.shared.remove(owner: self)
         if let playToEndObserverToken = playToEndObserverToken {
             NotificationCenter.default.removeObserver(playToEndObserverToken, name: .AVPlayerItemDidPlayToEndTime, object: self.playerItem)
             self.playToEndObserverToken = nil

@@ -10,4 +10,5 @@ target 'DouyinSwift' do
   pod 'RxCocoa'
   pod 'Moya/RxSwift', '~> 13.0'
   pod 'lottie-ios'
+  pod 'MLeaksFinder'
 end

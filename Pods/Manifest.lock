@@ -1,6 +1,9 @@
 PODS:
   - Alamofire (4.8.2)
-  - lottie-ios (3.0.6)
+  - FBRetainCycleDetector (0.1.4)
+  - lottie-ios (3.1.0)
+  - MLeaksFinder (1.0.0):
+    - FBRetainCycleDetector
   - Moya/Core (13.0.1):
     - Alamofire (~> 4.1)
     - Result (~> 4.1)
@@ -14,6 +17,7 @@ PODS:
 
 DEPENDENCIES:
   - lottie-ios
+  - MLeaksFinder
   - Moya/RxSwift (~> 13.0)
   - RxCocoa
   - RxSwift
@@ -21,7 +25,9 @@ DEPENDENCIES:
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Alamofire
+    - FBRetainCycleDetector
     - lottie-ios
+    - MLeaksFinder
     - Moya
     - Result
     - RxCocoa
@@ -29,12 +35,14 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
-  lottie-ios: d030b6cda141cfd8bbaa3db89264785e6fdf675a
+  FBRetainCycleDetector: 46f8179bbb1c587deee3ea838a1a3ee02acf5015
+  lottie-ios: 9467723922dfff46f6d4e3019c32594a62440b7c
+  MLeaksFinder: 8c435bd2f6d070af18cff082b503b21adc130fc0
   Moya: f4a4b80ff2f8a4ffc208dfb31cd91636622fee6e
   Result: bd966fac789cc6c1563440b348ab2598cc24d5c7
   RxCocoa: cbf70265dc65a981d4ac982e513c10cf23df24a0
   RxSwift: f172070dfd1a93d70a9ab97a5a01166206e1c575
 
-PODFILE CHECKSUM: 61de0adc5bc0d6e4e3d5d3903bf3c6e637c36f5a
+PODFILE CHECKSUM: c8393296ef22c3de870c6fe5371b9e72addaec73
 
 COCOAPODS: 1.7.0

@@ -24,7 +24,11 @@ class VideoCellViewModel {
     
     private let aweme: BehaviorRelay<Aweme>
     
+    //首页Cell中头像点击事件
     public var loadUserPageEvent: BehaviorRelay<Void>
+    
+//    //用户视频Cell点击事件
+//    private var loadVideoListPageEvent: BehaviorRelay<Void>?
     
     init(aweme: Aweme, loadUserPageEvent: BehaviorRelay<Void>) {
         self.aweme = BehaviorRelay(value: aweme)
