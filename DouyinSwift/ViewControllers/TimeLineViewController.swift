@@ -21,8 +21,7 @@ class TimeLineViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        view.backgroundColor = UIColor("171823")
+        self.navigationItem.title = "关注"
         
         tableView.backgroundColor = UIColor("171823")
         tableView.showsVerticalScrollIndicator = false
@@ -43,6 +42,15 @@ class TimeLineViewController: UIViewController {
             guard let `self` = self else { return }
             self.tableView.reloadData()
         }).disposed(by: bag)
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        ZPlayerManager.shared.pause(owner: self)
     }
 }
 

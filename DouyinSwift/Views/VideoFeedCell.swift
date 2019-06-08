@@ -99,7 +99,7 @@ class VideoFeedCell: UITableViewCell {
             }
         }).disposed(by: bag)
         
-        avatarBtn.rx.tap.asControlEvent().subscribe(onNext: {  _ in
+        avatarBtn.rx.tap.subscribe(onNext: {  _ in
             viewModel.loadUserPageEvent.accept(())
         }).disposed(by: bag)
         
@@ -193,7 +193,7 @@ extension VideoFeedCell {
         musicDiscBtn = VideoFeedCellMusicBtn()
         contentView.addSubview(musicDiscBtn)
         musicDiscBtn.translatesAutoresizingMaskIntoConstraints = false
-        musicDiscBtn.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -60).isActive = true
+        musicDiscBtn.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -15).isActive = true
         musicDiscBtn.rightAnchor.constraint(equalTo: safeAreaLayoutGuide.rightAnchor, constant: -10).isActive = true
     }
     
@@ -290,7 +290,7 @@ extension VideoFeedCell {
         musicIcon.translatesAutoresizingMaskIntoConstraints = false
         musicName.translatesAutoresizingMaskIntoConstraints = false
         musicIcon.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 10).isActive = true
-        musicIcon.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -60).isActive = true
+        musicIcon.bottomAnchor.constraint(equalTo: musicDiscBtn.bottomAnchor).isActive = true
         musicIcon.setContentHuggingPriority(.required, for: .vertical)
         musicName.leftAnchor.constraint(equalTo: musicIcon.rightAnchor, constant: 5).isActive = true
         musicName.centerYAnchor.constraint(equalTo: musicIcon.centerYAnchor).isActive = true
@@ -348,14 +348,14 @@ extension VideoFeedCell {
         
         volumeProgressView = UIProgressView(progressViewStyle: .default)
         volumeProgressView.trackTintColor = UIColor.clear
-        volumeProgressView.progressTintColor = UIColor.orange
+        volumeProgressView.progressTintColor = UIColor("FBD537")
         volumeProgressView.alpha = 0
         contentView.addSubview(volumeProgressView)
         volumeProgressView.translatesAutoresizingMaskIntoConstraints = false
         volumeProgressView.leftAnchor.constraint(equalTo: contentView.leftAnchor).isActive = true
         volumeProgressView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor).isActive = true
         volumeProgressView.rightAnchor.constraint(equalTo: contentView.rightAnchor).isActive = true
-        volumeProgressView.heightAnchor.constraint(equalToConstant: 0.5).isActive = true
+        volumeProgressView.heightAnchor.constraint(equalToConstant: 1).isActive = true
     }
 }
 

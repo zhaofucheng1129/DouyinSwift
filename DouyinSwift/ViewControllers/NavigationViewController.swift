@@ -32,13 +32,25 @@ class NavigationViewController: UINavigationController {
         interactivePopView.addGestureRecognizer(pan)
         pan.addTarget(target, action: action)
         pan.delegate = self
+        
+        
+        navigationBar.barTintColor = UIColor("171823")
+        navigationBar.isTranslucent = false
+        navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+        navigationBar.shadowImage = UIImage(color: UIColor(white: 1, alpha: 0.5), size: CGSize(width: 0.5, height: 0.5))
     }
     
     override func pushViewController(_ viewController: UIViewController, animated: Bool) {
         
-        viewController.hidesBottomBarWhenPushed = true
+        if viewControllers.count >= 1 {
+            viewController.hidesBottomBarWhenPushed = true
+        }
         
         super.pushViewController(viewController, animated: animated)
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
     }
 }
 

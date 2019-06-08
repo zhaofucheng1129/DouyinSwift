@@ -47,12 +47,23 @@ class VideoFeedViewController: UIViewController {
             guard let `self` = self else { return }
             ZPlayerManager.shared.pasueAll()
             self.navigationController?.pushViewController(UserPageViewController(), animated: true)
-        }).disposed(by: bag)        
+        }).disposed(by: bag)
+        
+        let pan = UIPanGestureRecognizer { (gesture) in
+            print("滑动手势")
+        }
+        pan.isEnabled = false
+        self.view.addGestureRecognizer(pan)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        ZPlayerManager.shared.pause(owner: self)
     }
     
     func setUpCurrentCellObserver() {
